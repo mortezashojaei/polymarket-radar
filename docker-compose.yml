@@ -1,6 +1,6 @@
 services:
   radar:
-    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-owner}/polymarket-radar:latest
+    image: ghcr.io/mortezashojaei/polymarket-radar:latest
     container_name: polymarket-radar
     restart: unless-stopped
     env_file:
