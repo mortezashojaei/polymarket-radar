@@ -36,7 +36,21 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             set -e
+            mkdir -p /opt/polymarket-radar/data
             cd /opt/polymarket-radar
+
+            cat > .env << 'EOF'
+            TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
+            TELEGRAM_CHANNEL_ID=${{ vars.TELEGRAM_CHANNEL_ID }}
+            RUN_EVERY_MINUTES=${{ vars.RUN_EVERY_MINUTES }}
+            MIN_LIQUIDITY=${{ vars.MIN_LIQUIDITY }}
+            MIN_VOLUME_24H=${{ vars.MIN_VOLUME_24H }}
+            MIN_ODDS_SWING=${{ vars.MIN_ODDS_SWING }}
+            TOP_SIGNALS=${{ vars.TOP_SIGNALS }}
+            DATABASE_PATH=./data/radar.db
+            POLYMARKET_EVENTS_URL=${{ vars.POLYMARKET_EVENTS_URL }}
+            EOF
+
             docker compose pull
             docker compose up -d
             docker image prune -f
