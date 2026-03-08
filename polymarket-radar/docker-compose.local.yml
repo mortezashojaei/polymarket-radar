@@ -1,0 +1,9 @@
+services:
+  radar:
+    build: .
+    container_name: polymarket-radar-local
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

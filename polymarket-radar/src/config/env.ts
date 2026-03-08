@@ -1,0 +1,22 @@
+import "dotenv/config";
+
+const required = ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHANNEL_ID"] as const;
+for (const key of required) {
+  if (!process.env[key]) throw new Error(`Missing env: ${key}`);
+}
+
+const num = (k: string, d: number) => Number(process.env[k] ?? d);
+
+export const env = {
+  telegramToken: process.env.TELEGRAM_BOT_TOKEN!,
+  telegramChannelId: process.env.TELEGRAM_CHANNEL_ID!,
+  runEveryMinutes: num("RUN_EVERY_MINUTES", 60),
+  minLiquidity: num("MIN_LIQUIDITY", 10_000),
+  minVolume24h: num("MIN_VOLUME_24H", 5_000),
+  minOddsSwing: num("MIN_ODDS_SWING", 8),
+  topSignals: num("TOP_SIGNALS", 5),
+  dbPath: process.env.DATABASE_PATH ?? "./data/radar.db",
+  polymarketEventsUrl:
+    process.env.POLYMARKET_EVENTS_URL ??
+    "https://gamma-api.polymarket.com/events?closed=false&limit=200&active=true",
+};
