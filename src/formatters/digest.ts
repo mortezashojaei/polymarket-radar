@@ -18,14 +18,16 @@ export const renderDigest = (signals: MarketSignal[]): string => {
   }
 
   const lines = signals.map((s, i) => {
-    const [what = s.body, why = ""] = s.body.split(" | ");
+    const [what = s.body, why = "", link = ""] = s.body.split(" | ");
     const cleanWhat = what.replace(/^What happened:\s*/i, "");
     const cleanWhy = why.replace(/^Why flagged:\s*/i, "");
+    const cleanLink = link.replace(/^Link:\s*/i, "");
 
     return [
       `${i + 1}) ${s.title}`,
       `   ${cleanWhat}`,
       `   Trigger: ${cleanWhy}`,
+      `   🔗 ${cleanLink}`,
       `   ${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
       "",
     ].join("\n");

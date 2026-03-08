@@ -1,5 +1,6 @@
 export interface RawMarket {
   id: string;
+  slug?: string;
   question: string;
   liquidity?: number;
   volume24hr?: number;

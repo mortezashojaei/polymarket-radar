@@ -18,6 +18,20 @@ const parsePrices = (m: RawMarket): number[] => {
   return [];
 };
 
+const parseOutcomes = (m: RawMarket): string[] => {
+  if (Array.isArray(m.outcomes)) return m.outcomes.map(String);
+  if (typeof m.outcomes === "string") {
+    try {
+      const arr = JSON.parse(m.outcomes);
+      if (Array.isArray(arr)) return arr.map(String);
+    } catch {}
+  }
+  return ["Yes", "No"];
+};
+
+const marketUrl = (m: RawMarket): string =>
+  m.slug ? `https://polymarket.com/event/${m.slug}` : "https://polymarket.com";
+
 export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
   const filtered = markets.filter(
     (m) => (m.liquidity ?? 0) >= env.minLiquidity && (m.volume24hr ?? 0) >= env.minVolume24h
@@ -30,11 +44,23 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
 
   for (const m of filtered) {
     const prices = parsePrices(m);
-    const top = prices.length ? Math.max(...prices) * 100 : 0;
-    const second = prices.length > 1 ? [...prices].sort((a, b) => b - a)[1] * 100 : 0;
+    const outcomes = parseOutcomes(m);
+    const topIdx = prices.length ? prices.indexOf(Math.max(...prices)) : 0;
+    const secondIdx =
+      prices.length > 1
+        ? prices
+            .map((p, i) => ({ p, i }))
+            .sort((a, b) => b.p - a.p)[1]?.i ?? 1
+        : 1;
+
+    const top = prices.length ? (prices[topIdx] ?? 0) * 100 : 0;
+    const second = prices.length > 1 ? (prices[secondIdx] ?? 0) * 100 : 0;
+    const topOutcome = outcomes[topIdx] ?? "Top";
+    const secondOutcome = outcomes[secondIdx] ?? "Other";
     const gap = top - second;
     const vol = Math.round(m.volume24hr ?? 0);
     const liq = Math.round(m.liquidity ?? 0);
+    const link = marketUrl(m);
 
     if (gap >= env.minOddsSwing) {
       const score = Math.min(100, Math.round(gap * 4));
@@ -42,7 +68,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `gap:${m.id}:${Math.round(top)}`,
         type: "ODDS_SWING",
         title: `Consensus Gap: ${m.question}`,
-        body: `What happened: top outcome leads by ${gap.toFixed(1)} pts (${top.toFixed(1)}% vs ${second.toFixed(1)}%). | Why flagged: gap >= ${env.minOddsSwing} pts (vol ${vol}, liq ${liq}).`,
+        body: `What happened: ${topOutcome.toUpperCase()} leads ${top.toFixed(1)}% vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}% (gap ${gap.toFixed(1)} pts). | Why flagged: gap >= ${env.minOddsSwing} pts (vol ${vol}, liq ${liq}). | Link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -55,7 +81,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `vol:${m.id}:${Math.floor((m.volume24hr ?? 0) / 1000)}`,
         type: "VOLUME_SPIKE",
         title: `Volume Spike: ${m.question}`,
-        body: `What happened: 24h volume jumped to ${vol} (${multiple.toFixed(1)}x market baseline). | Why flagged: volume spike threshold is 1.8x baseline (liq ${liq}).`,
+        body: `What happened: 24h volume jumped to ${vol} (${multiple.toFixed(1)}x market baseline). | Why flagged: volume spike threshold is 1.8x baseline (liq ${liq}). | Link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -67,7 +93,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `trend:${m.id}:${Math.floor((m.volume24hr ?? 0) / 5000)}`,
         type: "TRENDING",
         title: `Trending Market: ${m.question}`,
-        body: `What happened: sustained activity with vol ${vol} and liquidity ${liq}. | Why flagged: vol > ${env.minVolume24h * 3} and liq > ${env.minLiquidity * 2}.`,
+        body: `What happened: sustained activity with vol ${vol} and liquidity ${liq}. | Why flagged: vol > ${env.minVolume24h * 3} and liq > ${env.minLiquidity * 2}. | Link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -84,11 +110,12 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
     for (const m of fallback) {
       const vol = Math.round(m.volume24hr ?? 0);
       const liq = Math.round(m.liquidity ?? 0);
+      const link = marketUrl(m);
       out.push({
         key: `fallback:${m.id}:${Math.floor(vol / 1000)}`,
         type: "TRENDING",
         title: `Market Watch: ${m.question}`,
-        body: `What happened: this is one of the most active political markets right now. | Why flagged: fallback watchlist by highest 24h volume (${vol}) with liquidity ${liq}.`,
+        body: `What happened: this is one of the most active political markets right now. | Why flagged: fallback watchlist by highest 24h volume (${vol}) with liquidity ${liq}. | Link: ${link}`,
         confidence: "Low",
         score: 35,
       });
