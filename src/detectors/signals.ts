@@ -32,15 +32,17 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
     const prices = parsePrices(m);
     const top = prices.length ? Math.max(...prices) * 100 : 0;
     const second = prices.length > 1 ? [...prices].sort((a, b) => b - a)[1] * 100 : 0;
-    const swing = top - second;
+    const gap = top - second;
+    const vol = Math.round(m.volume24hr ?? 0);
+    const liq = Math.round(m.liquidity ?? 0);
 
-    if (swing >= env.minOddsSwing) {
-      const score = Math.min(100, Math.round(swing * 4));
+    if (gap >= env.minOddsSwing) {
+      const score = Math.min(100, Math.round(gap * 4));
       out.push({
-        key: `odds:${m.id}:${Math.round(top)}`,
+        key: `gap:${m.id}:${Math.round(top)}`,
         type: "ODDS_SWING",
-        title: `Odds Swing: ${m.question}`,
-        body: `Top outcome spread is ${swing.toFixed(1)} pts (lead ${top.toFixed(1)}%).`,
+        title: `Consensus Gap: ${m.question}`,
+        body: `What happened: top outcome leads by ${gap.toFixed(1)} pts (${top.toFixed(1)}% vs ${second.toFixed(1)}%). | Why flagged: gap >= ${env.minOddsSwing} pts (vol ${vol}, liq ${liq}).`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -53,7 +55,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `vol:${m.id}:${Math.floor((m.volume24hr ?? 0) / 1000)}`,
         type: "VOLUME_SPIKE",
         title: `Volume Spike: ${m.question}`,
-        body: `24h volume is ${multiple.toFixed(1)}x baseline (${Math.round(m.volume24hr ?? 0)}).`,
+        body: `What happened: 24h volume jumped to ${vol} (${multiple.toFixed(1)}x market baseline). | Why flagged: volume spike threshold is 1.8x baseline (liq ${liq}).`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -65,7 +67,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `trend:${m.id}:${Math.floor((m.volume24hr ?? 0) / 5000)}`,
         type: "TRENDING",
         title: `Trending Market: ${m.question}`,
-        body: `High traction with strong liquidity support.`,
+        body: `What happened: sustained activity with vol ${vol} and liquidity ${liq}. | Why flagged: vol > ${env.minVolume24h * 3} and liq > ${env.minLiquidity * 2}.`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -86,7 +88,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
         key: `fallback:${m.id}:${Math.floor(vol / 1000)}`,
         type: "TRENDING",
         title: `Market Watch: ${m.question}`,
-        body: `Active political market (24h vol ${vol}, liquidity ${liq}).`,
+        body: `What happened: this is one of the most active political markets right now. | Why flagged: fallback watchlist by highest 24h volume (${vol}) with liquidity ${liq}.`,
         confidence: "Low",
         score: 35,
       });

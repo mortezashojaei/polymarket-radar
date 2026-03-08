@@ -5,9 +5,15 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     return "📡 Polymarket Radar (Politics)\n\nNo high-quality signals this hour.";
   }
 
-  const lines = signals.map(
-    (s, i) => `${i + 1}) ${s.title}\n   ${s.body}\n   Confidence: ${s.confidence}`
-  );
+  const lines = signals.map((s, i) => {
+    const [what = s.body, why = ""] = s.body.split(" | ");
+    return [
+      `${i + 1}) ${s.title}`,
+      `   - ${what}`,
+      `   - ${why}`,
+      `   - Confidence: ${s.confidence}`,
+    ].join("\n");
+  });
 
   return [
     "📡 Polymarket Radar (Politics)",
