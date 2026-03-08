@@ -28,11 +28,32 @@ export const fetchPoliticalMarkets = async (): Promise<RawMarket[]> => {
   const data = await res.json();
   const events = Array.isArray(data) ? data : [];
 
+  const isPoliticalEvent = (e: any): boolean => {
+    const flat = [e.category, e.subCategory, e.ticker, e.slug, e.title]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    const tagText = Array.isArray(e.tags)
+      ? e.tags
+          .map((t: any) => `${t?.slug ?? ""} ${t?.label ?? ""}`.toLowerCase())
+          .join(" ")
+      : "";
+
+    const hay = `${flat} ${tagText}`;
+    return (
+      hay.includes("politic") ||
+      hay.includes("election") ||
+      hay.includes("geopolit") ||
+      hay.includes("government") ||
+      hay.includes("president") ||
+      hay.includes("senate")
+    );
+  };
+
   const markets: RawMarket[] = [];
   for (const e of events) {
-    const category = String(e.category ?? e.tags?.[0] ?? "").toLowerCase();
-    if (!category.includes("politic")) continue;
-
+    if (!isPoliticalEvent(e)) continue;
     if (Array.isArray(e.markets)) {
       for (const m of e.markets) markets.push(normalizeMarket(m));
     }

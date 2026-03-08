@@ -72,5 +72,26 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
     }
   }
 
+  if (out.length === 0) {
+    const base = filtered.length ? filtered : markets;
+    const fallback = base
+      .slice()
+      .sort((a, b) => (b.volume24hr ?? 0) - (a.volume24hr ?? 0))
+      .slice(0, Math.min(env.topSignals, 3));
+
+    for (const m of fallback) {
+      const vol = Math.round(m.volume24hr ?? 0);
+      const liq = Math.round(m.liquidity ?? 0);
+      out.push({
+        key: `fallback:${m.id}:${Math.floor(vol / 1000)}`,
+        type: "TRENDING",
+        title: `Market Watch: ${m.question}`,
+        body: `Active political market (24h vol ${vol}, liquidity ${liq}).`,
+        confidence: "Low",
+        score: 35,
+      });
+    }
+  }
+
   return out.sort((a, b) => b.score - a.score).slice(0, env.topSignals);
 };
