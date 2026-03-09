@@ -8,6 +8,7 @@ export const sendTelegramMessage = async (text: string): Promise<number> => {
     body: JSON.stringify({
       chat_id: env.telegramChannelId,
       text,
+      parse_mode: "HTML",
       disable_web_page_preview: true,
     }),
   });

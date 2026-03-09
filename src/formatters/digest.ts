@@ -6,48 +6,49 @@ const confEmoji = (c: MarketSignal["confidence"]) => {
   return "⚪️";
 };
 
+const esc = (s: string): string =>
+  s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+
 export const renderDigest = (signals: MarketSignal[]): string => {
   if (!signals.length) {
-    return [
-      "📡 Polymarket Radar — Politics",
-      "",
-      "Quiet hour. No strong signals right now.",
-      "",
-      "We’ll post when activity picks up.",
-    ].join("\n");
+    return ["Politics signals", "", "No strong signals this hour."].join("\n");
   }
 
   const lines = signals.map((s, i) => {
     if (s.type === "WHALE_WATCH") {
       const parts = s.body.split(" | ");
+      const market = esc((parts.find((p) => p.startsWith("📍 Market:")) ?? "").replace("📍 Market: ", ""));
+      const move = esc((parts.find((p) => p.startsWith("🐋 Whale move:")) ?? "").replace("🐋 Whale move: ", ""));
+      const reaction = esc(
+        (parts.find((p) => p.startsWith("📈 Price reaction:")) ?? "").replace("📈 Price reaction: ", "")
+      );
+      const read = esc((parts.find((p) => p.startsWith("🧠 Read:")) ?? "").replace("🧠 Read: ", ""));
+      const link = (parts.find((p) => p.startsWith("🔗 Bet link:")) ?? "").replace("🔗 Bet link: ", "");
+
       return [
         `${i + 1})`,
-        ...parts.map((p) => `   ${p}`),
-        `   ${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
+        `📍 <b>Market: <i>${market}</i></b>`,
+        `🐋 Whale move: <b>${move}</b>`,
+        `📈 Price reaction: <b>${reaction}</b>`,
+        `🧠 Read: ${read}`,
+        `🔗 <a href="${link}">Go to market</a>`,
+        `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
         "",
       ].join("\n");
     }
 
-    const [what = s.body, why = "", link = ""] = s.body.split(" | ");
-    const cleanWhat = what.replace(/^What happened:\s*/i, "");
-    const cleanWhy = why.replace(/^Why flagged:\s*/i, "");
-    const cleanLink = link.replace(/^Link:\s*/i, "");
+    const [what = s.body, _why = "", linkPart = ""] = s.body.split(" | ");
+    const cleanWhat = esc(what.replace(/^What happened:\s*/i, ""));
+    const cleanLink = linkPart.replace(/^Link:\s*/i, "");
 
     return [
-      `${i + 1}) ${s.title}`,
-      `   ${cleanWhat}`,
-      `   Trigger: ${cleanWhy}`,
-      `   🔗 ${cleanLink}`,
-      `   ${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
+      `${i + 1}) ${esc(s.title)}`,
+      `${cleanWhat}`,
+      `🔗 <a href="${cleanLink}">Go to market</a>`,
+      `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
       "",
     ].join("\n");
   });
 
-  return [
-    "📡 Polymarket Radar — Politics",
-    "Top signals this hour:",
-    "",
-    ...lines,
-    "DYOR. Not financial advice.",
-  ].join("\n");
+  return ["Politics signals", "", ...lines].join("\n");
 };
