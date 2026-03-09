@@ -52,7 +52,9 @@ export const detectSignals = (
 
   const out: MarketSignal[] = [];
 
+  const byCondition = new Map<string, RawMarket>();
   for (const m of filtered) {
+    if (m.conditionId) byCondition.set(m.conditionId, m);
     const prices = parsePrices(m);
     const outcomes = parseOutcomes(m);
     if (!prices.length) continue;
@@ -149,6 +151,39 @@ export const detectSignals = (
     }
 
     upsertMarketState(m.id, topOutcome, top, m.volume24hr ?? 0);
+  }
+
+  if (out.length === 0) {
+    const fallback = [...tradeFlowByCondition.values()]
+      .filter((t) => t.netNotional > 0)
+      .sort((a, b) => b.netNotional - a.netNotional)
+      .slice(0, Math.max(3, env.topSignals));
+
+    for (const t of fallback) {
+      const m = byCondition.get(t.conditionId);
+      if (!m) continue;
+
+      const prices = parsePrices(m);
+      const outcomes = parseOutcomes(m);
+      const ranked = prices.map((p, i) => ({ p, i })).sort((a, b) => b.p - a.p);
+      const topIdx = ranked[0]?.i ?? 0;
+      const top = (prices[topIdx] ?? 0) * 100;
+      const topOutcome = outcomes[topIdx] ?? "Top";
+      const link = marketUrl(m);
+      const liq = Math.round(m.liquidity ?? 0);
+      const vol = Math.round(m.volume24hr ?? 0);
+      const flowText = t.side === "BUY" ? "Added" : "Reduced";
+      const flowNet = Math.round(t.netNotional);
+
+      out.push({
+        key: `fallback:${m.id}:${t.side}:${t.outcome}:${flowNet}`,
+        type: "WHALE_WATCH",
+        title: "",
+        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ${flowNet.toFixed(2)} units to ${sideEmoji(t.outcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (24h context) | 🧠 Read: Top visible recent side is ${sideEmoji(t.outcome)} on liq ${liq}, vol ${vol} | 🔗 Bet link: ${link}`,
+        confidence: "Med",
+        score: 45,
+      });
+    }
   }
 
   return out.sort((a, b) => b.score - a.score).slice(0, env.topSignals);
