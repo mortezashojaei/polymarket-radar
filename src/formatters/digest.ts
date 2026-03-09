@@ -21,7 +21,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     if (s.type === "WHALE_WATCH") {
       const parts = s.body.split(" | ");
       return [
-        `${i + 1}) ${s.title}`,
+        `${i + 1})`,
         ...parts.map((p) => `   ${p}`),
         `   ${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
         "",

@@ -132,7 +132,7 @@ export const detectSignals = (
       out.push({
         key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
         type: "WHALE_WATCH",
-        title: `🐋 Whale Watch`,
+        title: ``,
         body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} $${flowNet.toLocaleString()} to ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (${moved}) | 🧠 Read: Big money leaning ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
