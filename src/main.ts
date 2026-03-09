@@ -43,6 +43,12 @@ const runOnce = async () => {
 
   for (const s of signals) markSeen(s.key);
 
+  if (signals.length === 0) {
+    saveRun(0, `markets=${markets.length}; skipped=no-signals`);
+    console.log(`[radar] skipped post (no signals) from ${markets.length} markets`);
+    return;
+  }
+
   const text = renderDigest(signals);
   const messageId = await sendTelegramMessage(text);
   if (messageId) saveSentMessage(messageId);

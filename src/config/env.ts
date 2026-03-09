@@ -15,7 +15,7 @@ const bool = (k: string, d = false) => {
 export const env = {
   telegramToken: process.env.TELEGRAM_BOT_TOKEN!,
   telegramChannelId: process.env.TELEGRAM_CHANNEL_ID!,
-  runEveryMinutes: num("RUN_EVERY_MINUTES", 60),
+  runEveryMinutes: num("RUN_EVERY_MINUTES", 15),
   minLiquidity: num("MIN_LIQUIDITY", 10_000),
   minVolume24h: num("MIN_VOLUME_24H", 5_000),
   minOddsSwing: num("MIN_ODDS_SWING", 8),
