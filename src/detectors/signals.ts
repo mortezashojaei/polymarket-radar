@@ -139,12 +139,13 @@ export const detectSignals = (
       );
       const moved = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`;
       const flowText = flowSide === "BUY" ? "Added" : "Reduced";
+      const flowPrep = flowSide === "BUY" ? "to" : "from";
       const movedText = prev ? `(${moved})` : "";
       out.push({
         key: `whale:${m.id}:${Math.floor(flowNet * 10)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
         type: "WHALE_WATCH",
         title: ``,
-        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} to ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% ${movedText}`.trim() + ` | 🧠 Read: Visible recent flow leans ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
+        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} ${flowPrep} ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% ${movedText}`.trim() + ` | 🧠 Read: Visible recent flow leans ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
@@ -173,13 +174,14 @@ export const detectSignals = (
       const liq = Math.round(m.liquidity ?? 0);
       const vol = Math.round(m.volume24hr ?? 0);
       const flowText = t.side === "BUY" ? "Added" : "Reduced";
+      const flowPrep = t.side === "BUY" ? "to" : "from";
       const flowNet = Math.round(t.netNotional);
 
       out.push({
         key: `fallback:${m.id}:${t.side}:${t.outcome}:${flowNet}`,
         type: "WHALE_WATCH",
         title: "",
-        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} to ${sideEmoji(t.outcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (24h context) | 🧠 Read: Visible recent flow leans ${sideEmoji(t.outcome)} | 🔗 Bet link: ${link}`,
+        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} ${flowPrep} ${sideEmoji(t.outcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (24h context) | 🧠 Read: Visible recent flow leans ${sideEmoji(t.outcome)} | 🔗 Bet link: ${link}`,
         confidence: "Med",
         score: 45,
       });

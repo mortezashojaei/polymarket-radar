@@ -5,7 +5,12 @@ for (const key of required) {
   if (!process.env[key]) throw new Error(`Missing env: ${key}`);
 }
 
-const num = (k: string, d: number) => Number(process.env[k] ?? d);
+const num = (k: string, d: number) => {
+  const raw = process.env[k];
+  if (raw === undefined || raw.trim() === "") return d;
+  const n = Number(raw);
+  return Number.isFinite(n) ? n : d;
+};
 const bool = (k: string, d = false) => {
   const v = (process.env[k] ?? "").toLowerCase().trim();
   if (!v) return d;
