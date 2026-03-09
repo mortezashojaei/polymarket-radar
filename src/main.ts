@@ -38,7 +38,7 @@ const clearChannelOnStart = async () => {
 
 const runOnce = async () => {
   const markets = await fetchPoliticalMarkets();
-  const tradeFlow = await fetchRecentTradeFlow(3600, 2500).catch(() => new Map());
+  const tradeFlow = await fetchRecentTradeFlow(86400, 4000).catch(() => new Map());
   const signals = detectSignals(markets, tradeFlow).filter((s) => !hasSeen(s.key));
 
   for (const s of signals) markSeen(s.key);

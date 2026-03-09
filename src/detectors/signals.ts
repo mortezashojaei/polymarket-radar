@@ -117,20 +117,26 @@ export const detectSignals = (
     const flowOutcome = tradeFlow?.outcome;
     const flowNet = Math.round(tradeFlow?.netNotional ?? 0);
 
+    const hasStrongFlow = flowNet >= 5_000;
+    const hasDeltaSignal = prev && (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2));
+    const hasBootstrapSignal = !prev && flowNet >= 8_000;
+
     if (
       !tooStale &&
-      prev &&
       liq >= env.minLiquidity * 2 &&
-      (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2)) &&
       flowSide &&
       flowOutcome &&
-      flowNet >= 15_000
+      hasStrongFlow &&
+      (hasDeltaSignal || hasBootstrapSignal)
     ) {
-      const score = Math.min(100, Math.round(volumeDelta / 1200 + absDelta * 8 + flowNet / 5000));
+      const score = Math.min(
+        100,
+        Math.round((hasDeltaSignal ? volumeDelta / 1200 + absDelta * 8 : 35) + flowNet / 5000)
+      );
       const moved = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`;
       const flowText = flowSide === "BUY" ? "Added" : "Reduced";
       out.push({
-        key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
+        key: `whale:${m.id}:${Math.floor(flowNet / 5000)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
         type: "WHALE_WATCH",
         title: ``,
         body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} $${flowNet.toLocaleString()} to ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (${moved}) | 🧠 Read: Big money leaning ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
