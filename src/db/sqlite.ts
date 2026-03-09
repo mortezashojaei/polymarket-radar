@@ -19,6 +19,12 @@ CREATE TABLE IF NOT EXISTS runs (
   posted_count INTEGER NOT NULL,
   note TEXT
 );
+CREATE TABLE IF NOT EXISTS market_state (
+  market_id TEXT PRIMARY KEY,
+  top_outcome TEXT,
+  top_prob REAL,
+  updated_at INTEGER NOT NULL
+);
 `);
 
 export const hasSeen = (key: string): boolean => {
@@ -38,4 +44,28 @@ export const saveRun = (postedCount: number, note = "ok"): void => {
     postedCount,
     note
   );
+};
+
+export const getMarketState = (
+  marketId: string
+): { topOutcome: string; topProb: number; updatedAt: number } | null => {
+  const row = db
+    .prepare("SELECT top_outcome, top_prob, updated_at FROM market_state WHERE market_id = ?")
+    .get(marketId) as
+    | { top_outcome: string; top_prob: number; updated_at: number }
+    | undefined;
+
+  if (!row) return null;
+  return { topOutcome: row.top_outcome, topProb: row.top_prob, updatedAt: row.updated_at };
+};
+
+export const upsertMarketState = (marketId: string, topOutcome: string, topProb: number): void => {
+  db.prepare(
+    `INSERT INTO market_state(market_id, top_outcome, top_prob, updated_at)
+     VALUES (?, ?, ?, ?)
+     ON CONFLICT(market_id)
+     DO UPDATE SET top_outcome = excluded.top_outcome,
+                   top_prob = excluded.top_prob,
+                   updated_at = excluded.updated_at`
+  ).run(marketId, topOutcome, topProb, Date.now());
 };
