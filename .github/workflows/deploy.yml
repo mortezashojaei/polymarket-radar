@@ -47,6 +47,8 @@ jobs:
             MIN_VOLUME_24H=${{ vars.MIN_VOLUME_24H }}
             MIN_ODDS_SWING=${{ vars.MIN_ODDS_SWING }}
             TOP_SIGNALS=${{ vars.TOP_SIGNALS }}
+            CLEAR_ON_START=${{ vars.CLEAR_ON_START }}
+            CLEAR_ON_START_LIMIT=${{ vars.CLEAR_ON_START_LIMIT }}
             DATABASE_PATH=./data/radar.db
             POLYMARKET_EVENTS_URL=${{ vars.POLYMARKET_EVENTS_URL }}
             EOF

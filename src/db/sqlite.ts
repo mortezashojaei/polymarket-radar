@@ -25,6 +25,10 @@ CREATE TABLE IF NOT EXISTS market_state (
   top_prob REAL,
   updated_at INTEGER NOT NULL
 );
+CREATE TABLE IF NOT EXISTS sent_messages (
+  message_id INTEGER PRIMARY KEY,
+  created_at INTEGER NOT NULL
+);
 `);
 
 export const hasSeen = (key: string): boolean => {
@@ -68,4 +72,22 @@ export const upsertMarketState = (marketId: string, topOutcome: string, topProb:
                    top_prob = excluded.top_prob,
                    updated_at = excluded.updated_at`
   ).run(marketId, topOutcome, topProb, Date.now());
+};
+
+export const saveSentMessage = (messageId: number): void => {
+  db.prepare("INSERT OR IGNORE INTO sent_messages(message_id, created_at) VALUES (?, ?)").run(
+    messageId,
+    Date.now()
+  );
+};
+
+export const listSentMessageIds = (limit: number): number[] => {
+  const rows = db
+    .prepare("SELECT message_id FROM sent_messages ORDER BY created_at DESC LIMIT ?")
+    .all(limit) as Array<{ message_id: number }>;
+  return rows.map((r) => r.message_id);
+};
+
+export const clearSentMessages = (): void => {
+  db.prepare("DELETE FROM sent_messages").run();
 };
