@@ -11,7 +11,7 @@ export interface RawMarket {
 
 export interface MarketSignal {
   key: string;
-  type: "PRICE_MOVE" | "VOLUME_SPIKE" | "BREAKOUT" | "TRENDING";
+  type: "PRICE_MOVE" | "VOLUME_SPIKE" | "BREAKOUT" | "WHALE_WATCH" | "TRENDING";
   title: string;
   body: string;
   confidence: "Low" | "Med" | "High";

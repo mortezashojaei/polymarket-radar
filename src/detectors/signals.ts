@@ -64,6 +64,7 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
     const prev = getMarketState(m.id);
     const delta = prev ? top - prev.topProb : 0;
     const absDelta = Math.abs(delta);
+    const volumeDelta = prev ? Math.max(0, (m.volume24hr ?? 0) - (prev.volume24h ?? 0)) : 0;
 
     const tooStale = top >= 90 && absDelta < 5;
 
@@ -104,7 +105,24 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
       });
     }
 
-    upsertMarketState(m.id, topOutcome, top);
+    if (
+      !tooStale &&
+      prev &&
+      liq >= env.minLiquidity * 2 &&
+      (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2))
+    ) {
+      const score = Math.min(100, Math.round(volumeDelta / 1200 + absDelta * 8));
+      out.push({
+        key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}`,
+        type: "WHALE_WATCH",
+        title: `Whale Watch: ${m.question}`,
+        body: `What happened: unusual size flow +${Math.round(volumeDelta)} in this cycle, with ${topOutcome.toUpperCase()} ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts to ${top.toFixed(1)}%. | Why flagged: large flow on liquid market (liq ${liq}, vol ${vol}). This is unusual flow, not proof of insider info. | Link: ${link}`,
+        confidence: confidenceFromScore(score),
+        score,
+      });
+    }
+
+    upsertMarketState(m.id, topOutcome, top, m.volume24hr ?? 0);
   }
 
   return out.sort((a, b) => b.score - a.score).slice(0, env.topSignals);

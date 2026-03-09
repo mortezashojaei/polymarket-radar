@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS market_state (
   market_id TEXT PRIMARY KEY,
   top_outcome TEXT,
   top_prob REAL,
+  volume24h REAL,
   updated_at INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS sent_messages (
@@ -30,6 +31,12 @@ CREATE TABLE IF NOT EXISTS sent_messages (
   created_at INTEGER NOT NULL
 );
 `);
+
+try {
+  db.exec("ALTER TABLE market_state ADD COLUMN volume24h REAL");
+} catch {
+  // ignore if column already exists
+}
 
 export const hasSeen = (key: string): boolean => {
   const row = db.prepare("SELECT key FROM seen_alerts WHERE key = ?").get(key);
@@ -52,26 +59,39 @@ export const saveRun = (postedCount: number, note = "ok"): void => {
 
 export const getMarketState = (
   marketId: string
-): { topOutcome: string; topProb: number; updatedAt: number } | null => {
+): { topOutcome: string; topProb: number; volume24h: number; updatedAt: number } | null => {
   const row = db
-    .prepare("SELECT top_outcome, top_prob, updated_at FROM market_state WHERE market_id = ?")
+    .prepare(
+      "SELECT top_outcome, top_prob, COALESCE(volume24h, 0) AS volume24h, updated_at FROM market_state WHERE market_id = ?"
+    )
     .get(marketId) as
-    | { top_outcome: string; top_prob: number; updated_at: number }
+    | { top_outcome: string; top_prob: number; volume24h: number; updated_at: number }
     | undefined;
 
   if (!row) return null;
-  return { topOutcome: row.top_outcome, topProb: row.top_prob, updatedAt: row.updated_at };
+  return {
+    topOutcome: row.top_outcome,
+    topProb: row.top_prob,
+    volume24h: row.volume24h,
+    updatedAt: row.updated_at,
+  };
 };
 
-export const upsertMarketState = (marketId: string, topOutcome: string, topProb: number): void => {
+export const upsertMarketState = (
+  marketId: string,
+  topOutcome: string,
+  topProb: number,
+  volume24h: number
+): void => {
   db.prepare(
-    `INSERT INTO market_state(market_id, top_outcome, top_prob, updated_at)
-     VALUES (?, ?, ?, ?)
+    `INSERT INTO market_state(market_id, top_outcome, top_prob, volume24h, updated_at)
+     VALUES (?, ?, ?, ?, ?)
      ON CONFLICT(market_id)
      DO UPDATE SET top_outcome = excluded.top_outcome,
                    top_prob = excluded.top_prob,
+                   volume24h = excluded.volume24h,
                    updated_at = excluded.updated_at`
-  ).run(marketId, topOutcome, topProb, Date.now());
+  ).run(marketId, topOutcome, topProb, volume24h, Date.now());
 };
 
 export const saveSentMessage = (messageId: number): void => {
