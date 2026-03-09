@@ -121,9 +121,9 @@ export const detectSignals = (
     const flowOutcome = tradeFlow?.outcome;
     const flowNet = Math.round(tradeFlow?.netNotional ?? 0);
 
-    const hasStrongFlow = flowNet >= 10;
+    const hasStrongFlow = flowNet >= 1000;
     const hasDeltaSignal = prev && (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2));
-    const hasBootstrapSignal = !prev && flowNet >= 10;
+    const hasBootstrapSignal = !prev && flowNet >= 1000;
 
     if (
       !tooStale &&
@@ -155,7 +155,7 @@ export const detectSignals = (
 
   if (out.length === 0) {
     const fallback = [...tradeFlowByCondition.values()]
-      .filter((t) => t.netNotional >= 10)
+      .filter((t) => t.netNotional >= 1000)
       .sort((a, b) => b.netNotional - a.netNotional)
       .slice(0, Math.max(3, env.topSignals));
 
