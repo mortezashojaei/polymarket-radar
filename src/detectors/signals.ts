@@ -31,8 +31,10 @@ const parseOutcomes = (m: RawMarket): string[] => {
   return ["Yes", "No"];
 };
 
-const marketUrl = (m: RawMarket): string =>
-  m.slug ? `https://polymarket.com/event/${m.slug}` : "https://polymarket.com";
+const marketUrl = (m: RawMarket): string => {
+  const slug = m.eventSlug ?? m.slug;
+  return slug ? `https://polymarket.com/event/${encodeURIComponent(slug)}` : "https://polymarket.com";
+};
 
 const sideEmoji = (s: string): string =>
   s.toUpperCase() === "YES" ? "🟢 YES" : s.toUpperCase() === "NO" ? "🔴 NO" : s.toUpperCase();

@@ -6,9 +6,10 @@ const asNumber = (v: unknown, fallback = 0): number => {
   return Number.isFinite(n) ? n : fallback;
 };
 
-const normalizeMarket = (m: any): RawMarket => ({
+const normalizeMarket = (m: any, eventSlug?: string): RawMarket => ({
   id: String(m.id ?? m.slug ?? m.question ?? crypto.randomUUID()),
   slug: m.slug ? String(m.slug) : undefined,
+  eventSlug,
   conditionId: m.conditionId ? String(m.conditionId) : undefined,
   question: String(m.question ?? m.title ?? "Unknown market"),
   liquidity: asNumber(m.liquidity, 0),
@@ -57,7 +58,7 @@ export const fetchPoliticalMarkets = async (): Promise<RawMarket[]> => {
   for (const e of events) {
     if (!isPoliticalEvent(e)) continue;
     if (Array.isArray(e.markets)) {
-      for (const m of e.markets) markets.push(normalizeMarket(m));
+      for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
     }
   }
 

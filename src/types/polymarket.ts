@@ -1,6 +1,7 @@
 export interface RawMarket {
   id: string;
   slug?: string;
+  eventSlug?: string;
   conditionId?: string;
   question: string;
   liquidity?: number;
