@@ -34,6 +34,9 @@ const parseOutcomes = (m: RawMarket): string[] => {
 const marketUrl = (m: RawMarket): string =>
   m.slug ? `https://polymarket.com/event/${m.slug}` : "https://polymarket.com";
 
+const sideEmoji = (s: string): string =>
+  s.toUpperCase() === "YES" ? "🟢 YES" : s.toUpperCase() === "NO" ? "🔴 NO" : s.toUpperCase();
+
 export const detectSignals = (
   markets: RawMarket[],
   tradeFlowByCondition: Map<string, TradeFlowSummary> = new Map()
@@ -124,11 +127,13 @@ export const detectSignals = (
       flowNet >= 15_000
     ) {
       const score = Math.min(100, Math.round(volumeDelta / 1200 + absDelta * 8 + flowNet / 5000));
+      const moved = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`;
+      const flowText = flowSide === "BUY" ? "Added" : "Reduced";
       out.push({
         key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
         type: "WHALE_WATCH",
-        title: `Whale Watch: ${m.question}`,
-        body: `What happened: dominant flow side is ${flowSide} ${flowOutcome.toUpperCase()} (net ~${flowNet}) with total market flow +${Math.round(volumeDelta)} this cycle. | Why flagged: large flow on liquid market (liq ${liq}, vol ${vol}) plus identified trade-side pressure. This is unusual flow, not proof of insider info. | Link: ${link}`,
+        title: `🐋 Whale Watch`,
+        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} $${flowNet.toLocaleString()} to ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (${moved}) | 🧠 Read: Big money leaning ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
