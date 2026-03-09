@@ -9,6 +9,8 @@ const confEmoji = (c: MarketSignal["confidence"]) => {
 const esc = (s: string): string =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
+const escAttr = (s: string): string => esc(s).replaceAll('"', "&quot;");
+
 export const renderDigest = (signals: MarketSignal[]): string => {
   if (!signals.length) {
     return ["Politics signals", "", "No strong signals this hour."].join("\n");
@@ -31,7 +33,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
         `🐋 Whale move: <b>${move}</b>`,
         `📈 Price reaction: <b>${reaction}</b>`,
         `🧠 Read: ${read}`,
-        `🔗 <a href="${link}">Go to market</a>`,
+        `🔗 <a href="${escAttr(link)}">Go to market</a>`,
         `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
         "",
       ].join("\n");
@@ -44,7 +46,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     return [
       `${i + 1}) ${esc(s.title)}`,
       `${cleanWhat}`,
-      `🔗 <a href="${cleanLink}">Go to market</a>`,
+      `🔗 <a href="${escAttr(cleanLink)}">Go to market</a>`,
       `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
       "",
     ].join("\n");
