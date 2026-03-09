@@ -9,6 +9,7 @@ const asNumber = (v: unknown, fallback = 0): number => {
 const normalizeMarket = (m: any): RawMarket => ({
   id: String(m.id ?? m.slug ?? m.question ?? crypto.randomUUID()),
   slug: m.slug ? String(m.slug) : undefined,
+  conditionId: m.conditionId ? String(m.conditionId) : undefined,
   question: String(m.question ?? m.title ?? "Unknown market"),
   liquidity: asNumber(m.liquidity, 0),
   volume24hr: asNumber(m.volume24hr ?? m.volume_24hr ?? m.oneDayVolume, 0),

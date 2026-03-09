@@ -11,6 +11,7 @@ import { detectSignals } from "./detectors/signals.js";
 import { renderDigest } from "./formatters/digest.js";
 import { fetchPoliticalMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
+import { fetchRecentTradeFlow } from "./services/trades.js";
 
 const clearChannelOnStart = async () => {
   if (!env.clearOnStart) return;
@@ -37,7 +38,8 @@ const clearChannelOnStart = async () => {
 
 const runOnce = async () => {
   const markets = await fetchPoliticalMarkets();
-  const signals = detectSignals(markets).filter((s) => !hasSeen(s.key));
+  const tradeFlow = await fetchRecentTradeFlow(3600, 2500).catch(() => new Map());
+  const signals = detectSignals(markets, tradeFlow).filter((s) => !hasSeen(s.key));
 
   for (const s of signals) markSeen(s.key);
 

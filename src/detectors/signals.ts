@@ -1,6 +1,7 @@
 import { env } from "../config/env.js";
 import { getMarketState, upsertMarketState } from "../db/sqlite.js";
 import type { MarketSignal, RawMarket } from "../types/polymarket.js";
+import type { TradeFlowSummary } from "../types/trades.js";
 
 const confidenceFromScore = (score: number): "Low" | "Med" | "High" => {
   if (score >= 80) return "High";
@@ -33,7 +34,10 @@ const parseOutcomes = (m: RawMarket): string[] => {
 const marketUrl = (m: RawMarket): string =>
   m.slug ? `https://polymarket.com/event/${m.slug}` : "https://polymarket.com";
 
-export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
+export const detectSignals = (
+  markets: RawMarket[],
+  tradeFlowByCondition: Map<string, TradeFlowSummary> = new Map()
+): MarketSignal[] => {
   const filtered = markets.filter(
     (m) => (m.liquidity ?? 0) >= env.minLiquidity && (m.volume24hr ?? 0) >= env.minVolume24h
   );
@@ -105,18 +109,26 @@ export const detectSignals = (markets: RawMarket[]): MarketSignal[] => {
       });
     }
 
+    const tradeFlow = m.conditionId ? tradeFlowByCondition.get(m.conditionId) : undefined;
+    const flowSide = tradeFlow?.side;
+    const flowOutcome = tradeFlow?.outcome;
+    const flowNet = Math.round(tradeFlow?.netNotional ?? 0);
+
     if (
       !tooStale &&
       prev &&
       liq >= env.minLiquidity * 2 &&
-      (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2))
+      (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2)) &&
+      flowSide &&
+      flowOutcome &&
+      flowNet >= 15_000
     ) {
-      const score = Math.min(100, Math.round(volumeDelta / 1200 + absDelta * 8));
+      const score = Math.min(100, Math.round(volumeDelta / 1200 + absDelta * 8 + flowNet / 5000));
       out.push({
-        key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}`,
+        key: `whale:${m.id}:${Math.floor(volumeDelta / 5000)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
         type: "WHALE_WATCH",
         title: `Whale Watch: ${m.question}`,
-        body: `What happened: unusual size flow +${Math.round(volumeDelta)} in this cycle, with ${topOutcome.toUpperCase()} ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts to ${top.toFixed(1)}%. | Why flagged: large flow on liquid market (liq ${liq}, vol ${vol}). This is unusual flow, not proof of insider info. | Link: ${link}`,
+        body: `What happened: dominant flow side is ${flowSide} ${flowOutcome.toUpperCase()} (net ~${flowNet}) with total market flow +${Math.round(volumeDelta)} this cycle. | Why flagged: large flow on liquid market (liq ${liq}, vol ${vol}) plus identified trade-side pressure. This is unusual flow, not proof of insider info. | Link: ${link}`,
         confidence: confidenceFromScore(score),
         score,
       });
