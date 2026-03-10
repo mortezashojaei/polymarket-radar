@@ -13,7 +13,7 @@ const escAttr = (s: string): string => esc(s).replaceAll('"', "&quot;");
 
 export const renderDigest = (signals: MarketSignal[]): string => {
   if (!signals.length) {
-    return ["Politics signals", "", "No strong signals this hour."].join("\n");
+    return ["Polymarket signals", "", "No strong signals this hour."].join("\n");
   }
 
   const lines = signals.map((s, i) => {
@@ -28,8 +28,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
       const link = (parts.find((p) => p.startsWith("🔗 Bet link:")) ?? "").replace("🔗 Bet link: ", "");
 
       return [
-        `${i + 1})`,
-        `📍 <b>Market: <i>${market}</i></b>`,
+        `${i + 1}) 📍 <b>Market: <i>${market}</i></b>`,
         `🐋 Whale move: <b>${move}</b>`,
         `📈 Price reaction: <b>${reaction}</b>`,
         `🧠 Read: ${read}`,
@@ -52,5 +51,5 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     ].join("\n");
   });
 
-  return ["Politics signals", "", ...lines].join("\n");
+  return ["Polymarket signals", "", ...lines].join("\n");
 };
