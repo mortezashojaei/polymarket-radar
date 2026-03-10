@@ -16,7 +16,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     return ["Polymarket signals", "", "No strong signals this hour."].join("\n");
   }
 
-  const lines = signals.map((s, i) => {
+  const lines = signals.map((s) => {
     if (s.type === "WHALE_WATCH") {
       const parts = s.body.split(" | ");
       const market = esc((parts.find((p) => p.startsWith("📍 Market:")) ?? "").replace("📍 Market: ", ""));
@@ -28,7 +28,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
       const link = (parts.find((p) => p.startsWith("🔗 Bet link:")) ?? "").replace("🔗 Bet link: ", "");
 
       return [
-        `${i + 1}) 📍 <b>Market: <i>${market}</i></b>`,
+        `📍 <b>Market: <i>${market}</i></b>`,
         `🐋 Whale move: <b>${move}</b>`,
         `📈 Price reaction: <b>${reaction}</b>`,
         `🧠 Read: ${read}`,
@@ -43,7 +43,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     const cleanLink = linkPart.replace(/^Link:\s*/i, "");
 
     return [
-      `${i + 1}) ${esc(s.title)}`,
+      `${esc(s.title)}`,
       `${cleanWhat}`,
       `🔗 <a href="${escAttr(cleanLink)}">Go to market</a>`,
       `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
