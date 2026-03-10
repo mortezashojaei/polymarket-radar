@@ -19,7 +19,7 @@ const normalizeMarket = (m: any, eventSlug?: string): RawMarket => ({
   outcomePrices: m.outcomePrices,
 });
 
-export const fetchPoliticalMarkets = async (): Promise<RawMarket[]> => {
+export const fetchAllMarkets = async (): Promise<RawMarket[]> => {
   const res = await fetch(env.polymarketEventsUrl, {
     headers: { accept: "application/json" },
   });
@@ -31,32 +31,8 @@ export const fetchPoliticalMarkets = async (): Promise<RawMarket[]> => {
   const data = await res.json();
   const events = Array.isArray(data) ? data : [];
 
-  const isPoliticalEvent = (e: any): boolean => {
-    const flat = [e.category, e.subCategory, e.ticker, e.slug, e.title]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
-
-    const tagText = Array.isArray(e.tags)
-      ? e.tags
-          .map((t: any) => `${t?.slug ?? ""} ${t?.label ?? ""}`.toLowerCase())
-          .join(" ")
-      : "";
-
-    const hay = `${flat} ${tagText}`;
-    return (
-      hay.includes("politic") ||
-      hay.includes("election") ||
-      hay.includes("geopolit") ||
-      hay.includes("government") ||
-      hay.includes("president") ||
-      hay.includes("senate")
-    );
-  };
-
   const markets: RawMarket[] = [];
   for (const e of events) {
-    if (!isPoliticalEvent(e)) continue;
     if (Array.isArray(e.markets)) {
       for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
     }

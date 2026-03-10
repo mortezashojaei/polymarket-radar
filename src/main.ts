@@ -9,7 +9,7 @@ import {
 } from "./db/sqlite.js";
 import { detectSignals } from "./detectors/signals.js";
 import { renderDigest } from "./formatters/digest.js";
-import { fetchPoliticalMarkets } from "./services/polymarket.js";
+import { fetchAllMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
 import { fetchRecentTradeFlow } from "./services/trades.js";
 
@@ -37,7 +37,7 @@ const clearChannelOnStart = async () => {
 };
 
 const runOnce = async () => {
-  const markets = await fetchPoliticalMarkets();
+  const markets = await fetchAllMarkets();
   const tradeFlow = await fetchRecentTradeFlow(86400, 4000).catch(() => new Map());
   const signals = detectSignals(markets, tradeFlow).filter((s) => !hasSeen(s.key));
 
@@ -62,6 +62,7 @@ const start = async () => {
   await clearChannelOnStart();
   await runOnce();
   const ms = env.runEveryMinutes * 60 * 1000;
+  console.log(`[radar] schedule: every ${env.runEveryMinutes} minute(s)`);
   setInterval(() => {
     runOnce().catch((e) => {
       console.error("[radar] run failed", e);
