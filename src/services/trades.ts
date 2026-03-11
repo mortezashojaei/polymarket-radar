@@ -9,30 +9,57 @@ type Trade = {
   timestamp?: number;
 };
 
+const TRADE_API_URL = "https://data-api.polymarket.com/trades";
+const MAX_PAGE_SIZE = 1000;
+const MAX_OFFSET = 3000;
+
+const fetchTradesPage = async (limit: number, offset: number): Promise<Trade[]> => {
+  const url = `${TRADE_API_URL}?limit=${limit}&offset=${offset}`;
+  const res = await fetch(url, { headers: { accept: "application/json" } });
+  if (!res.ok) throw new Error(`trade flow fetch failed: ${res.status}`);
+
+  const data = await res.json();
+  return Array.isArray(data) ? (data as Trade[]) : [];
+};
+
 export const fetchRecentTradeFlow = async (
   windowSeconds = 3600,
   limit = 2000
 ): Promise<Map<string, TradeFlowSummary>> => {
   const now = Math.floor(Date.now() / 1000);
   const minTs = now - windowSeconds;
-  const url = `https://data-api.polymarket.com/trades?limit=${limit}`;
-  const res = await fetch(url, { headers: { accept: "application/json" } });
-  if (!res.ok) throw new Error(`trade flow fetch failed: ${res.status}`);
+  const targetRows = Math.max(1, Math.floor(limit));
 
-  const rows = (await res.json()) as Trade[];
   const agg = new Map<string, { buy: number; sell: number; gross: number; outcome: string }>();
 
-  for (const t of rows) {
-    if (!t.conditionId || !t.outcome || !t.side || !t.timestamp) continue;
-    if (t.timestamp < minTs) continue;
+  let offset = 0;
+  let collected = 0;
 
-    const notional = Math.max(0, Number(t.size ?? 0) * Number(t.price ?? 0));
-    const key = `${t.conditionId}::${t.outcome}`;
-    const a = agg.get(key) ?? { buy: 0, sell: 0, gross: 0, outcome: t.outcome };
-    if (t.side === "BUY") a.buy += notional;
-    else a.sell += notional;
-    a.gross += notional;
-    agg.set(key, a);
+  while (collected < targetRows && offset <= MAX_OFFSET) {
+    const pageSize = Math.min(MAX_PAGE_SIZE, targetRows - collected);
+    const rows = await fetchTradesPage(pageSize, offset);
+
+    if (rows.length === 0) break;
+
+    for (const t of rows) {
+      if (!t.conditionId || !t.outcome || !t.side || !t.timestamp) continue;
+      if (t.timestamp < minTs) continue;
+
+      const notional = Math.max(0, Number(t.size ?? 0) * Number(t.price ?? 0));
+      const key = `${t.conditionId}::${t.outcome}`;
+      const a = agg.get(key) ?? { buy: 0, sell: 0, gross: 0, outcome: t.outcome };
+      if (t.side === "BUY") a.buy += notional;
+      else a.sell += notional;
+      a.gross += notional;
+      agg.set(key, a);
+    }
+
+    collected += rows.length;
+
+    const oldestTs = rows[rows.length - 1]?.timestamp ?? 0;
+    if (rows.length < pageSize || oldestTs < minTs) break;
+
+    offset += rows.length;
   }
 
   const byCondition = new Map<string, TradeFlowSummary>();
