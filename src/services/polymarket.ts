@@ -1,8 +1,8 @@
 import { env } from "../config/env.js";
 import type { RawMarket } from "../types/polymarket.js";
 
-const MAX_EVENT_PAGES = 20;
 const DEFAULT_PAGE_SIZE = 500;
+const MAX_TOTAL_EVENTS = 10_000;
 
 const asNumber = (v: unknown, fallback = 0): number => {
   const n = typeof v === "string" ? Number(v) : (v as number);
@@ -39,10 +39,11 @@ const resolvePageSize = (base: string): number => {
 export const fetchAllMarkets = async (): Promise<RawMarket[]> => {
   const pageSize = resolvePageSize(env.polymarketEventsUrl);
   let offset = 0;
+  let fetchedEvents = 0;
 
   const markets: RawMarket[] = [];
 
-  for (let page = 0; page < MAX_EVENT_PAGES; page += 1) {
+  while (fetchedEvents < MAX_TOTAL_EVENTS) {
     const url = buildPagedUrl(env.polymarketEventsUrl, pageSize, offset);
     const res = await fetch(url, {
       headers: { accept: "application/json" },
@@ -60,6 +61,8 @@ export const fetchAllMarkets = async (): Promise<RawMarket[]> => {
         for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
       }
     }
+
+    fetchedEvents += events.length;
 
     if (events.length < pageSize) break;
     offset += pageSize;
