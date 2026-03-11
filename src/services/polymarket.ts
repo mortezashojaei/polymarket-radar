@@ -1,6 +1,9 @@
 import { env } from "../config/env.js";
 import type { RawMarket } from "../types/polymarket.js";
 
+const MAX_EVENT_PAGES = 20;
+const DEFAULT_PAGE_SIZE = 500;
+
 const asNumber = (v: unknown, fallback = 0): number => {
   const n = typeof v === "string" ? Number(v) : (v as number);
   return Number.isFinite(n) ? n : fallback;
@@ -19,23 +22,47 @@ const normalizeMarket = (m: any, eventSlug?: string): RawMarket => ({
   outcomePrices: m.outcomePrices,
 });
 
+const buildPagedUrl = (base: string, limit: number, offset: number): string => {
+  const url = new URL(base);
+  url.searchParams.set("limit", String(limit));
+  url.searchParams.set("offset", String(offset));
+  return url.toString();
+};
+
+const resolvePageSize = (base: string): number => {
+  const parsed = new URL(base);
+  const raw = Number(parsed.searchParams.get("limit"));
+  if (Number.isFinite(raw) && raw > 0) return Math.min(raw, DEFAULT_PAGE_SIZE);
+  return DEFAULT_PAGE_SIZE;
+};
+
 export const fetchAllMarkets = async (): Promise<RawMarket[]> => {
-  const res = await fetch(env.polymarketEventsUrl, {
-    headers: { accept: "application/json" },
-  });
-
-  if (!res.ok) {
-    throw new Error(`Polymarket fetch failed: ${res.status} ${res.statusText}`);
-  }
-
-  const data = await res.json();
-  const events = Array.isArray(data) ? data : [];
+  const pageSize = resolvePageSize(env.polymarketEventsUrl);
+  let offset = 0;
 
   const markets: RawMarket[] = [];
-  for (const e of events) {
-    if (Array.isArray(e.markets)) {
-      for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
+
+  for (let page = 0; page < MAX_EVENT_PAGES; page += 1) {
+    const url = buildPagedUrl(env.polymarketEventsUrl, pageSize, offset);
+    const res = await fetch(url, {
+      headers: { accept: "application/json" },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Polymarket fetch failed: ${res.status} ${res.statusText}`);
     }
+
+    const data = await res.json();
+    const events = Array.isArray(data) ? data : [];
+
+    for (const e of events) {
+      if (Array.isArray(e.markets)) {
+        for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
+      }
+    }
+
+    if (events.length < pageSize) break;
+    offset += pageSize;
   }
 
   return markets;
