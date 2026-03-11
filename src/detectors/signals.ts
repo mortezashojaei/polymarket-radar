@@ -78,8 +78,9 @@ export const detectSignals = (
     const volumeDelta = prev ? Math.max(0, (m.volume24hr ?? 0) - (prev.volume24h ?? 0)) : 0;
 
     const tooStale = top >= 90 && absDelta < 5;
+    const nearResolved = top >= 98;
 
-    if (!tooStale && absDelta >= 6) {
+    if (!tooStale && !nearResolved && absDelta >= env.minOddsSwing) {
       const score = Math.min(100, Math.round(absDelta * 9));
       out.push({
         key: `move:${m.id}:${Math.round(top)}:${Math.sign(delta)}`,
@@ -91,7 +92,13 @@ export const detectSignals = (
       });
     }
 
-    if (!tooStale && (m.volume24hr ?? 0) >= baselineVolume * 2.2 && absDelta >= 3 && baselineVolume > 0) {
+    if (
+      !tooStale &&
+      !nearResolved &&
+      (m.volume24hr ?? 0) >= baselineVolume * 2.2 &&
+      absDelta >= Math.max(3, env.minOddsSwing / 2) &&
+      baselineVolume > 0
+    ) {
       const multiple = (m.volume24hr ?? 0) / baselineVolume;
       const score = Math.min(100, Math.round(multiple * 28 + absDelta * 6));
       out.push({
@@ -104,7 +111,7 @@ export const detectSignals = (
       });
     }
 
-    if (!tooStale && prev && prev.topProb < 60 && top >= 70) {
+    if (!tooStale && !nearResolved && prev && prev.topProb < 60 && top >= 70) {
       const score = Math.min(100, Math.round((top - 60) * 3 + absDelta * 8));
       out.push({
         key: `break:${m.id}:${Math.round(top)}`,
@@ -127,6 +134,7 @@ export const detectSignals = (
 
     if (
       !tooStale &&
+      !nearResolved &&
       liq >= env.minLiquidity * 2 &&
       flowSide &&
       flowOutcome &&
@@ -169,6 +177,7 @@ export const detectSignals = (
       const ranked = prices.map((p, i) => ({ p, i })).sort((a, b) => b.p - a.p);
       const topIdx = ranked[0]?.i ?? 0;
       const top = (prices[topIdx] ?? 0) * 100;
+      if (top >= 98) continue;
       const topOutcome = outcomes[topIdx] ?? "Top";
       const link = marketUrl(m);
       const liq = Math.round(m.liquidity ?? 0);
