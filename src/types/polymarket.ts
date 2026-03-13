@@ -9,6 +9,8 @@ export interface RawMarket {
   volume?: number;
   outcomes?: string[] | string;
   outcomePrices?: string[] | string;
+  category?: string;
+  categoryEmoji?: string;
 }
 
 export type SignalType =

@@ -9,18 +9,35 @@ const asNumber = (v: unknown, fallback = 0): number => {
   return Number.isFinite(n) ? n : fallback;
 };
 
-const normalizeMarket = (m: any, eventSlug?: string): RawMarket => ({
-  id: String(m.id ?? m.slug ?? m.question ?? crypto.randomUUID()),
-  slug: m.slug ? String(m.slug) : undefined,
-  eventSlug,
-  conditionId: m.conditionId ? String(m.conditionId) : undefined,
-  question: String(m.question ?? m.title ?? "Unknown market"),
-  liquidity: asNumber(m.liquidity, 0),
-  volume24hr: asNumber(m.volume24hr ?? m.volume_24hr ?? m.oneDayVolume, 0),
-  volume: asNumber(m.volume, 0),
-  outcomes: m.outcomes,
-  outcomePrices: m.outcomePrices,
-});
+const categoryEmoji = (tags: string[]): { category?: string; categoryEmoji?: string } => {
+  const t = tags.map((x) => x.toLowerCase());
+
+  if (t.some((x) => ["politics", "geopolitics", "world"].includes(x))) return { category: "Politics", categoryEmoji: "🏛️" };
+  if (t.some((x) => ["crypto", "bitcoin", "ethereum", "finance", "economy", "business"].includes(x))) return { category: "Crypto/Finance", categoryEmoji: "📈" };
+  if (t.some((x) => ["sports", "nba", "nfl", "nhl", "mlb", "soccer", "football", "tennis", "esports"].includes(x))) return { category: "Sports", categoryEmoji: "🏟️" };
+  if (t.some((x) => ["tech", "ai", "openai", "google", "apple", "meta"].includes(x))) return { category: "Tech", categoryEmoji: "💻" };
+  if (t.some((x) => ["culture", "music", "movie", "oscars", "entertainment", "celebrity"].includes(x))) return { category: "Culture", categoryEmoji: "🎬" };
+
+  return { category: tags[0], categoryEmoji: "🧩" };
+};
+
+const normalizeMarket = (m: any, eventSlug?: string, eventTags: string[] = []): RawMarket => {
+  const cat = categoryEmoji(eventTags);
+  return {
+    id: String(m.id ?? m.slug ?? m.question ?? crypto.randomUUID()),
+    slug: m.slug ? String(m.slug) : undefined,
+    eventSlug,
+    conditionId: m.conditionId ? String(m.conditionId) : undefined,
+    question: String(m.question ?? m.title ?? "Unknown market"),
+    liquidity: asNumber(m.liquidity, 0),
+    volume24hr: asNumber(m.volume24hr ?? m.volume_24hr ?? m.oneDayVolume, 0),
+    volume: asNumber(m.volume, 0),
+    outcomes: m.outcomes,
+    outcomePrices: m.outcomePrices,
+    category: cat.category,
+    categoryEmoji: cat.categoryEmoji,
+  };
+};
 
 const buildPagedUrl = (base: string, limit: number, offset: number): string => {
   const url = new URL(base);
@@ -57,8 +74,13 @@ export const fetchAllMarkets = async (): Promise<RawMarket[]> => {
     const events = Array.isArray(data) ? data : [];
 
     for (const e of events) {
+      const eventTags = Array.isArray(e.tags)
+        ? e.tags.map((t: any) => String(t?.label ?? t?.slug ?? t?.name ?? "")).filter(Boolean)
+        : [];
       if (Array.isArray(e.markets)) {
-        for (const m of e.markets) markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined));
+        for (const m of e.markets) {
+          markets.push(normalizeMarket(m, e.slug ? String(e.slug) : undefined, eventTags));
+        }
       }
     }
 

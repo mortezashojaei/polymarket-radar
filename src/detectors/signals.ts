@@ -154,12 +154,14 @@ export const detectSignals = (
       const flowText = flow ? ` | Flow: ${flow.side} ~$${Math.round(flow.netNotional).toLocaleString()}` : "";
       const flipLabel = reasons.includes("FLIP_RISK") ? " | Regime: Volatile" : "";
 
+      const catPrefix = m.categoryEmoji ? `${m.categoryEmoji} ${m.category ?? ""}`.trim() : "🧩";
+
       out.push({
         key: `v2:${m.id}:${tier}:${Math.round(top)}:${Math.sign(delta)}:${Math.round(score / 5)}`,
         marketId: m.id,
         outcome: topOutcome,
         type: "MERGED_SIGNAL",
-        title: `Signal ${tier}: ${m.question}`,
+        title: `${catPrefix} · Signal ${tier}: ${m.question}`,
         body:
           `${topOutcome.toUpperCase()} ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts → ${top.toFixed(1)}% ` +
           `(vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
