@@ -78,6 +78,7 @@ export const detectSignals = (
     const second = (prices[secondIdx] ?? 0) * 100;
     const topOutcome = outcomes[topIdx] ?? "Top";
     const secondOutcome = outcomes[secondIdx] ?? "Other";
+    const nearResolved = top >= 98;
 
     const prev = getMarketState(m.id);
     const delta = prev ? top - prev.topProb : 0;
@@ -143,6 +144,7 @@ export const detectSignals = (
     const directionFlipped = !!state && direction !== 0 && state.lastDirection !== 0 && direction !== state.lastDirection;
 
     const shouldEmit =
+      !nearResolved &&
       tier !== "C" &&
       absDelta >= Math.max(3, env.minOddsSwing / 2) &&
       (!inCooldown || improvedEnough || tierUpgraded || directionFlipped);
