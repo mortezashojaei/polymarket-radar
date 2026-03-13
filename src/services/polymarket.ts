@@ -12,9 +12,9 @@ const asNumber = (v: unknown, fallback = 0): number => {
 const categoryEmoji = (tags: string[]): { category?: string; categoryEmoji?: string } => {
   const t = tags.map((x) => x.toLowerCase());
 
-  if (t.some((x) => ["politics", "geopolitics", "world"].includes(x))) return { category: "Politics", categoryEmoji: "🗳️" };
+  if (t.some((x) => ["politics", "geopolitics", "world"].includes(x))) return { category: "Politics", categoryEmoji: "🌍" };
   if (t.some((x) => ["crypto", "bitcoin", "ethereum", "finance", "economy", "business"].includes(x))) return { category: "Crypto/Finance", categoryEmoji: "💰" };
-  if (t.some((x) => ["sports", "nba", "nfl", "nhl", "mlb", "soccer", "football", "tennis", "esports"].includes(x))) return { category: "Sports", categoryEmoji: "🏅" };
+  if (t.some((x) => ["sports", "nba", "nfl", "nhl", "mlb", "soccer", "football", "tennis", "esports"].includes(x))) return { category: "Sports", categoryEmoji: "🏆" };
   if (t.some((x) => ["tech", "ai", "openai", "google", "apple", "meta"].includes(x))) return { category: "Tech", categoryEmoji: "🤖" };
   if (t.some((x) => ["culture", "music", "movie", "oscars", "entertainment", "celebrity"].includes(x))) return { category: "Culture", categoryEmoji: "🎭" };
 
