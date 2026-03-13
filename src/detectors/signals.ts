@@ -156,10 +156,9 @@ export const detectSignals = (
 
       const catPrefix = m.categoryEmoji ?? "🧩";
 
-      const hasPrev = !!prev && prev.topProb > 0;
-      const relChange = hasPrev ? (delta / prev.topProb) * 100 : 0;
+      const hasPrev = !!prev;
       const moveSummary = hasPrev
-        ? `${topOutcome.toUpperCase()} ${prev.topProb.toFixed(1)}% → ${top.toFixed(1)}% (${relChange >= 0 ? "+" : ""}${relChange.toFixed(1)}%)`
+        ? `${topOutcome.toUpperCase()} ${prev.topProb.toFixed(1)}% → ${top.toFixed(1)}% (${delta >= 0 ? "+" : ""}${delta.toFixed(1)}%)`
         : `${topOutcome.toUpperCase()} → ${top.toFixed(1)}%`;
 
       out.push({
