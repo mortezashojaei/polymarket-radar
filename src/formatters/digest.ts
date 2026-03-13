@@ -17,6 +17,51 @@ const esc = (s: string): string =>
 
 const escAttr = (s: string): string => esc(s).replaceAll('"', "&quot;");
 
+const reasonLabel = (code: string): string => {
+  switch (code.trim()) {
+    case "LARGE_REPRICE":
+      return "Sharp repricing";
+    case "FLOW_SPIKE":
+      return "Unusual flow surge";
+    case "WHALE_SIZE":
+      return "Whale-sized orders";
+    case "FLIP_RISK":
+      return "Choppy regime (recent reversals)";
+    case "THIN_LIQUIDITY":
+      return "Thin liquidity (higher whipsaw risk)";
+    case "MOMENTUM":
+      return "Momentum continuation";
+    default:
+      return code
+        .toLowerCase()
+        .split("_")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+  }
+};
+
+const reasonPriority = ["LARGE_REPRICE", "FLOW_SPIKE", "WHALE_SIZE", "FLIP_RISK", "THIN_LIQUIDITY", "MOMENTUM"];
+
+const humanizeRead = (read: string): string => {
+  const raw = read
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
+
+  if (!raw.length) return "Momentum continuation";
+
+  const sorted = raw.sort((a, b) => {
+    const ai = reasonPriority.indexOf(a);
+    const bi = reasonPriority.indexOf(b);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
+
+  return sorted
+    .slice(0, 3)
+    .map(reasonLabel)
+    .join(", ");
+};
+
 export const renderDigest = (signals: MarketSignal[]): string => {
   if (!signals.length) {
     return ["Polymarket signals", "", "No strong signals this hour."].join("\n");
@@ -47,14 +92,15 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     const parts = s.body.split(" | ");
     const summary = esc(parts[0] ?? s.body);
     const score = esc((parts.find((p) => p.startsWith("Score:")) ?? "").replace("Score: ", ""));
-    const read = esc((parts.find((p) => p.startsWith("Read:")) ?? "").replace("Read: ", ""));
+    const readRaw = (parts.find((p) => p.startsWith("Read:")) ?? "").replace("Read: ", "");
+    const read = esc(humanizeRead(readRaw));
     const link = (parts.find((p) => p.startsWith("Link:")) ?? "").replace("Link: ", "");
 
     return [
       `${tierEmoji(s.tier)} <b>${esc(s.title)}</b>`,
       `${summary}`,
       score ? `🧮 ${score}` : "",
-      read ? `🧠 ${read}` : "",
+      read ? `🧠 Why: ${read}` : "",
       `🔗 <a href="${escAttr(link)}">Go to market</a>`,
       `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
       "",
