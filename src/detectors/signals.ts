@@ -154,7 +154,7 @@ export const detectSignals = (
       const flowText = flow ? ` | Flow: ${flow.side} ~$${Math.round(flow.netNotional).toLocaleString()}` : "";
       const flipLabel = reasons.includes("FLIP_RISK") ? " | Regime: Volatile" : "";
 
-      const catPrefix = m.categoryEmoji ? `${m.categoryEmoji} ${m.category ?? ""}`.trim() : "🧩";
+      const catPrefix = m.categoryEmoji ?? "🧩";
 
       out.push({
         key: `v2:${m.id}:${tier}:${Math.round(top)}:${Math.sign(delta)}:${Math.round(score / 5)}`,
