@@ -1,11 +1,13 @@
 import { env } from "../config/env.js";
-import { getMarketState, upsertMarketState } from "../db/sqlite.js";
-import type { MarketSignal, RawMarket } from "../types/polymarket.js";
+import { getMarketState, getSignalState, upsertMarketState, upsertSignalState } from "../db/sqlite.js";
+import type { MarketSignal, RawMarket, SignalTier } from "../types/polymarket.js";
 import type { TradeFlowSummary } from "../types/trades.js";
 
-const confidenceFromScore = (score: number): "Low" | "Med" | "High" => {
-  if (score >= 80) return "High";
-  if (score >= 50) return "Med";
+const clamp = (n: number, min: number, max: number): number => Math.min(max, Math.max(min, n));
+
+const confidenceFromTier = (tier: SignalTier): "Low" | "Med" | "High" => {
+  if (tier === "A") return "High";
+  if (tier === "B") return "Med";
   return "Low";
 };
 
@@ -36,13 +38,24 @@ const marketUrl = (m: RawMarket): string => {
   return slug ? `https://polymarket.com/event/${encodeURIComponent(slug)}` : "https://polymarket.com";
 };
 
-const sideEmoji = (s: string): string =>
-  s.toUpperCase() === "YES" ? "🟢 YES" : s.toUpperCase() === "NO" ? "🔴 NO" : s.toUpperCase();
+const sideEmoji = (s: string): string => {
+  const u = s.toUpperCase();
+  if (u === "YES") return "🟢 YES";
+  if (u === "NO") return "🔴 NO";
+  return u;
+};
+
+const tierFromScore = (score: number): SignalTier => {
+  if (score >= env.scoreTierA) return "A";
+  if (score >= env.scoreTierB) return "B";
+  return "C";
+};
 
 export const detectSignals = (
   markets: RawMarket[],
   tradeFlowByCondition: Map<string, TradeFlowSummary> = new Map()
 ): MarketSignal[] => {
+  const now = Date.now();
   const filtered = markets.filter(
     (m) => (m.liquidity ?? 0) >= env.minLiquidity && (m.volume24hr ?? 0) >= env.minVolume24h
   );
@@ -52,9 +65,7 @@ export const detectSignals = (
 
   const out: MarketSignal[] = [];
 
-  const byCondition = new Map<string, RawMarket>();
   for (const m of filtered) {
-    if (m.conditionId) byCondition.set(m.conditionId, m);
     const prices = parsePrices(m);
     const outcomes = parseOutcomes(m);
     if (!prices.length) continue;
@@ -68,134 +79,115 @@ export const detectSignals = (
     const topOutcome = outcomes[topIdx] ?? "Top";
     const secondOutcome = outcomes[secondIdx] ?? "Other";
 
-    const vol = Math.round(m.volume24hr ?? 0);
-    const liq = Math.round(m.liquidity ?? 0);
-    const link = marketUrl(m);
-
     const prev = getMarketState(m.id);
     const delta = prev ? top - prev.topProb : 0;
     const absDelta = Math.abs(delta);
-    const volumeDelta = prev ? Math.max(0, (m.volume24hr ?? 0) - (prev.volume24h ?? 0)) : 0;
+    const direction = delta === 0 ? 0 : delta > 0 ? 1 : -1;
+    const volume24h = m.volume24hr ?? 0;
 
-    const tooStale = top >= 90 && absDelta < 5;
-    const nearResolved = top >= 98;
+    const volumeDelta = prev ? Math.max(0, volume24h - prev.volume24h) : 0;
+    const flow = m.conditionId ? tradeFlowByCondition.get(m.conditionId) : undefined;
+    const flowMultiple = baselineVolume > 0 ? volume24h / baselineVolume : 1;
+    const flowScore = clamp(((flowMultiple - 1) / 6) * 100, 0, 100);
 
-    if (!tooStale && !nearResolved && absDelta >= env.minOddsSwing) {
-      const score = Math.min(100, Math.round(absDelta * 9));
-      out.push({
-        key: `move:${m.id}:${Math.round(top)}:${Math.sign(delta)}`,
-        type: "PRICE_MOVE",
-        title: `Price Move: ${m.question}`,
-        body: `What happened: ${topOutcome.toUpperCase()} moved ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts to ${top.toFixed(1)}% (vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%). | Why flagged: 1h-style move >= 6 pts with vol ${vol}, liq ${liq}. | Link: ${link}`,
-        confidence: confidenceFromScore(score),
-        score,
-      });
+    const volatilityScale = Math.max(env.minOddsSwing, Math.abs(prev?.lastDelta ?? env.minOddsSwing));
+    const moveScore = clamp((absDelta / (volatilityScale || 1)) * 100, 0, 100);
+
+    const liquidityNorm = clamp(((m.liquidity ?? 0) - env.minLiquidity) / (env.minLiquidity * 4), 0, 1);
+    const liqScore = Math.round(liquidityNorm * 100);
+
+    const noveltyMinutes = prev ? (now - prev.updatedAt) / 60_000 : 999;
+    const noveltyScore = clamp((noveltyMinutes / env.mergeWindowMinutes) * 100, 0, 100);
+
+    const proximityScore = clamp((top >= 98 ? 0 : top >= 90 ? 20 : 60) + (top <= 10 ? 10 : 0), 0, 100);
+
+    let penalties = 0;
+    const reasons: string[] = [];
+
+    if (absDelta >= env.minOddsSwing) reasons.push("LARGE_REPRICE");
+    if (flowMultiple >= env.minFlowMultiple) reasons.push("FLOW_SPIKE");
+    if ((flow?.netNotional ?? 0) >= env.minWhaleNotional) reasons.push("WHALE_SIZE");
+
+    let flipCount6h = prev?.flipCount6h ?? 0;
+    if (prev) {
+      const withinFlipWindow = now - prev.updatedAt <= env.flipLookbackHours * 3_600_000;
+      if (withinFlipWindow && prev.lastDirection !== 0 && direction !== 0 && prev.lastDirection !== direction) {
+        if (absDelta >= env.flipPtsThreshold || Math.abs(prev.lastDelta) >= env.flipPtsThreshold) {
+          flipCount6h += 1;
+        }
+      } else if (!withinFlipWindow) {
+        flipCount6h = 0;
+      }
     }
 
-    if (
-      !tooStale &&
-      !nearResolved &&
-      (m.volume24hr ?? 0) >= baselineVolume * 2.2 &&
+    if (flipCount6h >= 1) {
+      penalties += 12;
+      reasons.push("FLIP_RISK");
+    }
+    if ((m.liquidity ?? 0) < env.minLiquidity * 1.5) {
+      penalties += 8;
+      reasons.push("THIN_LIQUIDITY");
+    }
+
+    const scoreRaw =
+      moveScore * 0.25 + liqScore * 0.2 + flowScore * 0.25 + noveltyScore * 0.2 + proximityScore * 0.1;
+    const score = clamp(Math.round(scoreRaw - penalties), 0, 100);
+    const tier = tierFromScore(score);
+
+    // Dedup + cooldown behavior by market
+    const state = getSignalState(m.id);
+    const elapsedMs = state ? now - state.lastAlertAt : Number.MAX_SAFE_INTEGER;
+    const inCooldown = elapsedMs < env.cooldownMinutes * 60_000;
+    const improvedEnough = !state || score - state.lastScore >= env.reemitScoreDelta;
+    const tierUpgraded = !!state && state.lastTier !== "A" && tier === "A";
+    const directionFlipped = !!state && direction !== 0 && state.lastDirection !== 0 && direction !== state.lastDirection;
+
+    const shouldEmit =
+      tier !== "C" &&
       absDelta >= Math.max(3, env.minOddsSwing / 2) &&
-      baselineVolume > 0
-    ) {
-      const multiple = (m.volume24hr ?? 0) / baselineVolume;
-      const score = Math.min(100, Math.round(multiple * 28 + absDelta * 6));
-      out.push({
-        key: `spike:${m.id}:${Math.floor((m.volume24hr ?? 0) / 1000)}:${Math.round(top)}`,
-        type: "VOLUME_SPIKE",
-        title: `Flow + Move: ${m.question}`,
-        body: `What happened: heavy flow (${multiple.toFixed(1)}x baseline) while ${topOutcome.toUpperCase()} moved ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts. | Why flagged: volume acceleration + price movement (vol ${vol}, liq ${liq}). | Link: ${link}`,
-        confidence: confidenceFromScore(score),
-        score,
-      });
-    }
+      (!inCooldown || improvedEnough || tierUpgraded || directionFlipped);
 
-    if (!tooStale && !nearResolved && prev && prev.topProb < 60 && top >= 70) {
-      const score = Math.min(100, Math.round((top - 60) * 3 + absDelta * 8));
-      out.push({
-        key: `break:${m.id}:${Math.round(top)}`,
-        type: "BREAKOUT",
-        title: `Breakout: ${m.question}`,
-        body: `What happened: ${topOutcome.toUpperCase()} crossed into strong-consensus zone at ${top.toFixed(1)}% (from ${prev.topProb.toFixed(1)}%). | Why flagged: crossed 70% after being sub-60%. | Link: ${link}`,
-        confidence: confidenceFromScore(score),
-        score,
-      });
-    }
-
-    const tradeFlow = m.conditionId ? tradeFlowByCondition.get(m.conditionId) : undefined;
-    const flowSide = tradeFlow?.side;
-    const flowOutcome = tradeFlow?.outcome;
-    const flowNet = Math.round(tradeFlow?.netNotional ?? 0);
-
-    const hasStrongFlow = flowNet >= 1000;
-    const hasDeltaSignal = prev && (volumeDelta >= 50_000 || (volumeDelta >= 25_000 && absDelta >= 2));
-    const hasBootstrapSignal = !prev && flowNet >= 1000;
-
-    if (
-      !tooStale &&
-      !nearResolved &&
-      liq >= env.minLiquidity * 2 &&
-      flowSide &&
-      flowOutcome &&
-      hasStrongFlow &&
-      (hasDeltaSignal || hasBootstrapSignal)
-    ) {
-      const score = Math.min(
-        100,
-        Math.round((hasDeltaSignal ? volumeDelta / 1200 + absDelta * 8 : 35) + flowNet * 2)
-      );
-      const moved = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`;
-      const flowText = flowSide === "BUY" ? "Added" : "Reduced";
-      const flowPrep = flowSide === "BUY" ? "to" : "from";
-      const movedText = prev ? `(${moved})` : "";
-      out.push({
-        key: `whale:${m.id}:${Math.floor(flowNet * 10)}:${Math.round(top)}:${flowSide}:${flowOutcome}`,
-        type: "WHALE_WATCH",
-        title: ``,
-        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} ${flowPrep} ${sideEmoji(flowOutcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% ${movedText}`.trim() + ` | 🧠 Read: Visible recent flow leans ${sideEmoji(flowOutcome)} | 🔗 Bet link: ${link}`,
-        confidence: confidenceFromScore(score),
-        score,
-      });
-    }
-
-    upsertMarketState(m.id, topOutcome, top, m.volume24hr ?? 0);
-  }
-
-  if (out.length === 0) {
-    const fallback = [...tradeFlowByCondition.values()]
-      .filter((t) => t.netNotional >= 1000)
-      .sort((a, b) => b.netNotional - a.netNotional)
-      .slice(0, Math.max(3, env.topSignals));
-
-    for (const t of fallback) {
-      const m = byCondition.get(t.conditionId);
-      if (!m) continue;
-
-      const prices = parsePrices(m);
-      const outcomes = parseOutcomes(m);
-      const ranked = prices.map((p, i) => ({ p, i })).sort((a, b) => b.p - a.p);
-      const topIdx = ranked[0]?.i ?? 0;
-      const top = (prices[topIdx] ?? 0) * 100;
-      if (top >= 98) continue;
-      const topOutcome = outcomes[topIdx] ?? "Top";
+    if (shouldEmit) {
       const link = marketUrl(m);
-      const liq = Math.round(m.liquidity ?? 0);
-      const vol = Math.round(m.volume24hr ?? 0);
-      const flowText = t.side === "BUY" ? "Added" : "Reduced";
-      const flowPrep = t.side === "BUY" ? "to" : "from";
-      const flowNet = Math.round(t.netNotional);
+      const flowText = flow ? ` | Flow: ${flow.side} ~$${Math.round(flow.netNotional).toLocaleString()}` : "";
+      const flipLabel = reasons.includes("FLIP_RISK") ? " | Regime: Volatile" : "";
 
       out.push({
-        key: `fallback:${m.id}:${t.side}:${t.outcome}:${flowNet}`,
-        type: "WHALE_WATCH",
-        title: "",
-        body: `📍 Market: ${m.question} | 🐋 Whale move: ${flowText} ~$${flowNet.toLocaleString()} ${flowPrep} ${sideEmoji(t.outcome)} | 📈 Price reaction: ${sideEmoji(topOutcome)} ${top.toFixed(1)}% (24h context) | 🧠 Read: Visible recent flow leans ${sideEmoji(t.outcome)} | 🔗 Bet link: ${link}`,
-        confidence: "Med",
-        score: 45,
+        key: `v2:${m.id}:${tier}:${Math.round(top)}:${Math.sign(delta)}:${Math.round(score / 5)}`,
+        marketId: m.id,
+        outcome: topOutcome,
+        type: "MERGED_SIGNAL",
+        title: `Signal ${tier}: ${m.question}`,
+        body:
+          `${topOutcome.toUpperCase()} ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts → ${top.toFixed(1)}% ` +
+          `(vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
+          ` | Score: ${score}/100 (move ${Math.round(moveScore)}, flow ${Math.round(flowScore)}, liq ${liqScore})` +
+          `${flowText}${flipLabel}` +
+          ` | Read: ${reasons.join(", ") || "MOMENTUM"}` +
+          ` | Link: ${link}`,
+        confidence: confidenceFromTier(tier),
+        score,
+        tier,
+        reasons,
+        createdAt: now,
       });
+
+      upsertSignalState(m.id, score, tier, direction, now);
     }
+
+    upsertMarketState(m.id, topOutcome, top, volume24h, delta, direction, flipCount6h);
   }
 
-  return out.sort((a, b) => b.score - a.score).slice(0, env.topSignals);
+  const ranked = out
+    .sort((a, b) => b.score - a.score)
+    .filter((s, i, arr) => arr.findIndex((x) => x.marketId === s.marketId) === i);
+
+  const aTier = ranked.filter((s) => s.tier === "A");
+  const bTier = ranked.filter((s) => s.tier === "B");
+
+  const picked = env.postTierBInDigest
+    ? [...aTier, ...bTier].slice(0, env.topSignals)
+    : aTier.slice(0, env.topSignals);
+
+  return picked;
 };

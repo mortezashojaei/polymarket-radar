@@ -11,11 +11,25 @@ export interface RawMarket {
   outcomePrices?: string[] | string;
 }
 
+export type SignalType =
+  | "PRICE_MOVE"
+  | "FLOW_MOVE"
+  | "BREAKOUT"
+  | "WHALE_WATCH"
+  | "MERGED_SIGNAL";
+
+export type SignalTier = "A" | "B" | "C";
+
 export interface MarketSignal {
   key: string;
-  type: "PRICE_MOVE" | "VOLUME_SPIKE" | "BREAKOUT" | "WHALE_WATCH" | "TRENDING";
+  marketId: string;
+  outcome: string;
+  type: SignalType;
   title: string;
   body: string;
   confidence: "Low" | "Med" | "High";
   score: number;
+  tier: SignalTier;
+  reasons: string[];
+  createdAt: number;
 }

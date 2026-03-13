@@ -24,18 +24,45 @@ CREATE TABLE IF NOT EXISTS market_state (
   top_outcome TEXT,
   top_prob REAL,
   volume24h REAL,
-  updated_at INTEGER NOT NULL
+  updated_at INTEGER NOT NULL,
+  last_delta REAL DEFAULT 0,
+  last_direction INTEGER DEFAULT 0,
+  flip_count_6h INTEGER DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS signal_state (
+  market_id TEXT PRIMARY KEY,
+  last_score INTEGER NOT NULL,
+  last_tier TEXT NOT NULL,
+  last_direction INTEGER NOT NULL,
+  last_alert_at INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS sent_messages (
   message_id INTEGER PRIMARY KEY,
   created_at INTEGER NOT NULL
 );
+CREATE TABLE IF NOT EXISTS pending_digest_signals (
+  key TEXT PRIMARY KEY,
+  payload TEXT NOT NULL,
+  created_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS kv_state (
+  k TEXT PRIMARY KEY,
+  v TEXT NOT NULL,
+  updated_at INTEGER NOT NULL
+);
 `);
 
-try {
-  db.exec("ALTER TABLE market_state ADD COLUMN volume24h REAL");
-} catch {
-  // ignore if column already exists
+for (const ddl of [
+  "ALTER TABLE market_state ADD COLUMN volume24h REAL",
+  "ALTER TABLE market_state ADD COLUMN last_delta REAL DEFAULT 0",
+  "ALTER TABLE market_state ADD COLUMN last_direction INTEGER DEFAULT 0",
+  "ALTER TABLE market_state ADD COLUMN flip_count_6h INTEGER DEFAULT 0",
+]) {
+  try {
+    db.exec(ddl);
+  } catch {
+    // ignore if column already exists
+  }
 }
 
 export const hasSeen = (key: string): boolean => {
@@ -59,13 +86,33 @@ export const saveRun = (postedCount: number, note = "ok"): void => {
 
 export const getMarketState = (
   marketId: string
-): { topOutcome: string; topProb: number; volume24h: number; updatedAt: number } | null => {
+): {
+  topOutcome: string;
+  topProb: number;
+  volume24h: number;
+  updatedAt: number;
+  lastDelta: number;
+  lastDirection: number;
+  flipCount6h: number;
+} | null => {
   const row = db
     .prepare(
-      "SELECT top_outcome, top_prob, COALESCE(volume24h, 0) AS volume24h, updated_at FROM market_state WHERE market_id = ?"
+      `SELECT top_outcome, top_prob, COALESCE(volume24h, 0) AS volume24h, updated_at,
+              COALESCE(last_delta, 0) AS last_delta,
+              COALESCE(last_direction, 0) AS last_direction,
+              COALESCE(flip_count_6h, 0) AS flip_count_6h
+       FROM market_state WHERE market_id = ?`
     )
     .get(marketId) as
-    | { top_outcome: string; top_prob: number; volume24h: number; updated_at: number }
+    | {
+        top_outcome: string;
+        top_prob: number;
+        volume24h: number;
+        updated_at: number;
+        last_delta: number;
+        last_direction: number;
+        flip_count_6h: number;
+      }
     | undefined;
 
   if (!row) return null;
@@ -74,6 +121,9 @@ export const getMarketState = (
     topProb: row.top_prob,
     volume24h: row.volume24h,
     updatedAt: row.updated_at,
+    lastDelta: row.last_delta,
+    lastDirection: row.last_direction,
+    flipCount6h: row.flip_count_6h,
   };
 };
 
@@ -81,17 +131,23 @@ export const upsertMarketState = (
   marketId: string,
   topOutcome: string,
   topProb: number,
-  volume24h: number
+  volume24h: number,
+  lastDelta: number,
+  lastDirection: number,
+  flipCount6h: number
 ): void => {
   db.prepare(
-    `INSERT INTO market_state(market_id, top_outcome, top_prob, volume24h, updated_at)
-     VALUES (?, ?, ?, ?, ?)
+    `INSERT INTO market_state(market_id, top_outcome, top_prob, volume24h, updated_at, last_delta, last_direction, flip_count_6h)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(market_id)
      DO UPDATE SET top_outcome = excluded.top_outcome,
                    top_prob = excluded.top_prob,
                    volume24h = excluded.volume24h,
-                   updated_at = excluded.updated_at`
-  ).run(marketId, topOutcome, topProb, volume24h, Date.now());
+                   updated_at = excluded.updated_at,
+                   last_delta = excluded.last_delta,
+                   last_direction = excluded.last_direction,
+                   flip_count_6h = excluded.flip_count_6h`
+  ).run(marketId, topOutcome, topProb, volume24h, Date.now(), lastDelta, lastDirection, flipCount6h);
 };
 
 export const saveSentMessage = (messageId: number): void => {
@@ -110,4 +166,73 @@ export const listSentMessageIds = (limit: number): number[] => {
 
 export const clearSentMessages = (): void => {
   db.prepare("DELETE FROM sent_messages").run();
+};
+
+export const getSignalState = (
+  marketId: string
+): { lastScore: number; lastTier: string; lastDirection: number; lastAlertAt: number } | null => {
+  const row = db
+    .prepare(
+      "SELECT last_score, last_tier, last_direction, last_alert_at FROM signal_state WHERE market_id = ?"
+    )
+    .get(marketId) as
+    | { last_score: number; last_tier: string; last_direction: number; last_alert_at: number }
+    | undefined;
+
+  if (!row) return null;
+  return {
+    lastScore: row.last_score,
+    lastTier: row.last_tier,
+    lastDirection: row.last_direction,
+    lastAlertAt: row.last_alert_at,
+  };
+};
+
+export const upsertSignalState = (
+  marketId: string,
+  lastScore: number,
+  lastTier: string,
+  lastDirection: number,
+  lastAlertAt: number
+): void => {
+  db.prepare(
+    `INSERT INTO signal_state(market_id, last_score, last_tier, last_direction, last_alert_at)
+     VALUES (?, ?, ?, ?, ?)
+     ON CONFLICT(market_id)
+     DO UPDATE SET last_score = excluded.last_score,
+                   last_tier = excluded.last_tier,
+                   last_direction = excluded.last_direction,
+                   last_alert_at = excluded.last_alert_at`
+  ).run(marketId, lastScore, lastTier, lastDirection, lastAlertAt);
+};
+
+export const queueDigestSignal = (key: string, payload: string): void => {
+  db.prepare(
+    "INSERT OR IGNORE INTO pending_digest_signals(key, payload, created_at) VALUES (?, ?, ?)"
+  ).run(key, payload, Date.now());
+};
+
+export const listQueuedDigestSignals = (limit: number): string[] => {
+  const rows = db
+    .prepare("SELECT payload FROM pending_digest_signals ORDER BY created_at ASC LIMIT ?")
+    .all(limit) as Array<{ payload: string }>;
+  return rows.map((r) => r.payload);
+};
+
+export const clearQueuedDigestSignals = (): void => {
+  db.prepare("DELETE FROM pending_digest_signals").run();
+};
+
+export const getKv = (key: string): string | null => {
+  const row = db.prepare("SELECT v FROM kv_state WHERE k = ?").get(key) as { v: string } | undefined;
+  return row?.v ?? null;
+};
+
+export const setKv = (key: string, value: string): void => {
+  db.prepare(
+    `INSERT INTO kv_state(k, v, updated_at)
+     VALUES (?, ?, ?)
+     ON CONFLICT(k)
+     DO UPDATE SET v = excluded.v, updated_at = excluded.updated_at`
+  ).run(key, value, Date.now());
 };

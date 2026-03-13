@@ -6,6 +6,12 @@ const confEmoji = (c: MarketSignal["confidence"]) => {
   return "⚪️";
 };
 
+const tierEmoji = (t: MarketSignal["tier"]) => {
+  if (t === "A") return "🔥";
+  if (t === "B") return "👀";
+  return "▫️";
+};
+
 const esc = (s: string): string =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
@@ -38,17 +44,23 @@ export const renderDigest = (signals: MarketSignal[]): string => {
       ].join("\n");
     }
 
-    const [what = s.body, _why = "", linkPart = ""] = s.body.split(" | ");
-    const cleanWhat = esc(what.replace(/^What happened:\s*/i, ""));
-    const cleanLink = linkPart.replace(/^Link:\s*/i, "");
+    const parts = s.body.split(" | ");
+    const summary = esc(parts[0] ?? s.body);
+    const score = esc((parts.find((p) => p.startsWith("Score:")) ?? "").replace("Score: ", ""));
+    const read = esc((parts.find((p) => p.startsWith("Read:")) ?? "").replace("Read: ", ""));
+    const link = (parts.find((p) => p.startsWith("Link:")) ?? "").replace("Link: ", "");
 
     return [
-      `${esc(s.title)}`,
-      `${cleanWhat}`,
-      `🔗 <a href="${escAttr(cleanLink)}">Go to market</a>`,
+      `${tierEmoji(s.tier)} <b>${esc(s.title)}</b>`,
+      `${summary}`,
+      score ? `🧮 ${score}` : "",
+      read ? `🧠 ${read}` : "",
+      `🔗 <a href="${escAttr(link)}">Go to market</a>`,
       `${confEmoji(s.confidence)} Confidence: ${s.confidence}`,
       "",
-    ].join("\n");
+    ]
+      .filter(Boolean)
+      .join("\n");
   });
 
   return ["Polymarket signals", "", ...lines].join("\n");

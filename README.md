@@ -1,6 +1,6 @@
 # Polymarket Radar
 
-Public Telegram channel bot for hourly, read-only Polymarket political market signals.
+Public Telegram channel bot for high-signal, read-only Polymarket alerts with scoring, dedupe, and confidence tiers.
 
 ## Stack
 - Node.js + TypeScript

@@ -20,15 +20,27 @@ const bool = (k: string, d = false) => {
 export const env = {
   telegramToken: process.env.TELEGRAM_BOT_TOKEN!,
   telegramChannelId: process.env.TELEGRAM_CHANNEL_ID!,
-  runEveryMinutes: num("RUN_EVERY_MINUTES", 15),
+  runEveryMinutes: num("RUN_EVERY_MINUTES", 10),
   minLiquidity: num("MIN_LIQUIDITY", 10_000),
   minVolume24h: num("MIN_VOLUME_24H", 5_000),
   minOddsSwing: num("MIN_ODDS_SWING", 8),
-  topSignals: num("TOP_SIGNALS", 5),
+  topSignals: num("TOP_SIGNALS", 15),
   clearOnStart: bool("CLEAR_ON_START", false),
   clearOnStartLimit: num("CLEAR_ON_START_LIMIT", 200),
   dbPath: process.env.DATABASE_PATH ?? "./data/radar.db",
   polymarketEventsUrl:
     process.env.POLYMARKET_EVENTS_URL ??
     "https://gamma-api.polymarket.com/events?closed=false&limit=200&active=true",
+
+  // Radar v2 scoring and routing
+  scoreTierA: num("SCORE_TIER_A", 75),
+  scoreTierB: num("SCORE_TIER_B", 55),
+  mergeWindowMinutes: num("MERGE_WINDOW_MINUTES", 20),
+  cooldownMinutes: num("COOLDOWN_MINUTES", 45),
+  flipLookbackHours: num("FLIP_LOOKBACK_HOURS", 6),
+  flipPtsThreshold: num("FLIP_PTS_THRESHOLD", 8),
+  reemitScoreDelta: num("REEMIT_SCORE_DELTA", 15),
+  minWhaleNotional: num("MIN_WHALE_NOTIONAL", 10_000),
+  minFlowMultiple: num("MIN_FLOW_MULTIPLE", 2.5),
+  postTierBInDigest: bool("POST_TIER_B_IN_DIGEST", true),
 };
