@@ -17,6 +17,11 @@ const esc = (s: string): string =>
 
 const escAttr = (s: string): string => esc(s).replaceAll('"', "&quot;");
 
+const marketNameFromTitle = (title: string): string => {
+  const i = title.indexOf(": ");
+  return i >= 0 ? title.slice(i + 2).trim() : title.trim();
+};
+
 const reasonLabel = (code: string): string => {
   switch (code.trim()) {
     case "LARGE_REPRICE":
@@ -90,15 +95,23 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     }
 
     const parts = s.body.split(" | ");
-    const summary = esc(parts[0] ?? s.body);
+    const summaryRaw = parts[0] ?? s.body;
     const score = esc((parts.find((p) => p.startsWith("Score:")) ?? "").replace("Score: ", ""));
     const readRaw = (parts.find((p) => p.startsWith("Read:")) ?? "").replace("Read: ", "");
     const read = esc(humanizeRead(readRaw));
     const link = (parts.find((p) => p.startsWith("Link:")) ?? "").replace("Link: ", "");
 
+    const match = summaryRaw.match(/^(.+?)\s+(\d+\.\d+%\s*→\s*\d+\.\d+%\s*\([^)]+\))\s*\(vs\s+(.+)\)\.?$/);
+    const bet = esc(match?.[1]?.trim() ?? "");
+    const move = esc(match?.[2]?.trim() ?? summaryRaw);
+    const versus = esc(match?.[3]?.trim() ?? "");
+    const market = esc(marketNameFromTitle(s.title));
+
     return [
-      `${tierEmoji(s.tier)} <b>${esc(s.title)}</b>`,
-      `${summary}`,
+      `${tierEmoji(s.tier)} <b>${market}</b>`,
+      bet ? `🎯 Bet: <b>${bet}</b>` : "",
+      `📈 ${move}`,
+      versus ? `↔️ vs ${versus}` : "",
       score ? `🧮 ${score}` : "",
       read ? `🧠 Why: ${read}` : "",
       `🔗 <a href="${escAttr(link)}">Go to market</a>`,
