@@ -156,6 +156,12 @@ export const detectSignals = (
 
       const catPrefix = m.categoryEmoji ?? "🧩";
 
+      const hasPrev = !!prev && prev.topProb > 0;
+      const relChange = hasPrev ? (delta / prev.topProb) * 100 : 0;
+      const moveSummary = hasPrev
+        ? `${topOutcome.toUpperCase()} ${prev.topProb.toFixed(1)}% → ${top.toFixed(1)}% (${relChange >= 0 ? "+" : ""}${relChange.toFixed(1)}%)`
+        : `${topOutcome.toUpperCase()} → ${top.toFixed(1)}%`;
+
       out.push({
         key: `v2:${m.id}:${tier}:${Math.round(top)}:${Math.sign(delta)}:${Math.round(score / 5)}`,
         marketId: m.id,
@@ -163,8 +169,7 @@ export const detectSignals = (
         type: "MERGED_SIGNAL",
         title: `${catPrefix} · Signal ${tier}: ${m.question}`,
         body:
-          `${topOutcome.toUpperCase()} ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} pts → ${top.toFixed(1)}% ` +
-          `(vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
+          `${moveSummary} (vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
           ` | Score: ${score}/100 (move ${Math.round(moveScore)}, flow ${Math.round(flowScore)}, liq ${liqScore})` +
           `${flowText}${flipLabel}` +
           ` | Read: ${reasons.join(", ") || "MOMENTUM"}` +
