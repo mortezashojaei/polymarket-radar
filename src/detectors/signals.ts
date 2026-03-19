@@ -57,7 +57,10 @@ export const detectSignals = (
 ): MarketSignal[] => {
   const now = Date.now();
   const filtered = markets.filter(
-    (m) => (m.liquidity ?? 0) >= env.minLiquidity && (m.volume24hr ?? 0) >= env.minVolume24h
+    (m) =>
+      (m.liquidity ?? 0) >= env.minLiquidity &&
+      (m.volume24hr ?? 0) >= env.minVolume24h &&
+      (m.liquidity ?? 0) >= env.minReportLiquidity
   );
 
   const baselineVolume =

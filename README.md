@@ -43,6 +43,8 @@ The bot now stores each sent message text + metadata (`kind`, `tier`) in SQLite.
 
 It also supports a dedicated whale-transaction poller (default every 5 minutes) that emits instant single-trade whale alerts.
 
+Reporting guardrail: markets with `liquidity < MIN_REPORT_LIQUIDITY` are fully ignored (default `100000`).
+
 ```bash
 # last 4 days (default)
 npm run analyze:last4d

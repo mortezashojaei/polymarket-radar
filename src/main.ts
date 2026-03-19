@@ -102,7 +102,7 @@ const pollWhaleTransactions = async () => {
   const markets = await fetchAllMarkets().catch(() => []);
   const byCondition = new Map(
     markets
-      .filter((m) => !!m.conditionId)
+      .filter((m) => !!m.conditionId && (m.liquidity ?? 0) >= env.minReportLiquidity)
       .map((m) => [m.conditionId as string, m])
   );
 
@@ -112,10 +112,12 @@ const pollWhaleTransactions = async () => {
     if (hasSeen(key)) continue;
 
     const m = byCondition.get(w.conditionId);
-    const title = m?.question ?? `Condition ${w.conditionId}`;
-    const link = m?.eventSlug
+    if (!m) continue; // fully ignore low-volume/unknown markets
+
+    const title = m.question;
+    const link = m.eventSlug
       ? `https://polymarket.com/event/${encodeURIComponent(m.eventSlug)}`
-      : m?.slug
+      : m.slug
       ? `https://polymarket.com/event/${encodeURIComponent(m.slug)}`
       : "https://polymarket.com";
 
