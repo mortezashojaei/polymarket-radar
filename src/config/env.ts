@@ -23,7 +23,7 @@ export const env = {
   runEveryMinutes: num("RUN_EVERY_MINUTES", 10),
   minLiquidity: num("MIN_LIQUIDITY", 10_000),
   minVolume24h: num("MIN_VOLUME_24H", 5_000),
-  minOddsSwing: num("MIN_ODDS_SWING", 8),
+  minOddsSwing: num("MIN_ODDS_SWING", 10),
   topSignals: num("TOP_SIGNALS", 15),
   clearOnStart: bool("CLEAR_ON_START", false),
   clearOnStartLimit: num("CLEAR_ON_START_LIMIT", 200),
