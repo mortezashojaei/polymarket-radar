@@ -80,8 +80,9 @@ const flushHourlyDigestIfDue = async () => {
   }
 
   const text = renderDigest(signals);
-  const messageId = await sendTelegramMessage(`Hourly watchlist digest\n\n${text}`);
-  if (messageId) saveSentMessage(messageId);
+  const payload = `Hourly watchlist digest\n\n${text}`;
+  const messageId = await sendTelegramMessage(payload);
+  if (messageId) saveSentMessage(messageId, { text: payload, kind: "digest", tier: "B" });
 
   clearQueuedDigestSignals();
   return signals.length;
@@ -103,7 +104,7 @@ const runOnce = async () => {
   if (aSignals.length) {
     const text = renderDigest(aSignals.slice(0, env.topSignals));
     const messageId = await sendTelegramMessage(text);
-    if (messageId) saveSentMessage(messageId);
+    if (messageId) saveSentMessage(messageId, { text, kind: "realtime", tier: "A" });
     postedRealtime = aSignals.length;
   }
 

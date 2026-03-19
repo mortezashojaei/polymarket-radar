@@ -38,7 +38,10 @@ CREATE TABLE IF NOT EXISTS signal_state (
 );
 CREATE TABLE IF NOT EXISTS sent_messages (
   message_id INTEGER PRIMARY KEY,
-  created_at INTEGER NOT NULL
+  created_at INTEGER NOT NULL,
+  text TEXT,
+  kind TEXT,
+  tier TEXT
 );
 CREATE TABLE IF NOT EXISTS pending_digest_signals (
   key TEXT PRIMARY KEY,
@@ -57,6 +60,9 @@ for (const ddl of [
   "ALTER TABLE market_state ADD COLUMN last_delta REAL DEFAULT 0",
   "ALTER TABLE market_state ADD COLUMN last_direction INTEGER DEFAULT 0",
   "ALTER TABLE market_state ADD COLUMN flip_count_6h INTEGER DEFAULT 0",
+  "ALTER TABLE sent_messages ADD COLUMN text TEXT",
+  "ALTER TABLE sent_messages ADD COLUMN kind TEXT",
+  "ALTER TABLE sent_messages ADD COLUMN tier TEXT",
 ]) {
   try {
     db.exec(ddl);
@@ -150,11 +156,14 @@ export const upsertMarketState = (
   ).run(marketId, topOutcome, topProb, volume24h, Date.now(), lastDelta, lastDirection, flipCount6h);
 };
 
-export const saveSentMessage = (messageId: number): void => {
-  db.prepare("INSERT OR IGNORE INTO sent_messages(message_id, created_at) VALUES (?, ?)").run(
-    messageId,
-    Date.now()
-  );
+export const saveSentMessage = (
+  messageId: number,
+  meta?: { text?: string; kind?: string; tier?: string }
+): void => {
+  db.prepare(
+    `INSERT OR REPLACE INTO sent_messages(message_id, created_at, text, kind, tier)
+     VALUES (?, ?, ?, ?, ?)`
+  ).run(messageId, Date.now(), meta?.text ?? null, meta?.kind ?? null, meta?.tier ?? null);
 };
 
 export const listSentMessageIds = (limit: number): number[] => {
@@ -162,6 +171,40 @@ export const listSentMessageIds = (limit: number): number[] => {
     .prepare("SELECT message_id FROM sent_messages ORDER BY created_at DESC LIMIT ?")
     .all(limit) as Array<{ message_id: number }>;
   return rows.map((r) => r.message_id);
+};
+
+export interface SentMessageRow {
+  messageId: number;
+  createdAt: number;
+  text: string | null;
+  kind: string | null;
+  tier: string | null;
+}
+
+export const listSentMessagesSince = (sinceTs: number, limit = 5000): SentMessageRow[] => {
+  const rows = db
+    .prepare(
+      `SELECT message_id, created_at, text, kind, tier
+       FROM sent_messages
+       WHERE created_at >= ?
+       ORDER BY created_at DESC
+       LIMIT ?`
+    )
+    .all(sinceTs, limit) as Array<{
+    message_id: number;
+    created_at: number;
+    text: string | null;
+    kind: string | null;
+    tier: string | null;
+  }>;
+
+  return rows.map((r) => ({
+    messageId: r.message_id,
+    createdAt: r.created_at,
+    text: r.text,
+    kind: r.kind,
+    tier: r.tier,
+  }));
 };
 
 export const clearSentMessages = (): void => {

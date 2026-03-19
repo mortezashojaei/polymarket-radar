@@ -7,7 +7,9 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/main.js",
     "dev": "tsx src/main.ts",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "analyze:last4d": "tsx src/scripts/analyze-last4d.ts",
+    "analyze:days": "tsx src/scripts/analyze-last4d.ts"
   },
   "dependencies": {
     "better-sqlite3": "^11.8.1",

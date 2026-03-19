@@ -37,3 +37,14 @@ The workflow builds image `ghcr.io/<owner>/polymarket-radar:latest`, then SSH de
 - SQLite file is persisted at `./data/radar.db` via bind mount.
 - If branch is currently `master`, rename to `main` before expecting auto deploy.
 - No LLM/API key required; messages are deterministic templates.
+
+## Analyze recent channel posts
+The bot now stores each sent message text + metadata (`kind`, `tier`) in SQLite.
+
+```bash
+# last 4 days (default)
+npm run analyze:last4d
+
+# custom window, e.g. 7 days
+npm run analyze:days -- 7
+```
