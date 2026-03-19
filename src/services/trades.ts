@@ -1,4 +1,4 @@
-import type { TradeFlowSummary } from "../types/trades.js";
+import type { TradeFlowSummary, WhaleTrade } from "../types/trades.js";
 
 type Trade = {
   conditionId?: string;
@@ -79,4 +79,54 @@ export const fetchRecentTradeFlow = async (
   }
 
   return byCondition;
+};
+
+export const fetchRecentWhaleTrades = async (
+  minNotional: number,
+  windowSeconds = 600,
+  limit = 3000
+): Promise<WhaleTrade[]> => {
+  const now = Math.floor(Date.now() / 1000);
+  const minTs = now - windowSeconds;
+  const targetRows = Math.max(1, Math.floor(limit));
+
+  const out: WhaleTrade[] = [];
+  let offset = 0;
+  let collected = 0;
+
+  while (collected < targetRows && offset <= MAX_OFFSET) {
+    const pageSize = Math.min(MAX_PAGE_SIZE, targetRows - collected);
+    const rows = await fetchTradesPage(pageSize, offset);
+    if (rows.length === 0) break;
+
+    for (const t of rows) {
+      if (!t.conditionId || !t.outcome || !t.side || !t.timestamp) continue;
+      if (t.timestamp < minTs) continue;
+
+      const size = Number(t.size ?? 0);
+      const price = Number(t.price ?? 0);
+      const notional = Math.max(0, size * price);
+      if (notional < minNotional) continue;
+
+      out.push({
+        conditionId: t.conditionId,
+        outcome: t.outcome,
+        side: t.side,
+        size,
+        price,
+        notional,
+        timestamp: t.timestamp,
+      });
+    }
+
+    collected += rows.length;
+
+    const oldestTs = rows[rows.length - 1]?.timestamp ?? 0;
+    if (rows.length < pageSize || oldestTs < minTs) break;
+
+    offset += rows.length;
+  }
+
+  out.sort((a, b) => b.notional - a.notional || b.timestamp - a.timestamp);
+  return out;
 };

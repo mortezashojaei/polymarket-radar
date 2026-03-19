@@ -16,7 +16,7 @@ import { detectSignals } from "./detectors/signals.js";
 import { renderDigest } from "./formatters/digest.js";
 import { fetchAllMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
-import { fetchRecentTradeFlow } from "./services/trades.js";
+import { fetchRecentTradeFlow, fetchRecentWhaleTrades } from "./services/trades.js";
 import type { MarketSignal } from "./types/polymarket.js";
 
 const clearChannelOnStart = async () => {
@@ -88,6 +88,60 @@ const flushHourlyDigestIfDue = async () => {
   return signals.length;
 };
 
+const pollWhaleTransactions = async () => {
+  if (!env.whalePollEnabled) return;
+
+  const whales = await fetchRecentWhaleTrades(
+    env.whaleSingleTxNotional,
+    env.whaleTxWindowMinutes * 60,
+    5000
+  ).catch(() => []);
+
+  if (!whales.length) return;
+
+  const markets = await fetchAllMarkets().catch(() => []);
+  const byCondition = new Map(
+    markets
+      .filter((m) => !!m.conditionId)
+      .map((m) => [m.conditionId as string, m])
+  );
+
+  let posted = 0;
+  for (const w of whales) {
+    const key = `whale_tx:${w.conditionId}:${w.outcome}:${w.side}:${Math.round(w.notional)}:${w.timestamp}`;
+    if (hasSeen(key)) continue;
+
+    const m = byCondition.get(w.conditionId);
+    const title = m?.question ?? `Condition ${w.conditionId}`;
+    const link = m?.eventSlug
+      ? `https://polymarket.com/event/${encodeURIComponent(m.eventSlug)}`
+      : m?.slug
+      ? `https://polymarket.com/event/${encodeURIComponent(m.slug)}`
+      : "https://polymarket.com";
+
+    const text = [
+      "🐋 Whale transaction alert",
+      "",
+      `📍 <b>${title}</b>`,
+      `🎯 Outcome: <b>${w.outcome.toUpperCase()}</b>`,
+      `↕️ Side: <b>${w.side}</b>`,
+      `💵 Notional: <b>$${Math.round(w.notional).toLocaleString()}</b>`,
+      `💲 Price: <b>${(w.price * 100).toFixed(1)}%</b>`,
+      `📦 Size: <b>${Math.round(w.size).toLocaleString()}</b>`,
+      `🔗 <a href="${link}">Go to market</a>`,
+    ].join("\n");
+
+    const messageId = await sendTelegramMessage(text);
+    if (messageId) saveSentMessage(messageId, { text, kind: "whale_tx", tier: "A" });
+
+    markSeen(key);
+    posted += 1;
+    if (posted >= env.whaleTxMaxPerPoll) break;
+  }
+
+  if (posted > 0) console.log(`[radar] whale poll posted ${posted} alert(s)`);
+};
+
 const runOnce = async () => {
   const markets = await fetchAllMarkets();
   const tradeFlow = await fetchRecentTradeFlow(86400, 4000).catch(() => new Map());
@@ -135,6 +189,8 @@ const runOnce = async () => {
 const start = async () => {
   await clearChannelOnStart();
   await runOnce();
+  await pollWhaleTransactions();
+
   const ms = env.runEveryMinutes * 60 * 1000;
   console.log(`[radar] schedule: every ${env.runEveryMinutes} minute(s)`);
   setInterval(() => {
@@ -143,6 +199,16 @@ const start = async () => {
       saveRun(0, `error=${String(e)}`);
     });
   }, ms);
+
+  if (env.whalePollEnabled) {
+    const whaleMs = env.whalePollMinutes * 60 * 1000;
+    console.log(`[radar] whale poll: every ${env.whalePollMinutes} minute(s)`);
+    setInterval(() => {
+      pollWhaleTransactions().catch((e) => {
+        console.error("[radar] whale poll failed", e);
+      });
+    }, whaleMs);
+  }
 };
 
 start().catch((e) => {

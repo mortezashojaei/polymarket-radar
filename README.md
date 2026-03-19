@@ -41,6 +41,8 @@ The workflow builds image `ghcr.io/<owner>/polymarket-radar:latest`, then SSH de
 ## Analyze recent channel posts
 The bot now stores each sent message text + metadata (`kind`, `tier`) in SQLite.
 
+It also supports a dedicated whale-transaction poller (default every 5 minutes) that emits instant single-trade whale alerts.
+
 ```bash
 # last 4 days (default)
 npm run analyze:last4d

@@ -43,4 +43,11 @@ export const env = {
   minWhaleNotional: num("MIN_WHALE_NOTIONAL", 10_000),
   minFlowMultiple: num("MIN_FLOW_MULTIPLE", 2.5),
   postTierBInDigest: bool("POST_TIER_B_IN_DIGEST", true),
+
+  // Whale transaction polling
+  whalePollEnabled: bool("WHALE_POLL_ENABLED", true),
+  whalePollMinutes: num("WHALE_POLL_MINUTES", 5),
+  whaleSingleTxNotional: num("WHALE_SINGLE_TX_NOTIONAL", 10_000),
+  whaleTxWindowMinutes: num("WHALE_TX_WINDOW_MINUTES", 10),
+  whaleTxMaxPerPoll: num("WHALE_TX_MAX_PER_POLL", 3),
 };
