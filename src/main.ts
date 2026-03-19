@@ -114,6 +114,23 @@ const pollWhaleTransactions = async () => {
     const m = byCondition.get(w.conditionId);
     if (!m) continue; // fully ignore low-volume/unknown markets
 
+    // Ignore near-resolved markets (default: >=98% or <=2%)
+    const prices = (() => {
+      if (Array.isArray(m.outcomePrices)) return m.outcomePrices.map(Number).filter(Number.isFinite);
+      if (typeof m.outcomePrices === "string") {
+        try {
+          const parsed = JSON.parse(m.outcomePrices);
+          if (Array.isArray(parsed)) return parsed.map(Number).filter(Number.isFinite);
+        } catch {
+          return [] as number[];
+        }
+      }
+      return [] as number[];
+    })();
+
+    const topProb = prices.length ? Math.max(...prices) : 0;
+    if (topProb >= env.whaleMaxProb || topProb <= env.whaleMinProb) continue;
+
     const title = m.question;
     const link = m.eventSlug
       ? `https://polymarket.com/event/${encodeURIComponent(m.eventSlug)}`

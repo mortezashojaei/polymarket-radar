@@ -50,7 +50,9 @@ export const env = {
   whaleSingleTxNotional: num("WHALE_SINGLE_TX_NOTIONAL", 10_000),
   whaleTxWindowMinutes: num("WHALE_TX_WINDOW_MINUTES", 10),
   whaleTxMaxPerPoll: num("WHALE_TX_MAX_PER_POLL", 3),
+  whaleMaxProb: num("WHALE_MAX_PROB", 0.98),
+  whaleMinProb: num("WHALE_MIN_PROB", 0.02),
 
   // Global reporting guardrails
-  minReportLiquidity: num("MIN_REPORT_LIQUIDITY", 100_000),
+  minReportLiquidity: num("MIN_REPORT_LIQUIDITY", 500_000),
 };
