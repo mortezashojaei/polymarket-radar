@@ -157,6 +157,9 @@ const pollWhaleTransactions = async () => {
       ? `https://polymarket.com/event/${encodeURIComponent(m.slug)}`
       : "https://polymarket.com";
 
+    const maxPayout = w.price > 0 ? w.notional / w.price : 0;
+    const netProfitIfCorrect = Math.max(0, maxPayout - w.notional);
+
     const text = [
       "🐋 Whale transaction alert",
       "",
@@ -167,6 +170,12 @@ const pollWhaleTransactions = async () => {
       `💵 Notional: <b>$${Math.round(w.notional).toLocaleString()}</b>`,
       `💲 Price: <b>${(w.price * 100).toFixed(1)}%</b>`,
       `📦 Size: <b>${Math.round(w.size).toLocaleString()}</b>`,
+      ...(w.side === "BUY"
+        ? [
+            `🏆 Max payout (if correct): <b>$${Math.round(maxPayout).toLocaleString()}</b>`,
+            `💰 Net profit (if correct): <b>$${Math.round(netProfitIfCorrect).toLocaleString()}</b>`,
+          ]
+        : []),
       `🔗 <a href="${link}">Go to market</a>`,
     ].join("\n");
 
