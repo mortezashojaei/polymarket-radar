@@ -30,6 +30,10 @@ const WORDS: Record<MarketBucket, string[]> = {
     "march madness",
     "wildcards",
     "vs.",
+    "spread:",
+    "moneyline",
+    "o/u",
+    "over/under",
   ],
   politics: [
     "election",
@@ -45,6 +49,16 @@ const WORDS: Record<MarketBucket, string[]> = {
     "prime minister",
     "policy",
     "geopolit",
+    "iran",
+    "iranian",
+    "russia",
+    "ukraine",
+    "israel",
+    "gaza",
+    "china",
+    "taiwan",
+    "us x",
+    "united states",
   ],
   crypto: ["bitcoin", "btc", "ethereum", "eth", "solana", "crypto", "token", "defi", "airdrop"],
   macro: ["fed", "interest rate", "cpi", "inflation", "gdp", "recession", "unemployment", "treasury"],
@@ -57,7 +71,22 @@ const PRIORITY: MarketBucket[] = ["sports", "politics", "macro", "crypto", "tech
 
 const hasAny = (s: string, words: string[]): boolean => words.some((w) => s.includes(w));
 
+const bucketFromCategory = (category?: string): MarketBucket | null => {
+  const c = (category ?? "").toLowerCase();
+  if (!c) return null;
+  if (c.includes("sport")) return "sports";
+  if (c.includes("politic") || c.includes("world") || c.includes("news")) return "politics";
+  if (c.includes("crypto")) return "crypto";
+  if (c.includes("macro") || c.includes("econom")) return "macro";
+  if (c.includes("tech")) return "tech";
+  if (c.includes("entertain")) return "entertainment";
+  return null;
+};
+
 export const getMarketBucket = (m: Pick<RawMarket, "question" | "category">): MarketBucket => {
+  const direct = bucketFromCategory(m.category);
+  if (direct) return direct;
+
   const text = `${m.category ?? ""} ${m.question ?? ""}`.toLowerCase();
   for (const b of PRIORITY) {
     if (hasAny(text, WORDS[b])) return b;
