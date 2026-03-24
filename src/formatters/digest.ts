@@ -95,7 +95,8 @@ export const renderDigest = (signals: MarketSignal[]): string => {
     }
 
     const parts = s.body.split(" | ");
-    const summaryRaw = parts[0] ?? s.body;
+    const summaryRaw = (parts.find((p) => !p.startsWith("Category:")) ?? parts[0] ?? s.body).trim();
+    const category = (parts.find((p) => p.startsWith("Category:")) ?? "").replace("Category:", "").trim();
     const score = esc((parts.find((p) => p.startsWith("Score:")) ?? "").replace("Score: ", ""));
     const readRaw = (parts.find((p) => p.startsWith("Read:")) ?? "").replace("Read: ", "");
     const read = esc(humanizeRead(readRaw));
@@ -109,6 +110,7 @@ export const renderDigest = (signals: MarketSignal[]): string => {
 
     return [
       `${tierEmoji(s.tier)} <b>${market}</b>`,
+      category ? `🏷️ Category: <b>${esc(category)}</b>` : "",
       bet ? `🎯 Bet: <b>${bet}</b>` : "",
       `📈 ${move}`,
       versus ? `↔️ vs ${versus}` : "",

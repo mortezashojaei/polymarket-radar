@@ -2,7 +2,7 @@ import { env } from "../config/env.js";
 import { getMarketState, getSignalState, upsertMarketState, upsertSignalState } from "../db/sqlite.js";
 import type { MarketSignal, RawMarket, SignalTier } from "../types/polymarket.js";
 import type { TradeFlowSummary } from "../types/trades.js";
-import { getMarketBucket } from "../utils/market-bucket.js";
+import { bucketLabel, getMarketBucket, thresholdProfileForBucket } from "../utils/market-bucket.js";
 
 const clamp = (n: number, min: number, max: number): number => Math.min(max, Math.max(min, n));
 
@@ -96,16 +96,17 @@ export const detectSignals = (
     const flowScore = clamp(((flowMultiple - 1) / 6) * 100, 0, 100);
 
     const bucket = getMarketBucket(m);
+    const profile = thresholdProfileForBucket(bucket);
     const minWhaleNotionalByBucket =
-      bucket === "politics"
+      profile === "sensitive"
         ? env.minWhaleNotionalPolitics
-        : bucket === "noisy"
+        : profile === "noisy"
         ? env.minWhaleNotionalNoisy
         : env.minWhaleNotional;
     const minOddsSwingByBucket =
-      bucket === "politics"
+      profile === "sensitive"
         ? env.minOddsSwingPolitics
-        : bucket === "noisy"
+        : profile === "noisy"
         ? env.minOddsSwingNoisy
         : env.minOddsSwing;
 
@@ -173,6 +174,7 @@ export const detectSignals = (
       const flipLabel = reasons.includes("FLIP_RISK") ? " | Regime: Volatile" : "";
 
       const catPrefix = m.categoryEmoji ?? "🧩";
+      const categoryTag = bucketLabel(bucket);
 
       const hasPrev = !!prev;
       const moveSummary = hasPrev
@@ -184,9 +186,9 @@ export const detectSignals = (
         marketId: m.id,
         outcome: topOutcome,
         type: "MERGED_SIGNAL",
-        title: `${catPrefix} · Signal ${tier}: ${m.question}`,
+        title: `${catPrefix} · [${categoryTag}] Signal ${tier}: ${m.question}`,
         body:
-          `${moveSummary} (vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
+          `Category: ${categoryTag} | ${moveSummary} (vs ${secondOutcome.toUpperCase()} ${second.toFixed(1)}%).` +
           ` | Score: ${score}/100 (move ${Math.round(moveScore)}, flow ${Math.round(flowScore)}, liq ${liqScore})` +
           `${flowText}${flipLabel}` +
           ` | Read: ${reasons.join(", ") || "MOMENTUM"}` +

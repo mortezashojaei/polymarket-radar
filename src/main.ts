@@ -18,7 +18,7 @@ import { fetchAllMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
 import { fetchRecentTradeFlow, fetchRecentWhaleTrades } from "./services/trades.js";
 import type { MarketSignal } from "./types/polymarket.js";
-import { getMarketBucket } from "./utils/market-bucket.js";
+import { bucketLabel, getMarketBucket, thresholdProfileForBucket } from "./utils/market-bucket.js";
 
 const clearChannelOnStart = async () => {
   if (!env.clearOnStart) return;
@@ -123,10 +123,11 @@ const pollWhaleTransactions = async () => {
     if (!m) continue; // fully ignore low-volume/unknown markets
 
     const bucket = getMarketBucket(m);
+    const profile = thresholdProfileForBucket(bucket);
     const minWhaleNotionalByBucket =
-      bucket === "politics"
+      profile === "sensitive"
         ? env.minWhaleNotionalPolitics
-        : bucket === "noisy"
+        : profile === "noisy"
         ? env.minWhaleNotionalNoisy
         : env.minWhaleNotional;
 
@@ -159,6 +160,7 @@ const pollWhaleTransactions = async () => {
     const text = [
       "🐋 Whale transaction alert",
       "",
+      `🏷️ Category: <b>${bucketLabel(bucket)}</b>`,
       `📍 <b>${title}</b>`,
       `🎯 Outcome: <b>${w.outcome.toUpperCase()}</b>`,
       `↕️ Side: <b>${w.side}</b>`,
