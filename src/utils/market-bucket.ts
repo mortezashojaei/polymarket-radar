@@ -30,6 +30,8 @@ const WORDS: Record<MarketBucket, string[]> = {
     "march madness",
     "wildcards",
     "vs.",
+    "vs ",
+    " fc ",
     "spread:",
     "moneyline",
     "o/u",
