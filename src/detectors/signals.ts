@@ -2,6 +2,7 @@ import { env } from "../config/env.js";
 import { getMarketState, getSignalState, upsertMarketState, upsertSignalState } from "../db/sqlite.js";
 import type { MarketSignal, RawMarket, SignalTier } from "../types/polymarket.js";
 import type { TradeFlowSummary } from "../types/trades.js";
+import { getMarketBucket } from "../utils/market-bucket.js";
 
 const clamp = (n: number, min: number, max: number): number => Math.min(max, Math.max(min, n));
 
@@ -94,7 +95,21 @@ export const detectSignals = (
     const flowMultiple = baselineVolume > 0 ? volume24h / baselineVolume : 1;
     const flowScore = clamp(((flowMultiple - 1) / 6) * 100, 0, 100);
 
-    const volatilityScale = Math.max(env.minOddsSwing, Math.abs(prev?.lastDelta ?? env.minOddsSwing));
+    const bucket = getMarketBucket(m);
+    const minWhaleNotionalByBucket =
+      bucket === "politics"
+        ? env.minWhaleNotionalPolitics
+        : bucket === "noisy"
+        ? env.minWhaleNotionalNoisy
+        : env.minWhaleNotional;
+    const minOddsSwingByBucket =
+      bucket === "politics"
+        ? env.minOddsSwingPolitics
+        : bucket === "noisy"
+        ? env.minOddsSwingNoisy
+        : env.minOddsSwing;
+
+    const volatilityScale = Math.max(minOddsSwingByBucket, Math.abs(prev?.lastDelta ?? minOddsSwingByBucket));
     const moveScore = clamp((absDelta / (volatilityScale || 1)) * 100, 0, 100);
 
     const liquidityNorm = clamp(((m.liquidity ?? 0) - env.minLiquidity) / (env.minLiquidity * 4), 0, 1);
@@ -108,9 +123,9 @@ export const detectSignals = (
     let penalties = 0;
     const reasons: string[] = [];
 
-    if (absDelta >= env.minOddsSwing) reasons.push("LARGE_REPRICE");
+    if (absDelta >= minOddsSwingByBucket) reasons.push("LARGE_REPRICE");
     if (flowMultiple >= env.minFlowMultiple) reasons.push("FLOW_SPIKE");
-    if ((flow?.netNotional ?? 0) >= env.minWhaleNotional) reasons.push("WHALE_SIZE");
+    if ((flow?.netNotional ?? 0) >= minWhaleNotionalByBucket) reasons.push("WHALE_SIZE");
 
     let flipCount6h = prev?.flipCount6h ?? 0;
     if (prev) {
@@ -149,7 +164,7 @@ export const detectSignals = (
     const shouldEmit =
       !nearResolved &&
       tier !== "C" &&
-      absDelta >= Math.max(3, env.minOddsSwing / 2) &&
+      absDelta >= minOddsSwingByBucket &&
       (!inCooldown || improvedEnough || tierUpgraded || directionFlipped);
 
     if (shouldEmit) {

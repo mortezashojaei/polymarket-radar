@@ -24,6 +24,8 @@ export const env = {
   minLiquidity: num("MIN_LIQUIDITY", 10_000),
   minVolume24h: num("MIN_VOLUME_24H", 5_000),
   minOddsSwing: num("MIN_ODDS_SWING", 10),
+  minOddsSwingNoisy: num("MIN_ODDS_SWING_NOISY", 11),
+  minOddsSwingPolitics: num("MIN_ODDS_SWING_POLITICS", 5),
   topSignals: num("TOP_SIGNALS", 15),
   clearOnStart: bool("CLEAR_ON_START", false),
   clearOnStartLimit: num("CLEAR_ON_START_LIMIT", 200),
@@ -41,6 +43,8 @@ export const env = {
   flipPtsThreshold: num("FLIP_PTS_THRESHOLD", 8),
   reemitScoreDelta: num("REEMIT_SCORE_DELTA", 15),
   minWhaleNotional: num("MIN_WHALE_NOTIONAL", 10_000),
+  minWhaleNotionalNoisy: num("MIN_WHALE_NOTIONAL_NOISY", 50_000),
+  minWhaleNotionalPolitics: num("MIN_WHALE_NOTIONAL_POLITICS", 5_000),
   minFlowMultiple: num("MIN_FLOW_MULTIPLE", 2.5),
   postTierBInDigest: bool("POST_TIER_B_IN_DIGEST", true),
 

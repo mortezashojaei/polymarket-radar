@@ -18,6 +18,7 @@ import { fetchAllMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
 import { fetchRecentTradeFlow, fetchRecentWhaleTrades } from "./services/trades.js";
 import type { MarketSignal } from "./types/polymarket.js";
+import { getMarketBucket } from "./utils/market-bucket.js";
 
 const clearChannelOnStart = async () => {
   if (!env.clearOnStart) return;
@@ -91,8 +92,15 @@ const flushHourlyDigestIfDue = async () => {
 const pollWhaleTransactions = async () => {
   if (!env.whalePollEnabled) return;
 
-  const whales = await fetchRecentWhaleTrades(
+  const minWhaleFetchFloor = Math.min(
     env.whaleSingleTxNotional,
+    env.minWhaleNotional,
+    env.minWhaleNotionalNoisy,
+    env.minWhaleNotionalPolitics
+  );
+
+  const whales = await fetchRecentWhaleTrades(
+    minWhaleFetchFloor,
     env.whaleTxWindowMinutes * 60,
     5000
   ).catch(() => []);
@@ -113,6 +121,16 @@ const pollWhaleTransactions = async () => {
 
     const m = byCondition.get(w.conditionId);
     if (!m) continue; // fully ignore low-volume/unknown markets
+
+    const bucket = getMarketBucket(m);
+    const minWhaleNotionalByBucket =
+      bucket === "politics"
+        ? env.minWhaleNotionalPolitics
+        : bucket === "noisy"
+        ? env.minWhaleNotionalNoisy
+        : env.minWhaleNotional;
+
+    if (w.notional < Math.max(env.whaleSingleTxNotional, minWhaleNotionalByBucket)) continue;
 
     // Ignore near-resolved markets (default: >=98% or <=2%)
     const prices = (() => {
