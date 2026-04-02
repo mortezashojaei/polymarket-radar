@@ -39,13 +39,6 @@ const marketUrl = (m: RawMarket): string => {
   return slug ? `https://polymarket.com/event/${encodeURIComponent(slug)}` : "https://polymarket.com";
 };
 
-const sideEmoji = (s: string): string => {
-  const u = s.toUpperCase();
-  if (u === "YES") return "🟢 YES";
-  if (u === "NO") return "🔴 NO";
-  return u;
-};
-
 const tierFromScore = (score: number): SignalTier => {
   if (score >= env.scoreTierA) return "A";
   if (score >= env.scoreTierB) return "B";
@@ -90,10 +83,10 @@ export const detectSignals = (
     const direction = delta === 0 ? 0 : delta > 0 ? 1 : -1;
     const volume24h = m.volume24hr ?? 0;
 
-    const volumeDelta = prev ? Math.max(0, volume24h - prev.volume24h) : 0;
     const flow = m.conditionId ? tradeFlowByCondition.get(m.conditionId) : undefined;
-    const flowMultiple = baselineVolume > 0 ? volume24h / baselineVolume : 1;
-    const flowScore = clamp(((flowMultiple - 1) / 6) * 100, 0, 100);
+    const flowNotional = Math.max(0, flow?.grossNotional ?? 0);
+    const flowMultiple = baselineVolume > 0 ? flowNotional / baselineVolume : 0;
+    const flowScore = clamp((flowMultiple / 2) * 100, 0, 100);
 
     const bucket = getMarketBucket(m);
     const profile = thresholdProfileForBucket(bucket);

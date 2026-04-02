@@ -20,6 +20,11 @@ import { fetchRecentTradeFlow, fetchRecentWhaleTrades } from "./services/trades.
 import type { MarketSignal } from "./types/polymarket.js";
 import { bucketLabel, getMarketBucket, thresholdProfileForBucket } from "./utils/market-bucket.js";
 
+const escHtml = (s: string): string =>
+  s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+
+const escAttr = (s: string): string => escHtml(s).replaceAll('"', "&quot;");
+
 const clearChannelOnStart = async () => {
   if (!env.clearOnStart) return;
 
@@ -156,6 +161,10 @@ const pollWhaleTransactions = async () => {
       : m.slug
       ? `https://polymarket.com/event/${encodeURIComponent(m.slug)}`
       : "https://polymarket.com";
+    const safeTitle = escHtml(title);
+    const safeOutcome = escHtml(w.outcome.toUpperCase());
+    const safeSide = escHtml(w.side);
+    const safeLink = escAttr(link);
 
     const maxPayout = w.price > 0 ? w.notional / w.price : 0;
     const netProfitIfCorrect = Math.max(0, maxPayout - w.notional);
@@ -164,9 +173,9 @@ const pollWhaleTransactions = async () => {
       "🐋 Whale transaction alert",
       "",
       `🏷️ Category: <b>${bucketLabel(bucket)}</b>`,
-      `📍 <b>${title}</b>`,
-      `🎯 Outcome: <b>${w.outcome.toUpperCase()}</b>`,
-      `↕️ Side: <b>${w.side}</b>`,
+      `📍 <b>${safeTitle}</b>`,
+      `🎯 Outcome: <b>${safeOutcome}</b>`,
+      `↕️ Side: <b>${safeSide}</b>`,
       `💵 Notional: <b>$${Math.round(w.notional).toLocaleString()}</b>`,
       `💲 Price: <b>${(w.price * 100).toFixed(1)}%</b>`,
       `📦 Size: <b>${Math.round(w.size).toLocaleString()}</b>`,
@@ -176,7 +185,7 @@ const pollWhaleTransactions = async () => {
             `💰 Net profit (if correct): <b>$${Math.round(netProfitIfCorrect).toLocaleString()}</b>`,
           ]
         : []),
-      `🔗 <a href="${link}">Go to market</a>`,
+      `🔗 <a href="${safeLink}">Go to market</a>`,
     ].join("\n");
 
     const messageId = await sendTelegramMessage(text);
@@ -204,10 +213,11 @@ const runOnce = async () => {
 
   let postedRealtime = 0;
   if (aSignals.length) {
-    const text = renderDigest(aSignals.slice(0, env.topSignals));
+    const toPost = aSignals.slice(0, env.topSignals);
+    const text = renderDigest(toPost);
     const messageId = await sendTelegramMessage(text);
     if (messageId) saveSentMessage(messageId, { text, kind: "realtime", tier: "A" });
-    postedRealtime = aSignals.length;
+    postedRealtime = toPost.length;
   }
 
   const postedDigest = await flushHourlyDigestIfDue();
