@@ -1,54 +1,74 @@
 # Polymarket Radar
 
-Public Telegram channel bot for high-signal, read-only Polymarket alerts with scoring, dedupe, and confidence tiers.
+Polymarket Radar is a **read-only Telegram bot** that monitors active Polymarket markets and posts only high-signal updates.
 
-## Stack
-- Node.js + TypeScript
-- SQLite (lightweight dedupe/run logs)
-- Docker / Docker Compose
-- GitHub Actions CI/CD -> GHCR -> Ubuntu VPS
+It is built for signal quality over noise:
+- **Tier A** signals go out immediately.
+- **Tier B** signals are queued into an hourly digest.
+- Duplicate/repeated alerts are controlled with SQLite-backed state.
 
-## Local run
+## What it tracks
+- Market repricing (probability moves)
+- Liquidity and volume filters
+- Trade-flow spikes
+- Whale-sized flow and single whale transactions
+- Volatility/flip risk to reduce noisy re-alerting
+
+## How it works
+```mermaid
+flowchart LR
+  A[Polymarket APIs] --> B[Filter: liquidity / volume / report threshold]
+  B --> C[Scoring engine]
+  C --> D{Tier}
+  D -->|A| E[Telegram realtime alert]
+  D -->|B| F[Digest queue]
+  F --> G[Hourly digest post]
+  A --> H[Whale tx poller]
+  H --> I[Telegram whale tx alert]
+  C --> J[(SQLite state)]
+  F --> J
+  E --> J
+  G --> J
+  I --> J
+```
+
+## Quick start (local)
 ```bash
 cp .env.example .env
 npm ci
 npm run dev
 ```
 
-## Local docker run
+## Docker (local)
 ```bash
 cp .env.example .env
 docker compose -f docker-compose.local.yml up -d --build
 ```
 
-## Production deploy flow
-1. Create `/opt/polymarket-radar` on VPS.
-2. Put `docker-compose.yml` and `.env` there.
-3. Ensure Docker + Compose plugin installed.
-4. Add GitHub secrets:
-   - `DEPLOY_HOST`
-   - `DEPLOY_USER`
-   - `DEPLOY_SSH_KEY`
-5. Push to `main`.
+## Required environment variables
+At minimum:
 
-The workflow builds image `ghcr.io/<owner>/polymarket-radar:latest`, then SSH deploys.
-
-## Notes
-- SQLite file is persisted at `./data/radar.db` via bind mount.
-- If branch is currently `master`, rename to `main` before expecting auto deploy.
-- No LLM/API key required; messages are deterministic templates.
-
-## Analyze recent channel posts
-The bot now stores each sent message text + metadata (`kind`, `tier`) in SQLite.
-
-It also supports a dedicated whale-transaction poller (default every 5 minutes) that emits instant single-trade whale alerts.
-
-Reporting guardrail: markets with `liquidity < MIN_REPORT_LIQUIDITY` are fully ignored (default `100000`).
-
-```bash
-# last 4 days (default)
-npm run analyze:last4d
-
-# custom window, e.g. 7 days
-npm run analyze:days -- 7
+```env
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHANNEL_ID=@your_channel
 ```
+
+Everything else has defaults in `.env.example`.
+
+## Important behavior defaults
+- `MIN_REPORT_LIQUIDITY` guardrail is enabled (low-liquidity markets are fully ignored).
+- `POST_TIER_B_IN_DIGEST=true` (Tier B is digest-first).
+- Whale transaction poller is enabled by default.
+
+## Useful commands
+```bash
+npm run check                # TypeScript type-check
+npm run build                # compile to dist/
+npm run analyze:last4d       # summary of sent messages (last 4 days)
+npm run analyze:days -- 7    # custom analysis window
+```
+
+## Tech stack
+- Node.js + TypeScript
+- SQLite (`better-sqlite3`) for state, dedupe, and sent-message logs
+- Docker / Docker Compose for containerized runtime
