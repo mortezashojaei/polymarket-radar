@@ -3,33 +3,32 @@
 Polymarket Radar is a **read-only Telegram bot** that monitors active Polymarket markets and posts only high-signal updates.
 
 It is built for signal quality over noise:
-- **Tier A** signals go out immediately.
-- **Tier B** signals are queued into an hourly digest.
-- Duplicate/repeated alerts are controlled with SQLite-backed state.
+- **Prediction Pulse broadcasts** are event-driven (importance/novelty first, no hourly timer).
+- **Daily Prediction Shift recap** posts once/day with biggest expectation changes and follow-through.
+- Duplicate/repeated alerts are controlled with SQLite-backed state, cooldowns, and daily caps.
 
 ## What it tracks
-- Market repricing (probability moves)
-- Liquidity and volume filters
-- Trade-flow spikes
-- Whale-sized flow and single whale transactions
-- Volatility/flip risk to reduce noisy re-alerting
+- Conviction Spike / Regime Shift / Consensus Crack / Coordinated Whale Flow broadcasts
+- Predictive confidence scoring (MoveQuality + MoneyQuality + MarketQuality - Stability penalties)
+- Liquidity, spread proxy, flow, trade count, wallet diversity, and whale participation
+- Anti-noise guardrails: cooldowns, per-market daily cap, repeat penalties
+- Whale-sized single transaction alerts (separate poller)
 
 ## How it works
 ```mermaid
 flowchart LR
   A[Polymarket APIs] --> B[Filter: liquidity / volume / report threshold]
-  B --> C[Scoring engine]
-  C --> D{Tier}
-  D -->|A| E[Telegram realtime alert]
-  D -->|B| F[Digest queue]
-  F --> G[Hourly digest post]
+  B --> C[Prediction Pulse scoring engine]
+  C --> D{Pass gating?}
+  D -->|Yes| E[Event-driven broadcast]
+  D -->|No| F[Suppress as noise]
   A --> H[Whale tx poller]
   H --> I[Telegram whale tx alert]
   C --> J[(SQLite state)]
-  F --> J
   E --> J
-  G --> J
   I --> J
+  J --> K[Daily recap builder]
+  K --> L[Daily Prediction Shift post]
 ```
 
 ## Quick start (local)
@@ -57,7 +56,7 @@ Everything else has defaults in `.env.example`.
 
 ## Important behavior defaults
 - `MIN_REPORT_LIQUIDITY` guardrail is enabled (low-liquidity markets are fully ignored).
-- `POST_TIER_B_IN_DIGEST=true` (Tier B is digest-first).
+- `POST_TIER_B_IN_DIGEST` is deprecated by v3 broadcast routing (kept for backward compatibility).
 - Whale transaction poller is enabled by default.
 
 ## Useful commands

@@ -7,6 +7,9 @@ type Trade = {
   size?: number;
   price?: number;
   timestamp?: number;
+  makerAddress?: string;
+  takerAddress?: string;
+  owner?: string;
 };
 
 const TRADE_API_URL = "https://data-api.polymarket.com/trades";
@@ -30,7 +33,7 @@ export const fetchRecentTradeFlow = async (
   const minTs = now - windowSeconds;
   const targetRows = Math.max(1, Math.floor(limit));
 
-  const agg = new Map<string, { buy: number; sell: number; gross: number; outcome: string }>();
+  const agg = new Map<string, { buy: number; sell: number; gross: number; outcome: string; tradeCount: number; wallets: Set<string>; whaleCount: number }>();
 
   let offset = 0;
   let collected = 0;
@@ -47,10 +50,18 @@ export const fetchRecentTradeFlow = async (
 
       const notional = Math.max(0, Number(t.size ?? 0) * Number(t.price ?? 0));
       const key = `${t.conditionId}::${t.outcome}`;
-      const a = agg.get(key) ?? { buy: 0, sell: 0, gross: 0, outcome: t.outcome };
+      const a = agg.get(key) ?? { buy: 0, sell: 0, gross: 0, outcome: t.outcome, tradeCount: 0, wallets: new Set<string>(), whaleCount: 0 };
       if (t.side === "BUY") a.buy += notional;
       else a.sell += notional;
       a.gross += notional;
+      a.tradeCount += 1;
+      const maker = typeof t.makerAddress === "string" ? t.makerAddress : "";
+      const taker = typeof t.takerAddress === "string" ? t.takerAddress : "";
+      const owner = typeof t.owner === "string" ? t.owner : "";
+      for (const w of [maker, taker, owner]) {
+        if (w) a.wallets.add(w);
+      }
+      if (notional >= 10_000) a.whaleCount += 1;
       agg.set(key, a);
     }
 
@@ -72,6 +83,9 @@ export const fetchRecentTradeFlow = async (
       side: net >= 0 ? "BUY" : "SELL",
       netNotional: Math.abs(net),
       grossNotional: a.gross,
+      tradeCount: a.tradeCount,
+      walletDiversity: a.wallets.size,
+      whaleCount: a.whaleCount,
     };
 
     const prev = byCondition.get(conditionId);

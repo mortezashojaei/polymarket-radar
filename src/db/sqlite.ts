@@ -53,6 +53,26 @@ CREATE TABLE IF NOT EXISTS kv_state (
   v TEXT NOT NULL,
   updated_at INTEGER NOT NULL
 );
+CREATE TABLE IF NOT EXISTS alert_posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  market_id TEXT NOT NULL,
+  signal_type TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  direction INTEGER NOT NULL,
+  entry_prob REAL NOT NULL,
+  created_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS market_snapshots (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  market_id TEXT NOT NULL,
+  question TEXT NOT NULL,
+  category TEXT NOT NULL,
+  top_outcome TEXT NOT NULL,
+  top_prob REAL NOT NULL,
+  captured_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_alert_posts_market_time ON alert_posts(market_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_market_snapshots_market_time ON market_snapshots(market_id, captured_at);
 `);
 
 for (const ddl of [
@@ -264,6 +284,113 @@ export const listQueuedDigestSignals = (limit: number): string[] => {
 
 export const clearQueuedDigestSignals = (): void => {
   db.prepare("DELETE FROM pending_digest_signals").run();
+};
+
+
+export const saveAlertPost = (args: {
+  marketId: string;
+  signalType: string;
+  confidence: string;
+  direction: number;
+  entryProb: number;
+  createdAt?: number;
+}): void => {
+  db.prepare(
+    `INSERT INTO alert_posts(market_id, signal_type, confidence, direction, entry_prob, created_at)
+     VALUES (?, ?, ?, ?, ?, ?)`
+  ).run(
+    args.marketId,
+    args.signalType,
+    args.confidence,
+    args.direction,
+    args.entryProb,
+    args.createdAt ?? Date.now()
+  );
+};
+
+export const listMarketPostCounts = (sinceTs: number): Map<string, number> => {
+  const rows = db
+    .prepare(
+      `SELECT market_id, COUNT(*) AS c
+       FROM alert_posts
+       WHERE created_at >= ?
+       GROUP BY market_id`
+    )
+    .all(sinceTs) as Array<{ market_id: string; c: number }>;
+
+  return new Map(rows.map((r) => [r.market_id, r.c]));
+};
+
+export const listAlertPostsBetween = (startTs: number, endTs: number) => {
+  return db
+    .prepare(
+      `SELECT market_id, signal_type, confidence, direction, entry_prob, created_at
+       FROM alert_posts
+       WHERE created_at >= ? AND created_at < ?
+       ORDER BY created_at DESC`
+    )
+    .all(startTs, endTs) as Array<{
+    market_id: string;
+    signal_type: string;
+    confidence: string;
+    direction: number;
+    entry_prob: number;
+    created_at: number;
+  }>;
+};
+
+export const upsertMarketSnapshot = (
+  marketId: string,
+  question: string,
+  category: string,
+  topOutcome: string,
+  topProb: number,
+  capturedAt: number
+): void => {
+  db.prepare(
+    `INSERT INTO market_snapshots(market_id, question, category, top_outcome, top_prob, captured_at)
+     VALUES (?, ?, ?, ?, ?, ?)`
+  ).run(marketId, question, category, topOutcome, topProb, capturedAt);
+};
+
+export const listMarketShiftsBetween = (startTs: number, endTs: number) => {
+  const firstRows = db
+    .prepare(
+      `SELECT s.market_id, s.question, s.category, s.top_prob
+       FROM market_snapshots s
+       JOIN (
+         SELECT market_id, MIN(captured_at) AS t
+         FROM market_snapshots
+         WHERE captured_at >= ? AND captured_at < ?
+         GROUP BY market_id
+       ) firsts ON firsts.market_id = s.market_id AND firsts.t = s.captured_at`
+    )
+    .all(startTs, endTs) as Array<{ market_id: string; question: string; category: string; top_prob: number }>;
+
+  const lastRows = db
+    .prepare(
+      `SELECT s.market_id, s.top_prob
+       FROM market_snapshots s
+       JOIN (
+         SELECT market_id, MAX(captured_at) AS t
+         FROM market_snapshots
+         WHERE captured_at >= ? AND captured_at < ?
+         GROUP BY market_id
+       ) lasts ON lasts.market_id = s.market_id AND lasts.t = s.captured_at`
+    )
+    .all(startTs, endTs) as Array<{ market_id: string; top_prob: number }>;
+
+  const lastMap = new Map(lastRows.map((r) => [r.market_id, r.top_prob]));
+  return firstRows
+    .map((r) => ({
+      marketId: r.market_id,
+      question: r.question,
+      category: r.category,
+      fromProb: r.top_prob,
+      toProb: lastMap.get(r.market_id) ?? r.top_prob,
+      delta: (lastMap.get(r.market_id) ?? r.top_prob) - r.top_prob,
+    }))
+    .filter((r) => Number.isFinite(r.delta));
 };
 
 export const getKv = (key: string): string | null => {

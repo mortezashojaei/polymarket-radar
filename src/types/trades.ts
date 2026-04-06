@@ -4,6 +4,9 @@ export interface TradeFlowSummary {
   side: "BUY" | "SELL";
   netNotional: number;
   grossNotional: number;
+  tradeCount: number;
+  walletDiversity: number;
+  whaleCount: number;
 }
 
 export interface WhaleTrade {
