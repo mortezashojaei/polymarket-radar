@@ -131,7 +131,9 @@ const pollWhaleTransactions = async () => {
     const profile = thresholdProfileForBucket(bucket);
     const minWhaleNotionalByBucket =
       profile === "sensitive"
-        ? env.minWhaleNotionalPolitics
+        ? w.side === "SELL"
+          ? env.minWhaleNotionalPoliticsSell
+          : env.minWhaleNotionalPolitics
         : profile === "noisy"
         ? env.minWhaleNotionalNoisy
         : env.minWhaleNotional;
@@ -168,6 +170,9 @@ const pollWhaleTransactions = async () => {
 
     const maxPayout = w.price > 0 ? w.notional / w.price : 0;
     const netProfitIfCorrect = Math.max(0, maxPayout - w.notional);
+
+    // For BUY alerts, skip low-upside trades
+    if (w.side === "BUY" && netProfitIfCorrect < env.whaleMinBuyProfitIfCorrect) continue;
 
     const text = [
       "🐋 Whale transaction alert",

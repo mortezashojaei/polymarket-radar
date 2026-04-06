@@ -45,6 +45,7 @@ export const env = {
   minWhaleNotional: num("MIN_WHALE_NOTIONAL", 10_000),
   minWhaleNotionalNoisy: num("MIN_WHALE_NOTIONAL_NOISY", 50_000),
   minWhaleNotionalPolitics: num("MIN_WHALE_NOTIONAL_POLITICS", 5_000),
+  minWhaleNotionalPoliticsSell: num("MIN_WHALE_NOTIONAL_POLITICS_SELL", 20_000),
   minFlowMultiple: num("MIN_FLOW_MULTIPLE", 2.5),
   postTierBInDigest: bool("POST_TIER_B_IN_DIGEST", true),
 
@@ -53,9 +54,10 @@ export const env = {
   whalePollMinutes: num("WHALE_POLL_MINUTES", 5),
   whaleSingleTxNotional: num("WHALE_SINGLE_TX_NOTIONAL", 10_000),
   whaleTxWindowMinutes: num("WHALE_TX_WINDOW_MINUTES", 10),
-  whaleTxMaxPerPoll: num("WHALE_TX_MAX_PER_POLL", 3),
+  whaleTxMaxPerPoll: num("WHALE_TX_MAX_PER_POLL", 5),
   whaleMaxProb: num("WHALE_MAX_PROB", 0.98),
   whaleMinProb: num("WHALE_MIN_PROB", 0.02),
+  whaleMinBuyProfitIfCorrect: num("WHALE_MIN_BUY_PROFIT_IF_CORRECT", 2_000),
 
   // Global reporting guardrails
   minReportLiquidity: num("MIN_REPORT_LIQUIDITY", 500_000),
