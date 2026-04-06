@@ -49,6 +49,19 @@ export const env = {
   minFlowMultiple: num("MIN_FLOW_MULTIPLE", 2.5),
   postTierBInDigest: bool("POST_TIER_B_IN_DIGEST", true),
 
+  // Prediction Pulse v3
+  predictiveConfidenceHigh: num("PREDICTIVE_CONFIDENCE_HIGH", 72),
+  predictiveConfidenceMed: num("PREDICTIVE_CONFIDENCE_MED", 58),
+  allowMedConfidenceBroadcasts: bool("ALLOW_MED_CONFIDENCE_BROADCASTS", true),
+  minNetFlowForBroadcast: num("MIN_NET_FLOW_FOR_BROADCAST", 15_000),
+  minTradeCountForBroadcast: num("MIN_TRADE_COUNT_FOR_BROADCAST", 10),
+  minWhaleCountForCoordination: num("MIN_WHALE_COUNT_FOR_COORDINATION", 3),
+  broadcastCooldownMinutes: num("BROADCAST_COOLDOWN_MINUTES", 90),
+  broadcastDailyCapPerMarket: num("BROADCAST_DAILY_CAP_PER_MARKET", 3),
+  invalidationWindowHours: num("INVALIDATION_WINDOW_HOURS", 6),
+  dailyRecapHourUtc: num("DAILY_RECAP_HOUR_UTC", 22),
+
+
   // Whale transaction polling
   whalePollEnabled: bool("WHALE_POLL_ENABLED", true),
   whalePollMinutes: num("WHALE_POLL_MINUTES", 5),

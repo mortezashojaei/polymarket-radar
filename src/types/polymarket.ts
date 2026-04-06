@@ -14,13 +14,27 @@ export interface RawMarket {
 }
 
 export type SignalType =
-  | "PRICE_MOVE"
-  | "FLOW_MOVE"
-  | "BREAKOUT"
-  | "WHALE_WATCH"
+  | "CONVICTION_SPIKE"
+  | "REGIME_SHIFT"
+  | "CONSENSUS_CRACK"
+  | "COORDINATED_WHALE_FLOW"
   | "MERGED_SIGNAL";
 
 export type SignalTier = "A" | "B" | "C";
+export type PredictiveConfidence = "Low" | "Med" | "High";
+
+export interface SignalEvidence {
+  fromProb: number;
+  toProb: number;
+  deltaPts: number;
+  velocityPtsPerHour: number;
+  persistenceScore: number;
+  netFlow: number;
+  tradeCount: number;
+  whaleCount: number;
+  liquidity: number;
+  spreadBps: number;
+}
 
 export interface MarketSignal {
   key: string;
@@ -29,9 +43,14 @@ export interface MarketSignal {
   type: SignalType;
   title: string;
   body: string;
-  confidence: "Low" | "Med" | "High";
+  confidence: PredictiveConfidence;
   score: number;
   tier: SignalTier;
   reasons: string[];
   createdAt: number;
+  link: string;
+  category: string;
+  invalidation: string;
+  whyItMatters: string;
+  evidence: SignalEvidence;
 }

@@ -1,23 +1,23 @@
 import { env } from "./config/env.js";
 import {
-  clearQueuedDigestSignals,
   clearSentMessages,
   getKv,
   hasSeen,
-  listQueuedDigestSignals,
+  listAlertPostsBetween,
+  listMarketShiftsBetween,
   listSentMessageIds,
   markSeen,
-  queueDigestSignal,
+  saveAlertPost,
   saveRun,
   saveSentMessage,
   setKv,
+  getMarketState,
 } from "./db/sqlite.js";
 import { detectSignals } from "./detectors/signals.js";
-import { renderDigest } from "./formatters/digest.js";
+import { renderBroadcasts, renderDailyRecap } from "./formatters/digest.js";
 import { fetchAllMarkets } from "./services/polymarket.js";
 import { deleteTelegramMessage, sendTelegramMessage } from "./services/telegram.js";
 import { fetchRecentTradeFlow, fetchRecentWhaleTrades } from "./services/trades.js";
-import type { MarketSignal } from "./types/polymarket.js";
 import { bucketLabel, getMarketBucket, thresholdProfileForBucket } from "./utils/market-bucket.js";
 
 const escHtml = (s: string): string =>
@@ -40,7 +40,7 @@ const clearChannelOnStart = async () => {
       await deleteTelegramMessage(id);
       deleted += 1;
     } catch {
-      // best effort (older msgs may fail by API limits/permissions)
+      // best effort
     }
   }
 
@@ -48,50 +48,78 @@ const clearChannelOnStart = async () => {
   console.log(`[radar] clear_on_start deleted ${deleted}/${ids.length} tracked messages`);
 };
 
-const hourKeyUtc = (ts = Date.now()): string => {
+const dayKeyUtc = (ts = Date.now()): string => {
   const d = new Date(ts);
   const yyyy = d.getUTCFullYear();
   const mm = String(d.getUTCMonth() + 1).padStart(2, "0");
   const dd = String(d.getUTCDate()).padStart(2, "0");
-  const hh = String(d.getUTCHours()).padStart(2, "0");
-  return `${yyyy}${mm}${dd}${hh}`;
+  return `${yyyy}${mm}${dd}`;
 };
 
-const flushHourlyDigestIfDue = async () => {
-  if (!env.postTierBInDigest) return 0;
+const startOfUtcDay = (ts = Date.now()): number => {
+  const d = new Date(ts);
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+};
 
-  const currentHour = hourKeyUtc();
-  const lastDigestHour = getKv("last_digest_hour");
-  if (lastDigestHour === currentHour) return 0;
+const maybePostDailyRecap = async (): Promise<boolean> => {
+  const now = Date.now();
+  const todayKey = dayKeyUtc(now);
+  const recapKey = `daily_recap:${todayKey}`;
+  if (getKv(recapKey) === "1") return false;
 
-  const payloads = listQueuedDigestSignals(env.topSignals * 4);
-  const signals = payloads
-    .map((p) => {
-      try {
-        return JSON.parse(p) as MarketSignal;
-      } catch {
-        return null;
-      }
-    })
-    .filter((s): s is MarketSignal => !!s)
-    .filter((s) => s.tier === "B")
-    .sort((a, b) => b.score - a.score)
-    .slice(0, env.topSignals);
+  const nowDate = new Date(now);
+  if (nowDate.getUTCHours() < env.dailyRecapHourUtc) return false;
 
-  setKv("last_digest_hour", currentHour);
+  const todayStart = startOfUtcDay(now);
+  const yesterdayStart = todayStart - 24 * 3_600_000;
 
-  if (!signals.length) {
-    clearQueuedDigestSignals();
-    return 0;
+  const shifts = listMarketShiftsBetween(yesterdayStart, todayStart);
+  if (!shifts.length) {
+    setKv(recapKey, "1");
+    return false;
   }
 
-  const text = renderDigest(signals);
-  const payload = `Hourly watchlist digest\n\n${text}`;
-  const messageId = await sendTelegramMessage(payload);
-  if (messageId) saveSentMessage(messageId, { text: payload, kind: "digest", tier: "B" });
+  const increases = shifts
+    .filter((s) => s.delta > 0)
+    .sort((a, b) => b.delta - a.delta)
+    .slice(0, 5);
+  const collapses = shifts
+    .filter((s) => s.delta < 0)
+    .sort((a, b) => a.delta - b.delta)
+    .slice(0, 5);
 
-  clearQueuedDigestSignals();
-  return signals.length;
+  const themeMap = new Map<string, number>();
+  for (const s of shifts.filter((x) => Math.abs(x.delta) >= 4)) {
+    themeMap.set(s.category, (themeMap.get(s.category) ?? 0) + 1);
+  }
+  const themes = [...themeMap.entries()]
+    .map(([category, count]) => ({ category, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
+  const posts = listAlertPostsBetween(yesterdayStart, todayStart);
+  let held = 0;
+  let faded = 0;
+  for (const p of posts) {
+    const state = getMarketState(p.market_id);
+    if (!state) continue;
+    const realized = state.topProb - p.entry_prob;
+    if ((p.direction > 0 && realized >= 0) || (p.direction < 0 && realized <= 0)) held += 1;
+    else faded += 1;
+  }
+
+  const recapText = renderDailyRecap({
+    increases,
+    collapses,
+    themes,
+    followThrough: { held, faded },
+    recapDateLabel: new Date(yesterdayStart).toISOString().slice(0, 10),
+  });
+
+  const messageId = await sendTelegramMessage(recapText);
+  if (messageId) saveSentMessage(messageId, { text: recapText, kind: "daily_recap", tier: "A" });
+  setKv(recapKey, "1");
+  return true;
 };
 
 const pollWhaleTransactions = async () => {
@@ -125,7 +153,7 @@ const pollWhaleTransactions = async () => {
     if (hasSeen(key)) continue;
 
     const m = byCondition.get(w.conditionId);
-    if (!m) continue; // fully ignore low-volume/unknown markets
+    if (!m) continue;
 
     const bucket = getMarketBucket(m);
     const profile = thresholdProfileForBucket(bucket);
@@ -140,7 +168,6 @@ const pollWhaleTransactions = async () => {
 
     if (w.notional < Math.max(env.whaleSingleTxNotional, minWhaleNotionalByBucket)) continue;
 
-    // Ignore near-resolved markets (default: >=98% or <=2%)
     const prices = (() => {
       if (Array.isArray(m.outcomePrices)) return m.outcomePrices.map(Number).filter(Number.isFinite);
       if (typeof m.outcomePrices === "string") {
@@ -163,34 +190,21 @@ const pollWhaleTransactions = async () => {
       : m.slug
       ? `https://polymarket.com/event/${encodeURIComponent(m.slug)}`
       : "https://polymarket.com";
-    const safeTitle = escHtml(title);
-    const safeOutcome = escHtml(w.outcome.toUpperCase());
-    const safeSide = escHtml(w.side);
-    const safeLink = escAttr(link);
 
     const maxPayout = w.price > 0 ? w.notional / w.price : 0;
     const netProfitIfCorrect = Math.max(0, maxPayout - w.notional);
-
-    // For BUY alerts, skip low-upside trades
     if (w.side === "BUY" && netProfitIfCorrect < env.whaleMinBuyProfitIfCorrect) continue;
 
     const text = [
       "🐋 Whale transaction alert",
       "",
       `🏷️ Category: <b>${bucketLabel(bucket)}</b>`,
-      `📍 <b>${safeTitle}</b>`,
-      `🎯 Outcome: <b>${safeOutcome}</b>`,
-      `↕️ Side: <b>${safeSide}</b>`,
+      `📍 <b>${escHtml(title)}</b>`,
+      `🎯 Outcome: <b>${escHtml(w.outcome.toUpperCase())}</b>`,
+      `↕️ Side: <b>${escHtml(w.side)}</b>`,
       `💵 Notional: <b>$${Math.round(w.notional).toLocaleString()}</b>`,
       `💲 Price: <b>${(w.price * 100).toFixed(1)}%</b>`,
-      `📦 Size: <b>${Math.round(w.size).toLocaleString()}</b>`,
-      ...(w.side === "BUY"
-        ? [
-            `🏆 Max payout (if correct): <b>$${Math.round(maxPayout).toLocaleString()}</b>`,
-            `💰 Net profit (if correct): <b>$${Math.round(netProfitIfCorrect).toLocaleString()}</b>`,
-          ]
-        : []),
-      `🔗 <a href="${safeLink}">Go to market</a>`,
+      `🔗 <a href="${escAttr(link)}">Go to market</a>`,
     ].join("\n");
 
     const messageId = await sendTelegramMessage(text);
@@ -211,42 +225,34 @@ const runOnce = async () => {
 
   for (const s of freshSignals) markSeen(s.key);
 
-  const aSignals = freshSignals.filter((s) => s.tier === "A");
-  const bSignals = freshSignals.filter((s) => s.tier === "B");
-
-  for (const s of bSignals) queueDigestSignal(s.key, JSON.stringify(s));
-
-  let postedRealtime = 0;
-  if (aSignals.length) {
-    const toPost = aSignals.slice(0, env.topSignals);
-    const text = renderDigest(toPost);
+  if (freshSignals.length) {
+    const text = renderBroadcasts(freshSignals.slice(0, env.topSignals));
     const messageId = await sendTelegramMessage(text);
-    if (messageId) saveSentMessage(messageId, { text, kind: "realtime", tier: "A" });
-    postedRealtime = toPost.length;
+    if (messageId) saveSentMessage(messageId, { text, kind: "broadcast", tier: "A" });
+
+    for (const s of freshSignals.slice(0, env.topSignals)) {
+      saveAlertPost({
+        marketId: s.marketId,
+        signalType: s.type,
+        confidence: s.confidence,
+        direction: s.evidence.deltaPts >= 0 ? 1 : -1,
+        entryProb: s.evidence.toProb,
+        createdAt: s.createdAt,
+      });
+    }
   }
 
-  const postedDigest = await flushHourlyDigestIfDue();
+  const postedRecap = await maybePostDailyRecap();
+  const postedTotal = (freshSignals.length ? 1 : 0) + (postedRecap ? 1 : 0);
 
-  const postedTotal = postedRealtime + postedDigest;
   if (postedTotal === 0) {
-    saveRun(
-      0,
-      `markets=${markets.length}; fresh=${freshSignals.length}; a=${aSignals.length}; bQueued=${bSignals.length}; skipped=no-post`
-    );
-    console.log(
-      `[radar] no post from ${markets.length} markets (fresh=${freshSignals.length}, A=${aSignals.length}, B queued=${bSignals.length})`
-    );
+    saveRun(0, `markets=${markets.length}; fresh=${freshSignals.length}; skipped=no-post`);
+    console.log(`[radar] no post from ${markets.length} markets (fresh=${freshSignals.length})`);
     return;
   }
 
-  saveRun(
-    postedTotal,
-    `markets=${markets.length}; fresh=${freshSignals.length}; realtimeA=${postedRealtime}; digestB=${postedDigest}`
-  );
-
-  console.log(
-    `[radar] posted total=${postedTotal} from ${markets.length} markets (A=${postedRealtime}, digestB=${postedDigest})`
-  );
+  saveRun(postedTotal, `markets=${markets.length}; broadcasts=${freshSignals.length ? 1 : 0}; recap=${postedRecap ? 1 : 0}`);
+  console.log(`[radar] posted total=${postedTotal} from ${markets.length} markets`);
 };
 
 const start = async () => {
