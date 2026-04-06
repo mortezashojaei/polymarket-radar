@@ -1,0 +1,4741 @@
+{
+  "market_state": [
+    {
+      "market_id": "824952",
+      "top_outcome": "No",
+      "top_prob": 84.5,
+      "volume24h": 5909.960296,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590532
+    },
+    {
+      "market_id": "692250",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 11139.496915,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590536
+    },
+    {
+      "market_id": "692258",
+      "top_outcome": "No",
+      "top_prob": 95.0,
+      "volume24h": 5539.742502,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590540
+    },
+    {
+      "market_id": "678876",
+      "top_outcome": "No",
+      "top_prob": 97.39999999999999,
+      "volume24h": 5175.537523999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590544
+    },
+    {
+      "market_id": "610236",
+      "top_outcome": "No",
+      "top_prob": 97.75,
+      "volume24h": 8363.611490000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590547
+    },
+    {
+      "market_id": "597967",
+      "top_outcome": "No",
+      "top_prob": 58.5,
+      "volume24h": 6301.558361000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590551
+    },
+    {
+      "market_id": "666655",
+      "top_outcome": "Yes",
+      "top_prob": 64.0,
+      "volume24h": 5716.571499,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590554
+    },
+    {
+      "market_id": "1359701",
+      "top_outcome": "No",
+      "top_prob": 96.05,
+      "volume24h": 7314.948249000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590558
+    },
+    {
+      "market_id": "540819",
+      "top_outcome": "No",
+      "top_prob": 51.5,
+      "volume24h": 20610.205812999997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590562
+    },
+    {
+      "market_id": "540881",
+      "top_outcome": "No",
+      "top_prob": 98.15,
+      "volume24h": 129942.10803700003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590565
+    },
+    {
+      "market_id": "677361",
+      "top_outcome": "No",
+      "top_prob": 93.5,
+      "volume24h": 10588.477273,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590568
+    },
+    {
+      "market_id": "610256",
+      "top_outcome": "No",
+      "top_prob": 95.15,
+      "volume24h": 20474.623736,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590572
+    },
+    {
+      "market_id": "553827",
+      "top_outcome": "No",
+      "top_prob": 94.15,
+      "volume24h": 16891.595730999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590575
+    },
+    {
+      "market_id": "553844",
+      "top_outcome": "No",
+      "top_prob": 98.8,
+      "volume24h": 7695.808464999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590580
+    },
+    {
+      "market_id": "553846",
+      "top_outcome": "No",
+      "top_prob": 99.7,
+      "volume24h": 25993.936892,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590583
+    },
+    {
+      "market_id": "553825",
+      "top_outcome": "No",
+      "top_prob": 99.7,
+      "volume24h": 5984.065108000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590587
+    },
+    {
+      "market_id": "553826",
+      "top_outcome": "No",
+      "top_prob": 90.5,
+      "volume24h": 5570.89568,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590591
+    },
+    {
+      "market_id": "553845",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 26891.189000000006,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590594
+    },
+    {
+      "market_id": "553828",
+      "top_outcome": "No",
+      "top_prob": 75.7,
+      "volume24h": 538402.545954,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590598
+    },
+    {
+      "market_id": "553829",
+      "top_outcome": "No",
+      "top_prob": 94.75,
+      "volume24h": 19060.57069300001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590601
+    },
+    {
+      "market_id": "553855",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 8226.97425,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590605
+    },
+    {
+      "market_id": "553849",
+      "top_outcome": "No",
+      "top_prob": 98.0,
+      "volume24h": 12838.361013,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590609
+    },
+    {
+      "market_id": "553831",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 17307.869277,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590612
+    },
+    {
+      "market_id": "553850",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 5827.390086,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590616
+    },
+    {
+      "market_id": "553832",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 22685.043500000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590620
+    },
+    {
+      "market_id": "553833",
+      "top_outcome": "No",
+      "top_prob": 99.4,
+      "volume24h": 56337.131473,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590624
+    },
+    {
+      "market_id": "553834",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 9610.143000000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590628
+    },
+    {
+      "market_id": "553854",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 23483.741500000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590633
+    },
+    {
+      "market_id": "553836",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 28012.661833000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590637
+    },
+    {
+      "market_id": "553837",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 9212.883236,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590640
+    },
+    {
+      "market_id": "553838",
+      "top_outcome": "No",
+      "top_prob": 93.4,
+      "volume24h": 18225.580445000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590644
+    },
+    {
+      "market_id": "553839",
+      "top_outcome": "No",
+      "top_prob": 97.95,
+      "volume24h": 11361.227480000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590648
+    },
+    {
+      "market_id": "553840",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 10769.445000000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590651
+    },
+    {
+      "market_id": "553841",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 30009.742833000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590654
+    },
+    {
+      "market_id": "553842",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 6101.429766,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590657
+    },
+    {
+      "market_id": "553843",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 9620.034000000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590661
+    },
+    {
+      "market_id": "553848",
+      "top_outcome": "No",
+      "top_prob": 98.0,
+      "volume24h": 5961.844739,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590664
+    },
+    {
+      "market_id": "553851",
+      "top_outcome": "No",
+      "top_prob": 94.95,
+      "volume24h": 17923.572381000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590668
+    },
+    {
+      "market_id": "553852",
+      "top_outcome": "No",
+      "top_prob": 98.0,
+      "volume24h": 13250.008973000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590672
+    },
+    {
+      "market_id": "553853",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 34840.13465,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590675
+    },
+    {
+      "market_id": "553856",
+      "top_outcome": "No",
+      "top_prob": 64.5,
+      "volume24h": 65413.00277699998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590679
+    },
+    {
+      "market_id": "553860",
+      "top_outcome": "No",
+      "top_prob": 97.2,
+      "volume24h": 59396.46303600004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590682
+    },
+    {
+      "market_id": "553875",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 81722.74199999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590685
+    },
+    {
+      "market_id": "553876",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 125350.99509,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590689
+    },
+    {
+      "market_id": "553878",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 98555.99099999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590693
+    },
+    {
+      "market_id": "553857",
+      "top_outcome": "No",
+      "top_prob": 94.3,
+      "volume24h": 42982.526298000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590697
+    },
+    {
+      "market_id": "553858",
+      "top_outcome": "No",
+      "top_prob": 95.25,
+      "volume24h": 41269.749857,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590701
+    },
+    {
+      "market_id": "553859",
+      "top_outcome": "No",
+      "top_prob": 97.35000000000001,
+      "volume24h": 41028.170979,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590705
+    },
+    {
+      "market_id": "553877",
+      "top_outcome": "No",
+      "top_prob": 99.35000000000001,
+      "volume24h": 146210.3148269999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590709
+    },
+    {
+      "market_id": "553862",
+      "top_outcome": "No",
+      "top_prob": 87.35000000000001,
+      "volume24h": 32721.087634,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590713
+    },
+    {
+      "market_id": "553861",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 21293.41,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590717
+    },
+    {
+      "market_id": "553864",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 120838.29149200002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590720
+    },
+    {
+      "market_id": "553865",
+      "top_outcome": "No",
+      "top_prob": 90.5,
+      "volume24h": 23258.41424,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590724
+    },
+    {
+      "market_id": "553866",
+      "top_outcome": "No",
+      "top_prob": 87.1,
+      "volume24h": 32271.858170999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590728
+    },
+    {
+      "market_id": "553872",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 24981.66,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590733
+    },
+    {
+      "market_id": "553868",
+      "top_outcome": "No",
+      "top_prob": 98.8,
+      "volume24h": 121500.38412199999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590738
+    },
+    {
+      "market_id": "553867",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 50011.606582,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590742
+    },
+    {
+      "market_id": "553870",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 45081.62,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590746
+    },
+    {
+      "market_id": "553871",
+      "top_outcome": "No",
+      "top_prob": 94.65,
+      "volume24h": 39999.30383400002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590750
+    },
+    {
+      "market_id": "553874",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 98531.669,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590754
+    },
+    {
+      "market_id": "553863",
+      "top_outcome": "No",
+      "top_prob": 98.3,
+      "volume24h": 116436.52704,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590758
+    },
+    {
+      "market_id": "553879",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 171741.882983,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590761
+    },
+    {
+      "market_id": "553881",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 55096.932657,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590765
+    },
+    {
+      "market_id": "553880",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 31427.5,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590768
+    },
+    {
+      "market_id": "553882",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 292060.33728300006,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590772
+    },
+    {
+      "market_id": "553883",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 137801.025,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590775
+    },
+    {
+      "market_id": "553884",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 11153.92,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590779
+    },
+    {
+      "market_id": "553873",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 58855.65729200002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590782
+    },
+    {
+      "market_id": "553869",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 148301.91826600002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590785
+    },
+    {
+      "market_id": "553885",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 12150.33,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590788
+    },
+    {
+      "market_id": "556063",
+      "top_outcome": "No",
+      "top_prob": 98.55000000000001,
+      "volume24h": 8781.761527999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590792
+    },
+    {
+      "market_id": "965261",
+      "top_outcome": "Yes",
+      "top_prob": 53.5,
+      "volume24h": 5137.913804,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590795
+    },
+    {
+      "market_id": "556108",
+      "top_outcome": "Yes",
+      "top_prob": 65.7,
+      "volume24h": 106631.767676,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590799
+    },
+    {
+      "market_id": "558934",
+      "top_outcome": "No",
+      "top_prob": 84.55,
+      "volume24h": 81836.84063200002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590802
+    },
+    {
+      "market_id": "558957",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 339146.6990000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590805
+    },
+    {
+      "market_id": "558974",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 140147.49884900003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590808
+    },
+    {
+      "market_id": "558935",
+      "top_outcome": "No",
+      "top_prob": 86.75,
+      "volume24h": 56885.22180600001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590811
+    },
+    {
+      "market_id": "558936",
+      "top_outcome": "No",
+      "top_prob": 89.14999999999999,
+      "volume24h": 48391.76886299998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590814
+    },
+    {
+      "market_id": "558961",
+      "top_outcome": "No",
+      "top_prob": 99.35000000000001,
+      "volume24h": 96176.57582900002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590817
+    },
+    {
+      "market_id": "558977",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 76883.797,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590820
+    },
+    {
+      "market_id": "558937",
+      "top_outcome": "No",
+      "top_prob": 91.35,
+      "volume24h": 166311.27998400002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590823
+    },
+    {
+      "market_id": "558962",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 121957.354,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590826
+    },
+    {
+      "market_id": "558978",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 86874.01800000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590829
+    },
+    {
+      "market_id": "558938",
+      "top_outcome": "No",
+      "top_prob": 88.44999999999999,
+      "volume24h": 41503.290462,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590832
+    },
+    {
+      "market_id": "558939",
+      "top_outcome": "No",
+      "top_prob": 94.55,
+      "volume24h": 52433.70102999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590835
+    },
+    {
+      "market_id": "558947",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 264057.366079,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590838
+    },
+    {
+      "market_id": "558959",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 83953.25,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590841
+    },
+    {
+      "market_id": "558940",
+      "top_outcome": "No",
+      "top_prob": 92.85,
+      "volume24h": 52211.22542600004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590844
+    },
+    {
+      "market_id": "558967",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 1368651.075999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590848
+    },
+    {
+      "market_id": "558941",
+      "top_outcome": "No",
+      "top_prob": 96.8,
+      "volume24h": 74820.95064500006,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590851
+    },
+    {
+      "market_id": "558969",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 179498.11283300005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590855
+    },
+    {
+      "market_id": "558942",
+      "top_outcome": "No",
+      "top_prob": 98.0,
+      "volume24h": 140946.83360699998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590858
+    },
+    {
+      "market_id": "558943",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 101540.53264399999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590861
+    },
+    {
+      "market_id": "558952",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 149985.03924999997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590864
+    },
+    {
+      "market_id": "558944",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 71047.743995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590867
+    },
+    {
+      "market_id": "558945",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 31315.396031,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590870
+    },
+    {
+      "market_id": "558956",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 119047.87999700001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590873
+    },
+    {
+      "market_id": "558973",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 143646.62749999997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590876
+    },
+    {
+      "market_id": "558949",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 43929.38660099999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590878
+    },
+    {
+      "market_id": "558951",
+      "top_outcome": "No",
+      "top_prob": 96.65,
+      "volume24h": 47874.52542400002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590880
+    },
+    {
+      "market_id": "558954",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 78800.82499999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590882
+    },
+    {
+      "market_id": "558955",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 72885.89041500002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590885
+    },
+    {
+      "market_id": "558960",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 57095.69499999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590887
+    },
+    {
+      "market_id": "558963",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 18515.367723,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590889
+    },
+    {
+      "market_id": "558964",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 118809.47333299999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590891
+    },
+    {
+      "market_id": "558965",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 153689.57182699998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590894
+    },
+    {
+      "market_id": "558966",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 82955.7055,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590897
+    },
+    {
+      "market_id": "558970",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 67378.25500000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590900
+    },
+    {
+      "market_id": "558971",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 66354.60999999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590903
+    },
+    {
+      "market_id": "558946",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 140549.270589,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590906
+    },
+    {
+      "market_id": "558958",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 428245.63616500003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590908
+    },
+    {
+      "market_id": "558972",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 81512.46399999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590910
+    },
+    {
+      "market_id": "558975",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 127784.0691949999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590912
+    },
+    {
+      "market_id": "558976",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 146032.929168,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590914
+    },
+    {
+      "market_id": "558968",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 74716.787659,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590916
+    },
+    {
+      "market_id": "559651",
+      "top_outcome": "No",
+      "top_prob": 91.35,
+      "volume24h": 38959.43889799998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590919
+    },
+    {
+      "market_id": "559657",
+      "top_outcome": "No",
+      "top_prob": 98.9,
+      "volume24h": 575185.7635529999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590921
+    },
+    {
+      "market_id": "559659",
+      "top_outcome": "No",
+      "top_prob": 98.6,
+      "volume24h": 59590.33593899999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590923
+    },
+    {
+      "market_id": "559687",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 74133.24256199998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590925
+    },
+    {
+      "market_id": "559660",
+      "top_outcome": "No",
+      "top_prob": 97.75,
+      "volume24h": 35241.93379399998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590926
+    },
+    {
+      "market_id": "559695",
+      "top_outcome": "No",
+      "top_prob": 97.8,
+      "volume24h": 72476.16836500008,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590928
+    },
+    {
+      "market_id": "559654",
+      "top_outcome": "No",
+      "top_prob": 96.39999999999999,
+      "volume24h": 158121.24259300012,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590930
+    },
+    {
+      "market_id": "559661",
+      "top_outcome": "No",
+      "top_prob": 95.3,
+      "volume24h": 22799.049611999995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590933
+    },
+    {
+      "market_id": "559670",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 38335.66197000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590935
+    },
+    {
+      "market_id": "559664",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 168768.45715100013,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590938
+    },
+    {
+      "market_id": "559676",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 221844.63663499997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590941
+    },
+    {
+      "market_id": "559683",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 72336.42355400001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590943
+    },
+    {
+      "market_id": "559665",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 147641.362491,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590946
+    },
+    {
+      "market_id": "559675",
+      "top_outcome": "No",
+      "top_prob": 97.95,
+      "volume24h": 85679.14426500002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590949
+    },
+    {
+      "market_id": "559666",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 95337.894423,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590951
+    },
+    {
+      "market_id": "559679",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 281055.2486190001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590954
+    },
+    {
+      "market_id": "559668",
+      "top_outcome": "No",
+      "top_prob": 97.75,
+      "volume24h": 107597.06584200003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590956
+    },
+    {
+      "market_id": "559678",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 121239.40365800002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590959
+    },
+    {
+      "market_id": "559689",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 52232.25263800002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590961
+    },
+    {
+      "market_id": "559667",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 167606.63175900007,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590965
+    },
+    {
+      "market_id": "559671",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 102417.81119200001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590968
+    },
+    {
+      "market_id": "559688",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 131120.92476500003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590971
+    },
+    {
+      "market_id": "559653",
+      "top_outcome": "No",
+      "top_prob": 90.75,
+      "volume24h": 47401.77418400003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590974
+    },
+    {
+      "market_id": "559669",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 48320.626925,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590977
+    },
+    {
+      "market_id": "559673",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 73841.39445899997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590980
+    },
+    {
+      "market_id": "559690",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 75950.33733100002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590983
+    },
+    {
+      "market_id": "559693",
+      "top_outcome": "No",
+      "top_prob": 98.2,
+      "volume24h": 7350.434026999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590987
+    },
+    {
+      "market_id": "559674",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 136739.198563,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590990
+    },
+    {
+      "market_id": "559662",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 172906.01526100002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590993
+    },
+    {
+      "market_id": "559680",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 95893.238832,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590996
+    },
+    {
+      "market_id": "559656",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 192250.182386,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178590999
+    },
+    {
+      "market_id": "559663",
+      "top_outcome": "No",
+      "top_prob": 98.05,
+      "volume24h": 268848.45005500026,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591002
+    },
+    {
+      "market_id": "559681",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 29794.25894400001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591005
+    },
+    {
+      "market_id": "559682",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 134758.32387999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591008
+    },
+    {
+      "market_id": "559684",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 111294.66766399994,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591011
+    },
+    {
+      "market_id": "559686",
+      "top_outcome": "No",
+      "top_prob": 98.55000000000001,
+      "volume24h": 159602.84466799998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591014
+    },
+    {
+      "market_id": "559685",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 115080.37232699999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591017
+    },
+    {
+      "market_id": "559691",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 58720.556081999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591020
+    },
+    {
+      "market_id": "559694",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 23112.620565000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591023
+    },
+    {
+      "market_id": "559658",
+      "top_outcome": "No",
+      "top_prob": 94.85,
+      "volume24h": 158764.66070200002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591027
+    },
+    {
+      "market_id": "559677",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 86532.727638,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591030
+    },
+    {
+      "market_id": "559655",
+      "top_outcome": "No",
+      "top_prob": 96.05,
+      "volume24h": 36632.800916999986,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591033
+    },
+    {
+      "market_id": "559652",
+      "top_outcome": "No",
+      "top_prob": 74.85000000000001,
+      "volume24h": 478805.8201790005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591036
+    },
+    {
+      "market_id": "559672",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 41718.67042900003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591039
+    },
+    {
+      "market_id": "559692",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 556416.0712719999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591042
+    },
+    {
+      "market_id": "560317",
+      "top_outcome": "No",
+      "top_prob": 89.5,
+      "volume24h": 10226.235234999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591045
+    },
+    {
+      "market_id": "561263",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 114026.72786,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591048
+    },
+    {
+      "market_id": "561229",
+      "top_outcome": "No",
+      "top_prob": 78.95,
+      "volume24h": 102632.243703,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591051
+    },
+    {
+      "market_id": "561250",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 355394.8393329998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591054
+    },
+    {
+      "market_id": "561230",
+      "top_outcome": "No",
+      "top_prob": 81.15,
+      "volume24h": 174960.0334259999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591058
+    },
+    {
+      "market_id": "561232",
+      "top_outcome": "No",
+      "top_prob": 98.05,
+      "volume24h": 14367.678422,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591061
+    },
+    {
+      "market_id": "561247",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 190576.64390199992,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591064
+    },
+    {
+      "market_id": "561261",
+      "top_outcome": "No",
+      "top_prob": 97.85000000000001,
+      "volume24h": 26937.765952,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591067
+    },
+    {
+      "market_id": "561233",
+      "top_outcome": "No",
+      "top_prob": 97.55,
+      "volume24h": 18421.942743999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591070
+    },
+    {
+      "market_id": "561236",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 106627.26450700001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591073
+    },
+    {
+      "market_id": "561234",
+      "top_outcome": "No",
+      "top_prob": 86.4,
+      "volume24h": 82716.11318300001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591076
+    },
+    {
+      "market_id": "561231",
+      "top_outcome": "No",
+      "top_prob": 94.65,
+      "volume24h": 177578.128264,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591080
+    },
+    {
+      "market_id": "561235",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 64791.02143700002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591083
+    },
+    {
+      "market_id": "561246",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 26251.287852999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591086
+    },
+    {
+      "market_id": "561251",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 198112.53127199996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591089
+    },
+    {
+      "market_id": "561237",
+      "top_outcome": "No",
+      "top_prob": 98.4,
+      "volume24h": 590542.2237689999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591092
+    },
+    {
+      "market_id": "561238",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 386668.423989,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591095
+    },
+    {
+      "market_id": "561253",
+      "top_outcome": "No",
+      "top_prob": 98.65,
+      "volume24h": 22563.538599000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591098
+    },
+    {
+      "market_id": "561239",
+      "top_outcome": "No",
+      "top_prob": 96.75,
+      "volume24h": 67208.62865200007,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591101
+    },
+    {
+      "market_id": "561255",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 223852.19687800005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591104
+    },
+    {
+      "market_id": "561240",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 165727.09004699998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591106
+    },
+    {
+      "market_id": "561242",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 29714.045221000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591109
+    },
+    {
+      "market_id": "561241",
+      "top_outcome": "No",
+      "top_prob": 98.65,
+      "volume24h": 8881.967137,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591111
+    },
+    {
+      "market_id": "561243",
+      "top_outcome": "No",
+      "top_prob": 98.15,
+      "volume24h": 52725.88239199997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591114
+    },
+    {
+      "market_id": "561258",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 42322.133591,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591117
+    },
+    {
+      "market_id": "561244",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 63797.37927900001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591120
+    },
+    {
+      "market_id": "561245",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 136620.81931800002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591122
+    },
+    {
+      "market_id": "561248",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 113898.360542,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591125
+    },
+    {
+      "market_id": "561252",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 58753.32394099999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591128
+    },
+    {
+      "market_id": "561249",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 370513.0970970002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591131
+    },
+    {
+      "market_id": "561254",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 623443.772135,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591134
+    },
+    {
+      "market_id": "561256",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 160703.968165,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591137
+    },
+    {
+      "market_id": "561257",
+      "top_outcome": "No",
+      "top_prob": 98.65,
+      "volume24h": 44816.26387,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591140
+    },
+    {
+      "market_id": "561259",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 133835.700247,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591143
+    },
+    {
+      "market_id": "561260",
+      "top_outcome": "No",
+      "top_prob": 98.65,
+      "volume24h": 29861.15631,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591146
+    },
+    {
+      "market_id": "561262",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 272168.766579,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591149
+    },
+    {
+      "market_id": "561373",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 11780.0,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591152
+    },
+    {
+      "market_id": "561829",
+      "top_outcome": "No",
+      "top_prob": 97.85000000000001,
+      "volume24h": 268547.653967,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591155
+    },
+    {
+      "market_id": "561973",
+      "top_outcome": "No",
+      "top_prob": 98.05,
+      "volume24h": 155075.87143700002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591158
+    },
+    {
+      "market_id": "561974",
+      "top_outcome": "No",
+      "top_prob": 61.150000000000006,
+      "volume24h": 172486.51463000008,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591161
+    },
+    {
+      "market_id": "562000",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 179359.63092700008,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591165
+    },
+    {
+      "market_id": "561975",
+      "top_outcome": "No",
+      "top_prob": 73.45,
+      "volume24h": 229042.55900399998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591168
+    },
+    {
+      "market_id": "561976",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 83103.899257,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591171
+    },
+    {
+      "market_id": "561977",
+      "top_outcome": "No",
+      "top_prob": 98.55000000000001,
+      "volume24h": 148049.04464099996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591175
+    },
+    {
+      "market_id": "562003",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 148943.044543,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591178
+    },
+    {
+      "market_id": "561978",
+      "top_outcome": "No",
+      "top_prob": 98.55000000000001,
+      "volume24h": 100715.168326,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591182
+    },
+    {
+      "market_id": "561991",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 244103.45299000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591185
+    },
+    {
+      "market_id": "561979",
+      "top_outcome": "No",
+      "top_prob": 97.55,
+      "volume24h": 388801.916569,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591189
+    },
+    {
+      "market_id": "562004",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 74747.05780899999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591193
+    },
+    {
+      "market_id": "561980",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 116913.64731100004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591196
+    },
+    {
+      "market_id": "561981",
+      "top_outcome": "No",
+      "top_prob": 98.55000000000001,
+      "volume24h": 93350.62328300001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591199
+    },
+    {
+      "market_id": "562006",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 242604.91155100003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591203
+    },
+    {
+      "market_id": "561982",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 126303.57695999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591206
+    },
+    {
+      "market_id": "561983",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 97415.79751299997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591209
+    },
+    {
+      "market_id": "561985",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 256397.97661499996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591213
+    },
+    {
+      "market_id": "561984",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 113440.74090900003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591217
+    },
+    {
+      "market_id": "561996",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 78009.782709,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591221
+    },
+    {
+      "market_id": "561986",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 186987.77592000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591225
+    },
+    {
+      "market_id": "561998",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 74960.77332000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591229
+    },
+    {
+      "market_id": "561987",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 165771.087406,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591233
+    },
+    {
+      "market_id": "561988",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 157244.90879400002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591237
+    },
+    {
+      "market_id": "561989",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 273295.55071099993,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591241
+    },
+    {
+      "market_id": "561990",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 150854.580641,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591246
+    },
+    {
+      "market_id": "562002",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 97038.897384,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591250
+    },
+    {
+      "market_id": "561992",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 84840.005837,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591254
+    },
+    {
+      "market_id": "562005",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 78180.434851,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591258
+    },
+    {
+      "market_id": "561993",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 195916.19128700005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591262
+    },
+    {
+      "market_id": "561994",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 259711.50522499994,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591267
+    },
+    {
+      "market_id": "561995",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 162693.45079100004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591271
+    },
+    {
+      "market_id": "561999",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 147567.86980899994,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591275
+    },
+    {
+      "market_id": "562001",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 188633.60010999997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591279
+    },
+    {
+      "market_id": "562186",
+      "top_outcome": "No",
+      "top_prob": 65.5,
+      "volume24h": 96929.90308300006,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591283
+    },
+    {
+      "market_id": "562187",
+      "top_outcome": "Yes",
+      "top_prob": 63.5,
+      "volume24h": 63955.54983000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591290
+    },
+    {
+      "market_id": "562190",
+      "top_outcome": "No",
+      "top_prob": 99.9,
+      "volume24h": 16127.323266000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591295
+    },
+    {
+      "market_id": "562793",
+      "top_outcome": "No",
+      "top_prob": 53.5,
+      "volume24h": 5467.494283,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591298
+    },
+    {
+      "market_id": "562794",
+      "top_outcome": "Yes",
+      "top_prob": 53.5,
+      "volume24h": 5069.517361,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591300
+    },
+    {
+      "market_id": "562828",
+      "top_outcome": "No",
+      "top_prob": 56.49999999999999,
+      "volume24h": 21457.720023999995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591302
+    },
+    {
+      "market_id": "562829",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 10508.927934000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591304
+    },
+    {
+      "market_id": "562830",
+      "top_outcome": "No",
+      "top_prob": 63.0,
+      "volume24h": 5218.671081,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591307
+    },
+    {
+      "market_id": "562831",
+      "top_outcome": "No",
+      "top_prob": 81.5,
+      "volume24h": 43197.879971,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591310
+    },
+    {
+      "market_id": "562832",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 12607.547205000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591312
+    },
+    {
+      "market_id": "564178",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 15974.1,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591315
+    },
+    {
+      "market_id": "564179",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 61855.46,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591317
+    },
+    {
+      "market_id": "564180",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 604717.6300000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591319
+    },
+    {
+      "market_id": "564181",
+      "top_outcome": "No",
+      "top_prob": 99.9,
+      "volume24h": 97892.07000000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591321
+    },
+    {
+      "market_id": "564183",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 6874.034832999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591324
+    },
+    {
+      "market_id": "564161",
+      "top_outcome": "No",
+      "top_prob": 96.45,
+      "volume24h": 29375.319886000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591326
+    },
+    {
+      "market_id": "564162",
+      "top_outcome": "Yes",
+      "top_prob": 88.5,
+      "volume24h": 29007.261125000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591329
+    },
+    {
+      "market_id": "564163",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 23347.204768000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591332
+    },
+    {
+      "market_id": "564165",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 51075.433325000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591335
+    },
+    {
+      "market_id": "564166",
+      "top_outcome": "No",
+      "top_prob": 96.39999999999999,
+      "volume24h": 56625.60911200001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591338
+    },
+    {
+      "market_id": "564168",
+      "top_outcome": "No",
+      "top_prob": 97.8,
+      "volume24h": 40447.529976000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591341
+    },
+    {
+      "market_id": "564170",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 6063.645,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591344
+    },
+    {
+      "market_id": "564169",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 15800.590999999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591348
+    },
+    {
+      "market_id": "564175",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 65866.821594,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591351
+    },
+    {
+      "market_id": "564204",
+      "top_outcome": "No",
+      "top_prob": 96.39999999999999,
+      "volume24h": 15545.825128999993,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591354
+    },
+    {
+      "market_id": "564208",
+      "top_outcome": "No",
+      "top_prob": 94.75,
+      "volume24h": 7985.266018,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591358
+    },
+    {
+      "market_id": "564205",
+      "top_outcome": "No",
+      "top_prob": 92.75,
+      "volume24h": 255850.96523,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591362
+    },
+    {
+      "market_id": "564213",
+      "top_outcome": "No",
+      "top_prob": 95.05,
+      "volume24h": 5171.829610999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591366
+    },
+    {
+      "market_id": "564216",
+      "top_outcome": "No",
+      "top_prob": 97.3,
+      "volume24h": 558074.3947609998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591371
+    },
+    {
+      "market_id": "566139",
+      "top_outcome": "No",
+      "top_prob": 94.5,
+      "volume24h": 66850.62202400003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591374
+    },
+    {
+      "market_id": "566140",
+      "top_outcome": "No",
+      "top_prob": 72.5,
+      "volume24h": 193360.9256119997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591377
+    },
+    {
+      "market_id": "566141",
+      "top_outcome": "No",
+      "top_prob": 90.5,
+      "volume24h": 65417.337152999986,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591380
+    },
+    {
+      "market_id": "566142",
+      "top_outcome": "No",
+      "top_prob": 80.5,
+      "volume24h": 69105.170408,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591383
+    },
+    {
+      "market_id": "566144",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 162261.019844,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591386
+    },
+    {
+      "market_id": "566165",
+      "top_outcome": "No",
+      "top_prob": 98.75,
+      "volume24h": 230588.32155799997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591389
+    },
+    {
+      "market_id": "566146",
+      "top_outcome": "No",
+      "top_prob": 95.1,
+      "volume24h": 240410.89206300004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591393
+    },
+    {
+      "market_id": "566149",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 750524.5122849998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591396
+    },
+    {
+      "market_id": "566150",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 210987.465025,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591399
+    },
+    {
+      "market_id": "566172",
+      "top_outcome": "No",
+      "top_prob": 98.15,
+      "volume24h": 366207.54325799993,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591402
+    },
+    {
+      "market_id": "566152",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 291242.32720400003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591405
+    },
+    {
+      "market_id": "566143",
+      "top_outcome": "No",
+      "top_prob": 96.89999999999999,
+      "volume24h": 137581.79843899998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591409
+    },
+    {
+      "market_id": "566136",
+      "top_outcome": "No",
+      "top_prob": 91.5,
+      "volume24h": 76201.45189799998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591413
+    },
+    {
+      "market_id": "566137",
+      "top_outcome": "No",
+      "top_prob": 94.5,
+      "volume24h": 106205.88127800013,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591417
+    },
+    {
+      "market_id": "566159",
+      "top_outcome": "No",
+      "top_prob": 98.85000000000001,
+      "volume24h": 92312.190607,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591421
+    },
+    {
+      "market_id": "566170",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 18126.83,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591425
+    },
+    {
+      "market_id": "566138",
+      "top_outcome": "No",
+      "top_prob": 86.5,
+      "volume24h": 109177.14735199997,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591429
+    },
+    {
+      "market_id": "566201",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 7703.01,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591433
+    },
+    {
+      "market_id": "566187",
+      "top_outcome": "Yes",
+      "top_prob": 80.5,
+      "volume24h": 46502.10562900003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591437
+    },
+    {
+      "market_id": "566188",
+      "top_outcome": "No",
+      "top_prob": 81.5,
+      "volume24h": 90095.62801999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591441
+    },
+    {
+      "market_id": "566189",
+      "top_outcome": "No",
+      "top_prob": 99.9,
+      "volume24h": 3350335.322,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591445
+    },
+    {
+      "market_id": "566191",
+      "top_outcome": "No",
+      "top_prob": 99.7,
+      "volume24h": 79179.64661,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591448
+    },
+    {
+      "market_id": "566193",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 114666.38200000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591452
+    },
+    {
+      "market_id": "566240",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 6019.8,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591455
+    },
+    {
+      "market_id": "566228",
+      "top_outcome": "Yes",
+      "top_prob": 82.5,
+      "volume24h": 10649.005918,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591459
+    },
+    {
+      "market_id": "566230",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 292614.609666,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591462
+    },
+    {
+      "market_id": "566231",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 64246.69,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591466
+    },
+    {
+      "market_id": "566229",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 95243.554,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591470
+    },
+    {
+      "market_id": "1006892",
+      "top_outcome": "No",
+      "top_prob": 88.0,
+      "volume24h": 6280.268407,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591474
+    },
+    {
+      "market_id": "1397302",
+      "top_outcome": "No",
+      "top_prob": 72.5,
+      "volume24h": 9344.87075,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591477
+    },
+    {
+      "market_id": "566512",
+      "top_outcome": "Yes",
+      "top_prob": 86.0,
+      "volume24h": 6161.456258,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591481
+    },
+    {
+      "market_id": "566732",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 6475.951,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591485
+    },
+    {
+      "market_id": "566737",
+      "top_outcome": "No",
+      "top_prob": 89.7,
+      "volume24h": 268251.66154899995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591488
+    },
+    {
+      "market_id": "567560",
+      "top_outcome": "No",
+      "top_prob": 63.5,
+      "volume24h": 28381.457759999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591494
+    },
+    {
+      "market_id": "567561",
+      "top_outcome": "Yes",
+      "top_prob": 62.5,
+      "volume24h": 29569.735936999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591503
+    },
+    {
+      "market_id": "567562",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 22482.936000000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591506
+    },
+    {
+      "market_id": "567563",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 76032.733088,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591515
+    },
+    {
+      "market_id": "567564",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 90670.879176,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591518
+    },
+    {
+      "market_id": "567565",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 32927.655,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591521
+    },
+    {
+      "market_id": "567621",
+      "top_outcome": "No",
+      "top_prob": 89.85,
+      "volume24h": 41123.191959,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591524
+    },
+    {
+      "market_id": "567687",
+      "top_outcome": "No",
+      "top_prob": 58.5,
+      "volume24h": 39078.279617999986,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591527
+    },
+    {
+      "market_id": "568634",
+      "top_outcome": "No",
+      "top_prob": 97.15,
+      "volume24h": 214318.44617899987,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591530
+    },
+    {
+      "market_id": "568642",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 7832.761489999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591533
+    },
+    {
+      "market_id": "568668",
+      "top_outcome": "No",
+      "top_prob": 98.45,
+      "volume24h": 70287.88496299999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591536
+    },
+    {
+      "market_id": "568681",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 10777.714,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591539
+    },
+    {
+      "market_id": "568635",
+      "top_outcome": "No",
+      "top_prob": 94.39999999999999,
+      "volume24h": 7613.0971869999985,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591542
+    },
+    {
+      "market_id": "568643",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 57325.814802,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591545
+    },
+    {
+      "market_id": "568650",
+      "top_outcome": "No",
+      "top_prob": 98.1,
+      "volume24h": 253681.222534,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591547
+    },
+    {
+      "market_id": "568657",
+      "top_outcome": "No",
+      "top_prob": 98.95,
+      "volume24h": 84527.900199,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591550
+    },
+    {
+      "market_id": "568658",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 5263.333976000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591553
+    },
+    {
+      "market_id": "568685",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 10636.309,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591556
+    },
+    {
+      "market_id": "568637",
+      "top_outcome": "No",
+      "top_prob": 97.35000000000001,
+      "volume24h": 228562.65554700003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591559
+    },
+    {
+      "market_id": "568652",
+      "top_outcome": "No",
+      "top_prob": 96.7,
+      "volume24h": 12732.847989000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591562
+    },
+    {
+      "market_id": "568665",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 21476.657714,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591565
+    },
+    {
+      "market_id": "568675",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 9918.179,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591568
+    },
+    {
+      "market_id": "568686",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 7896.740227,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591571
+    },
+    {
+      "market_id": "568629",
+      "top_outcome": "No",
+      "top_prob": 79.5,
+      "volume24h": 7589.842651,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591574
+    },
+    {
+      "market_id": "568653",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 211340.861203,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591578
+    },
+    {
+      "market_id": "568660",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 20477.6015,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591581
+    },
+    {
+      "market_id": "568672",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 16423.158,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591583
+    },
+    {
+      "market_id": "568639",
+      "top_outcome": "No",
+      "top_prob": 97.8,
+      "volume24h": 12305.626664999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591586
+    },
+    {
+      "market_id": "568647",
+      "top_outcome": "No",
+      "top_prob": 98.3,
+      "volume24h": 301438.459363,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591589
+    },
+    {
+      "market_id": "568661",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 6379.177082999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591592
+    },
+    {
+      "market_id": "568669",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 342746.8172449999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591596
+    },
+    {
+      "market_id": "568640",
+      "top_outcome": "No",
+      "top_prob": 98.0,
+      "volume24h": 163083.975003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591599
+    },
+    {
+      "market_id": "568632",
+      "top_outcome": "No",
+      "top_prob": 94.3,
+      "volume24h": 6993.250917,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591603
+    },
+    {
+      "market_id": "568633",
+      "top_outcome": "No",
+      "top_prob": 96.45,
+      "volume24h": 14972.250013,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591606
+    },
+    {
+      "market_id": "568648",
+      "top_outcome": "No",
+      "top_prob": 98.25,
+      "volume24h": 16829.626271999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591610
+    },
+    {
+      "market_id": "568670",
+      "top_outcome": "No",
+      "top_prob": 99.55000000000001,
+      "volume24h": 5884.543002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591613
+    },
+    {
+      "market_id": "569311",
+      "top_outcome": "Yes",
+      "top_prob": 99.6,
+      "volume24h": 27069.169869,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591616
+    },
+    {
+      "market_id": "569312",
+      "top_outcome": "No",
+      "top_prob": 99.95,
+      "volume24h": 17093.81,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591620
+    },
+    {
+      "market_id": "569313",
+      "top_outcome": "No",
+      "top_prob": 99.7,
+      "volume24h": 6910.578541,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591624
+    },
+    {
+      "market_id": "569342",
+      "top_outcome": "No",
+      "top_prob": 91.9,
+      "volume24h": 166891.235341,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591627
+    },
+    {
+      "market_id": "569356",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 14918.703,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591631
+    },
+    {
+      "market_id": "569358",
+      "top_outcome": "No",
+      "top_prob": 99.4,
+      "volume24h": 11699.003665,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591634
+    },
+    {
+      "market_id": "569359",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 26337.877,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591638
+    },
+    {
+      "market_id": "569360",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 5144.860666,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591641
+    },
+    {
+      "market_id": "569362",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 21001.925,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591645
+    },
+    {
+      "market_id": "569363",
+      "top_outcome": "No",
+      "top_prob": 99.3,
+      "volume24h": 6981.529998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591649
+    },
+    {
+      "market_id": "569364",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 21515.0,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591653
+    },
+    {
+      "market_id": "569366",
+      "top_outcome": "No",
+      "top_prob": 84.5,
+      "volume24h": 37669.687735,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591657
+    },
+    {
+      "market_id": "569367",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 10097.717,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591661
+    },
+    {
+      "market_id": "569368",
+      "top_outcome": "No",
+      "top_prob": 54.50000000000001,
+      "volume24h": 27043.527661,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591664
+    },
+    {
+      "market_id": "569369",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 39653.728,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591667
+    },
+    {
+      "market_id": "569370",
+      "top_outcome": "No",
+      "top_prob": 99.4,
+      "volume24h": 14421.95,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591672
+    },
+    {
+      "market_id": "569371",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 43785.328,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591677
+    },
+    {
+      "market_id": "569372",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 12656.843,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591681
+    },
+    {
+      "market_id": "569373",
+      "top_outcome": "No",
+      "top_prob": 70.85000000000001,
+      "volume24h": 30689.825023000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591683
+    },
+    {
+      "market_id": "572842",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 31202.697333,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591685
+    },
+    {
+      "market_id": "572848",
+      "top_outcome": "No",
+      "top_prob": 99.35000000000001,
+      "volume24h": 43435.108107,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591687
+    },
+    {
+      "market_id": "572851",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 30537.72,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591689
+    },
+    {
+      "market_id": "572858",
+      "top_outcome": "Yes",
+      "top_prob": 97.35000000000001,
+      "volume24h": 5454.266412999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591691
+    },
+    {
+      "market_id": "573654",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 8085.02,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591694
+    },
+    {
+      "market_id": "577170",
+      "top_outcome": "No",
+      "top_prob": 99.65,
+      "volume24h": 20888.5,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591695
+    },
+    {
+      "market_id": "578528",
+      "top_outcome": "No",
+      "top_prob": 95.35,
+      "volume24h": 76464.434865,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591698
+    },
+    {
+      "market_id": "578539",
+      "top_outcome": "No",
+      "top_prob": 92.7,
+      "volume24h": 221133.104472,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591700
+    },
+    {
+      "market_id": "578546",
+      "top_outcome": "No",
+      "top_prob": 98.35000000000001,
+      "volume24h": 7630.296421,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591702
+    },
+    {
+      "market_id": "578553",
+      "top_outcome": "No",
+      "top_prob": 95.39999999999999,
+      "volume24h": 5589.44972,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591705
+    },
+    {
+      "market_id": "578569",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 6069.655000000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591707
+    },
+    {
+      "market_id": "582138",
+      "top_outcome": "Yes",
+      "top_prob": 67.5,
+      "volume24h": 8902.201210000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591709
+    },
+    {
+      "market_id": "690693",
+      "top_outcome": "No",
+      "top_prob": 53.0,
+      "volume24h": 6158.094986000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591711
+    },
+    {
+      "market_id": "599323",
+      "top_outcome": "Yes",
+      "top_prob": 77.0,
+      "volume24h": 36995.699068,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591713
+    },
+    {
+      "market_id": "599328",
+      "top_outcome": "No",
+      "top_prob": 99.9,
+      "volume24h": 33996.33499999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591715
+    },
+    {
+      "market_id": "601818",
+      "top_outcome": "No",
+      "top_prob": 96.65,
+      "volume24h": 12742.878521,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591717
+    },
+    {
+      "market_id": "601819",
+      "top_outcome": "No",
+      "top_prob": 53.5,
+      "volume24h": 9385.567691,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591719
+    },
+    {
+      "market_id": "601820",
+      "top_outcome": "No",
+      "top_prob": 97.8,
+      "volume24h": 8575.338077999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591720
+    },
+    {
+      "market_id": "601821",
+      "top_outcome": "No",
+      "top_prob": 96.85000000000001,
+      "volume24h": 19947.727264999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591723
+    },
+    {
+      "market_id": "601822",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 10688.754500000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591725
+    },
+    {
+      "market_id": "601823",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 25147.227499999986,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591727
+    },
+    {
+      "market_id": "601824",
+      "top_outcome": "No",
+      "top_prob": 95.89999999999999,
+      "volume24h": 22947.192751000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591729
+    },
+    {
+      "market_id": "601825",
+      "top_outcome": "No",
+      "top_prob": 94.89999999999999,
+      "volume24h": 15996.473285000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591731
+    },
+    {
+      "market_id": "601826",
+      "top_outcome": "No",
+      "top_prob": 64.0,
+      "volume24h": 9622.752261,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591734
+    },
+    {
+      "market_id": "604490",
+      "top_outcome": "Yes",
+      "top_prob": 61.5,
+      "volume24h": 21979.258501999993,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591737
+    },
+    {
+      "market_id": "706279",
+      "top_outcome": "Yes",
+      "top_prob": 85.5,
+      "volume24h": 15191.905999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591741
+    },
+    {
+      "market_id": "608543",
+      "top_outcome": "No",
+      "top_prob": 88.3,
+      "volume24h": 6204.628085,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591744
+    },
+    {
+      "market_id": "609655",
+      "top_outcome": "No",
+      "top_prob": 71.5,
+      "volume24h": 29873.186176999992,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591746
+    },
+    {
+      "market_id": "1171858",
+      "top_outcome": "No",
+      "top_prob": 87.15,
+      "volume24h": 137147.66319899994,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591748
+    },
+    {
+      "market_id": "613835",
+      "top_outcome": "Yes",
+      "top_prob": 75.5,
+      "volume24h": 78761.62196499998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591751
+    },
+    {
+      "market_id": "613836",
+      "top_outcome": "No",
+      "top_prob": 98.5,
+      "volume24h": 96919.41477799999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591754
+    },
+    {
+      "market_id": "613837",
+      "top_outcome": "No",
+      "top_prob": 78.8,
+      "volume24h": 71917.743099,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591756
+    },
+    {
+      "market_id": "613838",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 45927.564095999995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591757
+    },
+    {
+      "market_id": "613839",
+      "top_outcome": "No",
+      "top_prob": 99.05000000000001,
+      "volume24h": 40213.996701000004,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591760
+    },
+    {
+      "market_id": "613841",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 56904.44299999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591762
+    },
+    {
+      "market_id": "613849",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 90985.01269500001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591764
+    },
+    {
+      "market_id": "613851",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 132825.475,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591766
+    },
+    {
+      "market_id": "613852",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 115616.23434999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591768
+    },
+    {
+      "market_id": "613853",
+      "top_outcome": "No",
+      "top_prob": 99.85000000000001,
+      "volume24h": 109960.41400000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591770
+    },
+    {
+      "market_id": "614007",
+      "top_outcome": "No",
+      "top_prob": 96.2,
+      "volume24h": 105249.53302899998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591773
+    },
+    {
+      "market_id": "614008",
+      "top_outcome": "No",
+      "top_prob": 68.5,
+      "volume24h": 83141.87324000007,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591775
+    },
+    {
+      "market_id": "614012",
+      "top_outcome": "Yes",
+      "top_prob": 59.3,
+      "volume24h": 111987.05061899999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591777
+    },
+    {
+      "market_id": "614013",
+      "top_outcome": "No",
+      "top_prob": 96.39999999999999,
+      "volume24h": 78361.09155000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591779
+    },
+    {
+      "market_id": "614018",
+      "top_outcome": "No",
+      "top_prob": 98.15,
+      "volume24h": 62567.14335100002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591782
+    },
+    {
+      "market_id": "614252",
+      "top_outcome": "Yes",
+      "top_prob": 69.5,
+      "volume24h": 6294.555009,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591784
+    },
+    {
+      "market_id": "614257",
+      "top_outcome": "No",
+      "top_prob": 93.05,
+      "volume24h": 36342.729461999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591785
+    },
+    {
+      "market_id": "614261",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 10406.363625000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591787
+    },
+    {
+      "market_id": "614268",
+      "top_outcome": "No",
+      "top_prob": 97.89999999999999,
+      "volume24h": 24011.554435000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591790
+    },
+    {
+      "market_id": "614312",
+      "top_outcome": "No",
+      "top_prob": 99.15,
+      "volume24h": 5864.595461999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591792
+    },
+    {
+      "market_id": "614314",
+      "top_outcome": "No",
+      "top_prob": 97.75,
+      "volume24h": 6371.958264,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591794
+    },
+    {
+      "market_id": "614311",
+      "top_outcome": "Yes",
+      "top_prob": 96.3,
+      "volume24h": 9741.030417,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591796
+    },
+    {
+      "market_id": "614315",
+      "top_outcome": "No",
+      "top_prob": 99.6,
+      "volume24h": 5777.279998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591799
+    },
+    {
+      "market_id": "614321",
+      "top_outcome": "No",
+      "top_prob": 99.5,
+      "volume24h": 7113.9176449999995,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591801
+    },
+    {
+      "market_id": "614361",
+      "top_outcome": "Yes",
+      "top_prob": 50.449999999999996,
+      "volume24h": 19343.115366000005,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591803
+    },
+    {
+      "market_id": "614358",
+      "top_outcome": "No",
+      "top_prob": 78.0,
+      "volume24h": 151316.193031,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591805
+    },
+    {
+      "market_id": "614565",
+      "top_outcome": "Yes",
+      "top_prob": 95.65,
+      "volume24h": 15899.434796000003,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591807
+    },
+    {
+      "market_id": "614719",
+      "top_outcome": "Yes",
+      "top_prob": 91.5,
+      "volume24h": 19392.721263999996,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591809
+    },
+    {
+      "market_id": "614722",
+      "top_outcome": "No",
+      "top_prob": 92.95,
+      "volume24h": 5965.901613,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591811
+    },
+    {
+      "market_id": "614726",
+      "top_outcome": "No",
+      "top_prob": 99.75,
+      "volume24h": 11088.683165,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591814
+    },
+    {
+      "market_id": "614811",
+      "top_outcome": "No",
+      "top_prob": 99.25,
+      "volume24h": 6885.999311999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591816
+    },
+    {
+      "market_id": "614805",
+      "top_outcome": "Yes",
+      "top_prob": 72.5,
+      "volume24h": 72605.100226,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591817
+    },
+    {
+      "market_id": "616902",
+      "top_outcome": "No",
+      "top_prob": 84.3,
+      "volume24h": 5940.179723000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591820
+    },
+    {
+      "market_id": "616903",
+      "top_outcome": "No",
+      "top_prob": 73.5,
+      "volume24h": 8140.904457,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591822
+    },
+    {
+      "market_id": "616905",
+      "top_outcome": "No",
+      "top_prob": 82.5,
+      "volume24h": 7997.196454,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591824
+    },
+    {
+      "market_id": "616906",
+      "top_outcome": "No",
+      "top_prob": 95.19999999999999,
+      "volume24h": 7850.936564000001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591826
+    },
+    {
+      "market_id": "616908",
+      "top_outcome": "No",
+      "top_prob": 98.1,
+      "volume24h": 11339.519971000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591828
+    },
+    {
+      "market_id": "616909",
+      "top_outcome": "No",
+      "top_prob": 98.6,
+      "volume24h": 9881.853723999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591830
+    },
+    {
+      "market_id": "616910",
+      "top_outcome": "No",
+      "top_prob": 99.1,
+      "volume24h": 10606.143624999999,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591832
+    },
+    {
+      "market_id": "618455",
+      "top_outcome": "No",
+      "top_prob": 74.5,
+      "volume24h": 6523.194989000002,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591834
+    },
+    {
+      "market_id": "618454",
+      "top_outcome": "Yes",
+      "top_prob": 58.75,
+      "volume24h": 9300.668989,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591836
+    },
+    {
+      "market_id": "618456",
+      "top_outcome": "No",
+      "top_prob": 96.05,
+      "volume24h": 14712.321557,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591838
+    },
+    {
+      "market_id": "620682",
+      "top_outcome": "No",
+      "top_prob": 98.6,
+      "volume24h": 22065.926353,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591840
+    },
+    {
+      "market_id": "936450",
+      "top_outcome": "No",
+      "top_prob": 92.0,
+      "volume24h": 5767.63939,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591842
+    },
+    {
+      "market_id": "618503",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 6526.94,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591844
+    },
+    {
+      "market_id": "628938",
+      "top_outcome": "No",
+      "top_prob": 94.05,
+      "volume24h": 17425.609353,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591846
+    },
+    {
+      "market_id": "628944",
+      "top_outcome": "No",
+      "top_prob": 99.45,
+      "volume24h": 15457.494166,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591848
+    },
+    {
+      "market_id": "628950",
+      "top_outcome": "No",
+      "top_prob": 97.65,
+      "volume24h": 81135.816462,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591850
+    },
+    {
+      "market_id": "628939",
+      "top_outcome": "No",
+      "top_prob": 99.5,
+      "volume24h": 12406.025548,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591853
+    },
+    {
+      "market_id": "628941",
+      "top_outcome": "No",
+      "top_prob": 98.05,
+      "volume24h": 232912.218077,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591856
+    },
+    {
+      "market_id": "628955",
+      "top_outcome": "No",
+      "top_prob": 91.85,
+      "volume24h": 65136.96574400001,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591857
+    },
+    {
+      "market_id": "629091",
+      "top_outcome": "No",
+      "top_prob": 88.85,
+      "volume24h": 91825.053616,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591859
+    },
+    {
+      "market_id": "629095",
+      "top_outcome": "No",
+      "top_prob": 98.15,
+      "volume24h": 27607.829999999998,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591861
+    },
+    {
+      "market_id": "629097",
+      "top_outcome": "No",
+      "top_prob": 92.95,
+      "volume24h": 143815.979355,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591863
+    },
+    {
+      "market_id": "629099",
+      "top_outcome": "No",
+      "top_prob": 99.2,
+      "volume24h": 41353.19,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591866
+    },
+    {
+      "market_id": "629105",
+      "top_outcome": "No",
+      "top_prob": 99.3,
+      "volume24h": 18260.99,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591868
+    },
+    {
+      "market_id": "629092",
+      "top_outcome": "No",
+      "top_prob": 96.65,
+      "volume24h": 86157.507023,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591870
+    },
+    {
+      "market_id": "629106",
+      "top_outcome": "No",
+      "top_prob": 94.19999999999999,
+      "volume24h": 39503.495727,
+      "last_delta": 0.0,
+      "last_direction": 0,
+      "flip_count_6h": 0,
+      "updated_at": 1773178591872
+    }
+  ],
+  "sent_messages": [
+    {
+      "message_id": 900000000,
+      "created_at": 1773785195000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900000001,
+      "created_at": 1773785196000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Miami Open: Laura Siegemund vs Petra Marcinko 🎯 Bet: LAURA SIEGEMUND 📈 68.5% → 91.5% (+23.0%) ↔️ vs PETRA MARCINKO 8.5% 🧮 67/100 (move 100, flow 0, liq 100) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Miami Open, Qualification: Mattia Bellucci vs Murphy Cassone 🎯 Bet: MATTIA BELLUCCI 📈 77.0% → 58.0% (-19.0%) ↔️ vs MURPHY CASSONE 42.0% 🧮 57/100 (move 100, flow 0, liq 90) 🧠 Why: Sharp repricing, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Miami Open, Qualification: Adam Walton vs Rinky Hijikata 🎯 Bet: ADAM WALTON 📈 55.0% → 71.0% (+16.0%) ↔️ vs RINKY HIJIKATA 29.0% 🧮 56/100 (move 100, flow 0, liq 27) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900000002,
+      "created_at": 1773785197000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900000003,
+      "created_at": 1773785198000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Miami Open, Qualification: Adam Walton vs Rinky Hijikata 🎯 Bet: ADAM WALTON 📈 71.0% → 87.0% (+16.0%) ↔️ vs RINKY HIJIKATA 13.0% 🧮 71/100 (move 100, flow 0, liq 100) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Miami Open, Qualification: Thiago Agustin Tirante vs Martin Landaluce 🎯 Bet: THIAGO AGUSTIN TIRANTE 📈 56.5% → 50.5% (-6.0%) ↔️ vs MARTIN LANDALUCE 49.5% 🧮 65/100 (move 75, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Ethereum dip to $1,000 by December 31, 2026? 🎯 Bet: NO 📈 73.0% → 78.0% (+5.0%) ↔️ vs YES 22.0% 🧮 55/100 (move 63, flow 0, liq 68) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Ethereum flipped in 2026? 🎯 Bet: NO 📈 58.5% → 53.5% (-5.0%) ↔️ vs YES 46.5% 🧮 55/100 (move 63, flow 0, liq 67) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900000004,
+      "created_at": 1773785199000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Howard Bison vs. UMBC Retrievers 🎯 Bet: HOWARD BISON 📈 63.1% → 85.8% (+22.6%) ↔️ vs UMBC RETRIEVERS 14.2% 🧮 96/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Hurricanes vs. Blue Jackets 🎯 Bet: BLUE JACKETS 📈 53.5% → 77.5% (+24.0%) ↔️ vs HURRICANES 22.5% 🧮 88/100 (move 100, flow 72, liq 96) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Heat vs. Hornets 🎯 Bet: HORNETS 📈 64.5% → 60.5% (-4.0%) ↔️ vs HEAT 39.5% 🧮 84/100 (move 50, flow 100, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Islanders vs. Maple Leafs 🎯 Bet: ISLANDERS 📈 58.5% → 85.5% (+27.0%) ↔️ vs MAPLE LEAFS 14.5% 🧮 79/100 (move 100, flow 100, liq 76) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟢 Confidence: High 🔥 Thunder vs. Magic 🎯 Bet: THUNDER 📈 79.5% → 89.5% (+10.0%) ↔️ vs MAGIC 10.5% 🧮 78/100 (move 100, flow 76, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900000005,
+      "created_at": 1773785200000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Cavaliers vs. Bucks 🎯 Bet: CAVALIERS 📈 78.5% → 69.5% (-9.0%) ↔️ vs BUCKS 30.5% 🧮 95/100 (move 100, flow 100, liq 95) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 North Carolina State Wolfpack vs. Texas Longhorns 🎯 Bet: TEXAS LONGHORNS 📈 51.5% → 60.5% (+9.0%) ↔️ vs NORTH CAROLINA STATE WOLFPACK 39.5% 🧮 84/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟢 Confidence: High 🔥 Suns vs. Timberwolves 🎯 Bet: TIMBERWOLVES 📈 53.0% → 91.5% (+38.5%) ↔️ vs SUNS 8.5% 🧮 80/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Whale-sized orders 🔗 Go to market 🟢 Confidence: High 🔥 Sharks vs. Oilers 🎯 Bet: OILERS 📈 59.5% → 83.5% (+24.0%) ↔️ vs SHARKS 16.5% 🧮 79/100 (move 100, flow 100, liq 13) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will USA win the 2026 World Baseball Classic? 🎯 Bet: NO 📈 53.0% → 69.5% (+16.5%) ↔️ vs YES 30.5% 🧮 75/100 (move 100, flow 64, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001000,
+      "created_at": 1773803196000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001001,
+      "created_at": 1773803197000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Panthers vs. Canucks 🎯 Bet: CANUCKS 📈 59.0% → 74.5% (+15.5%) ↔️ vs PANTHERS 25.5% 🧮 73/100 (move 100, flow 56, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 South Alabama Jaguars vs. Auburn Tigers 🎯 Bet: AUBURN TIGERS 📈 93.5% → 76.5% (-17.0%) ↔️ vs SOUTH ALABAMA JAGUARS 23.5% 🧮 71/100 (move 100, flow 0, liq 100) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001002,
+      "created_at": 1773803198000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Sabres vs. Golden Knights 🎯 Bet: SABRES 📈 63.5% → 72.5% (+9.0%) ↔️ vs GOLDEN KNIGHTS 27.5% 🧮 96/100 (move 100, flow 98, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 70.1% → 60.8% (-9.3%) ↔️ vs NO 39.3% 🧮 83/100 (move 100, flow 49, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001003,
+      "created_at": 1773803199000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001004,
+      "created_at": 1773803200000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Lightning vs. Kraken 🎯 Bet: LIGHTNING 📈 88.5% → 81.5% (-7.0%) ↔️ vs KRAKEN 18.5% 🧮 65/100 (move 26, flow 100, liq 100) 🧠 Why: Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $110 by end of March? 🎯 Bet: NO 📈 64.8% → 69.5% (+4.6%) ↔️ vs YES 30.6% 🧮 65/100 (move 58, flow 19, liq 97) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 UNLV Runnin' Rebels vs. UC Irvine Anteaters 🎯 Bet: UNLV RUNNIN' REBELS 📈 50.5% → 85.5% (+35.0%) ↔️ vs UC IRVINE ANTEATERS 14.5% 🧮 62/100 (move 100, flow 11, liq 100) 🧠 Why: Sharp repricing, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001005,
+      "created_at": 1773803201000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001006,
+      "created_at": 1773803202000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 60.8% → 55.5% (-5.3%) ↔️ vs NO 44.5% 🧮 73/100 (move 57, flow 51, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Will the U.S. invade Iran before 2027? 🎯 Bet: YES 📈 52.5% → 57.0% (+4.5%) ↔️ vs NO 43.0% 🧮 57/100 (move 56, flow 0, liq 83) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001007,
+      "created_at": 1773803203000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 58.3% → 63.4% (+5.1%) ↔️ vs NO 36.6% 🧮 76/100 (move 64, flow 57, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001008,
+      "created_at": 1773803204000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001009,
+      "created_at": 1773803205000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will Elon Musk post 220-239 tweets from March 13 to March 20, 2026? 🎯 Bet: NO 📈 84.7% → 79.5% (-5.2%) ↔️ vs YES 20.5% 🧮 58/100 (move 64, flow 7, liq 72) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001010,
+      "created_at": 1773803206000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001011,
+      "created_at": 1773803207000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Opensea FDV above $100M one day after launch? 🎯 Bet: YES 📈 63.0% → 69.5% (+6.5%) ↔️ vs NO 30.5% 🧮 56/100 (move 81, flow 0, liq 46) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001012,
+      "created_at": 1773803208000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001013,
+      "created_at": 1773803209000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Zadar: Jonas Forejtek vs Andrej Nedic 🎯 Bet: JONAS FOREJTEK 📈 68.5% → 81.0% (+12.5%) ↔️ vs ANDREJ NEDIC 19.0% 🧮 71/100 (move 100, flow 0, liq 100) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001014,
+      "created_at": 1773803210000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Counter-Strike: Team Falcons vs NRG (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: TEAM FALCONS 📈 83.0% → 97.5% (+14.5%) ↔️ vs NRG 2.5% 🧮 84/100 (move 100, flow 69, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001015,
+      "created_at": 1773803211000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 61.8% → 68.5% (+6.7%) ↔️ vs NO 31.6% 🧮 81/100 (move 84, flow 56, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001016,
+      "created_at": 1773803212000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001017,
+      "created_at": 1773803213000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will Bitcoin dip to $65,000 in March? 🎯 Bet: NO 📈 76.4% → 70.1% (-6.3%) ↔️ vs YES 29.9% 🧮 72/100 (move 79, flow 26, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Will Ethereum reach $2,600 in March? 🎯 Bet: NO 📈 65.0% → 72.0% (+7.0%) ↔️ vs YES 28.0% 🧮 63/100 (move 88, flow 0, liq 76) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Bitcoin reach $80,000 in March? 🎯 Bet: NO 📈 61.5% → 69.0% (+7.5%) ↔️ vs YES 31.0% 🧮 62/100 (move 94, flow 18, liq 100) 🧠 Why: Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001018,
+      "created_at": 1773803214000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 68.5% → 80.0% (+11.5%) ↔️ vs NO 20.1% 🧮 87/100 (move 100, flow 64, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Crude Oil (CL) hit (HIGH) $110 by end of March? 🎯 Bet: NO 📈 68.2% → 59.0% (-9.2%) ↔️ vs YES 41.0% 🧮 76/100 (move 100, flow 26, liq 91) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001019,
+      "created_at": 1773803215000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001020,
+      "created_at": 1773803216000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Murcia: Pablo Llamas Ruiz vs Jan Choinski 🎯 Bet: PABLO LLAMAS RUIZ 📈 89.5% → 60.5% (-29.0%) ↔️ vs JAN CHOINSKI 39.5% 🧮 74/100 (move 100, flow 12, liq 100) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $120 by end of March? 🎯 Bet: NO 📈 79.0% → 74.0% (-5.0%) ↔️ vs YES 26.0% 🧮 64/100 (move 63, flow 12, liq 96) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Solana dip to $70 in March? 🎯 Bet: NO 📈 92.0% → 84.0% (-8.0%) ↔️ vs YES 16.0% 🧮 61/100 (move 100, flow 0, liq 48) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001021,
+      "created_at": 1773803217000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 LoL: Bilibili Gaming vs G2 Esports (BO5) - First Stand Group A 🎯 Bet: BILIBILI GAMING 📈 82.5% → 91.5% (+9.0%) ↔️ vs G2 ESPORTS 8.5% 🧮 92/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001022,
+      "created_at": 1773803218000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001023,
+      "created_at": 1773803219000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Counter-Strike: Natus Vincere vs B8 (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: NATUS VINCERE 📈 76.0% → 90.5% (+14.5%) ↔️ vs B8 9.5% 🧮 66/100 (move 100, flow 43, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will Elon Musk post 240-259 tweets from March 13 to March 20, 2026? 🎯 Bet: NO 📈 74.2% → 81.0% (+6.8%) ↔️ vs YES 18.9% 🧮 65/100 (move 86, flow 11, liq 73) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Elon Musk post 280-299 tweets from March 13 to March 20, 2026? 🎯 Bet: NO 📈 86.5% → 77.5% (-9.0%) ↔️ vs YES 22.5% 🧮 64/100 (move 100, flow 2, liq 61) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Counter-Strike: Natus Vincere vs B8 - Map 2 Winner 🎯 Bet: NATUS VINCERE 📈 71.5% → 75.5% (+4.0%) ↔️ vs B8 24.5% 🧮 59/100 (move 50, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001024,
+      "created_at": 1773803220000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 US forces enter Iran by March 31? 🎯 Bet: NO 📈 66.5% → 70.5% (+4.0%) ↔️ vs YES 29.5% 🧮 83/100 (move 50, flow 97, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001025,
+      "created_at": 1773803221000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001026,
+      "created_at": 1773803222000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will Bitcoin dip to $65,000 in March? 🎯 Bet: NO 📈 65.0% → 58.8% (-6.2%) ↔️ vs YES 41.3% 🧮 74/100 (move 78, flow 33, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Will the price of Bitcoin be above $72,000 on March 18? 🎯 Bet: NO 📈 52.8% → 94.3% (+41.6%) ↔️ vs YES 5.7% 🧮 69/100 (move 100, flow 66, liq 85) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Extended FDV above $500M one day after launch? 🎯 Bet: NO 📈 84.0% → 77.5% (-6.5%) ↔️ vs YES 22.5% 🧮 66/100 (move 81, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Idaho Vandals vs. Houston Cougars: O/U 136.5 🎯 Bet: OVER 📈 50.5% → 55.0% (+4.5%) ↔️ vs UNDER 45.0% 🧮 66/100 (move 56, flow 22, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001027,
+      "created_at": 1773803223000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001028,
+      "created_at": 1773803224000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Counter-Strike: Natus Vincere vs B8 (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: NATUS VINCERE 📈 85.4% → 96.0% (+10.6%) ↔️ vs B8 4.0% 🧮 72/100 (move 100, flow 83, liq 82) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $120 by end of March? 🎯 Bet: NO 📈 66.5% → 72.5% (+6.0%) ↔️ vs YES 27.5% 🧮 66/100 (move 75, flow 19, liq 84) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Solana reach $100 in March? 🎯 Bet: NO 📈 69.0% → 61.5% (-7.5%) ↔️ vs YES 38.5% 🧮 62/100 (move 94, flow 0, liq 65) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Spread: Louisville Cardinals (-4.5) 🎯 Bet: LOUISVILLE CARDINALS 📈 54.5% → 50.5% (-4.0%) ↔️ vs SOUTH FLORIDA BULLS 49.5% 🧮 59/100 (move 50, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001029,
+      "created_at": 1773803225000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001030,
+      "created_at": 1773803226000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Murcia: Jesper de Jong vs Max Houkes 🎯 Bet: JESPER DE JONG 📈 75.5% → 97.5% (+22.0%) ↔️ vs MAX HOUKES 2.5% 🧮 66/100 (move 100, flow 0, liq 93) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001031,
+      "created_at": 1773803227000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 80.8% → 67.7% (-13.2%) ↔️ vs NO 32.4% 🧮 85/100 (move 100, flow 55, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Crude Oil (CL) hit (HIGH) $110 by end of March? 🎯 Bet: NO 📈 53.9% → 61.9% (+8.0%) ↔️ vs YES 38.1% 🧮 79/100 (move 99, flow 33, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001032,
+      "created_at": 1773803228000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001033,
+      "created_at": 1773803229000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will Bitcoin dip to $65,000 in March? 🎯 Bet: NO 📈 60.4% → 65.8% (+5.4%) ↔️ vs YES 34.3% 🧮 71/100 (move 67, flow 33, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Counter-Strike: FaZe vs Aurora Gaming (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: AURORA GAMING 📈 63.5% → 53.5% (-10.0%) ↔️ vs FAZE 46.5% 🧮 67/100 (move 100, flow 34, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Counter-Strike: FaZe vs Aurora Gaming - Map 1 Winner 🎯 Bet: FAZE 📈 55.0% → 61.5% (+6.5%) ↔️ vs AURORA GAMING 38.5% 🧮 65/100 (move 81, flow 5, liq 87) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001034,
+      "created_at": 1773803230000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001035,
+      "created_at": 1773803231000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Counter-Strike: FaZe vs Aurora Gaming (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: FAZE 📈 53.5% → 66.5% (+13.0%) ↔️ vs AURORA GAMING 33.5% 🧮 74/100 (move 100, flow 62, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will FC Barcelona win on 2026-03-18? 🎯 Bet: YES 📈 60.5% → 91.5% (+31.0%) ↔️ vs NO 8.5% 🧮 73/100 (move 100, flow 100, liq 64) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 67.7% → 80.2% (+12.5%) ↔️ vs NO 19.8% 🧮 72/100 (move 95, flow 56, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $110 by end of March? 🎯 Bet: NO 📈 61.9% → 57.6% (-4.2%) ↔️ vs YES 42.4% 🧮 68/100 (move 53, flow 36, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Asuncion: Genaro Alberto Olivieri vs Jaime Faria 🎯 Bet: JAIME FARIA 📈 85.0% → 64.0% (-21.0%) ↔️ vs GENARO ALBERTO OLIVIERI 36.0% 🧮 63/100 (move 100, flow 0, liq 61) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001036,
+      "created_at": 1773803232000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001037,
+      "created_at": 1773803233000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Counter-Strike: FaZe vs Aurora Gaming (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: AURORA GAMING 📈 66.5% → 72.5% (+6.0%) ↔️ vs FAZE 27.5% 🧮 67/100 (move 46, flow 84, liq 100) 🧠 Why: Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Morelos: Alejandro Hayen vs Andres Martin 🎯 Bet: ANDRES MARTIN 📈 52.5% → 74.0% (+21.5%) ↔️ vs ALEJANDRO HAYEN 26.0% 🧮 67/100 (move 100, flow 0, liq 79) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Will New York City FC win the 2026 MLS Cup? 🎯 Bet: NO 📈 95.2% → 84.8% (-10.4%) ↔️ vs YES 15.3% 🧮 65/100 (move 100, flow 0, liq 68) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 US x Iran ceasefire by April 15? 🎯 Bet: NO 📈 74.5% → 79.5% (+5.0%) ↔️ vs YES 20.5% 🧮 64/100 (move 63, flow 10, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Will Elon Musk post 240-259 tweets from March 13 to March 20, 2026? 🎯 Bet: NO 📈 76.4% → 82.1% (+5.7%) ↔️ vs YES 17.9% 🧮 58/100 (move 71, flow 9, liq 60) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001038,
+      "created_at": 1773803234000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Will FC Bayern München win on 2026-03-18? 🎯 Bet: YES 📈 70.5% → 84.5% (+14.0%) ↔️ vs NO 15.5% 🧮 96/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Liverpool FC win on 2026-03-18? 🎯 Bet: YES 📈 78.5% → 90.5% (+12.0%) ↔️ vs NO 9.5% 🧮 92/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Galatasaray SK win on 2026-03-18? 🎯 Bet: NO 📈 91.0% → 97.8% (+6.8%) ↔️ vs YES 2.3% 🧮 88/100 (move 84, flow 100, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Will Tottenham Hotspur FC win on 2026-03-18? 🎯 Bet: YES 📈 61.5% → 67.0% (+5.5%) ↔️ vs NO 33.0% 🧮 81/100 (move 69, flow 100, liq 66) 🧠 Why: Unusual flow surge, Whale-sized orders 🔗 Go to market 🟢 Confidence: High 🔥 Will Club Atlético de Madrid win on 2026-03-18? 🎯 Bet: NO 📈 64.5% → 88.0% (+23.5%) ↔️ vs YES 12.0% 🧮 79/100 (move 100, flow 100, liq 76) 🧠 Why: Sharp repricing, Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001039,
+      "created_at": 1773803235000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001040,
+      "created_at": 1773803236000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Counter-Strike: FURIA vs TYLOO (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: FURIA 📈 80.5% → 87.0% (+6.5%) ↔️ vs TYLOO 13.0% 🧮 74/100 (move 81, flow 32, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟡 Confidence: Med 👀 Will Crude Oil (CL) hit (HIGH) $100 by end of March? 🎯 Bet: YES 📈 85.9% → 81.6% (-4.3%) ↔️ vs NO 18.4% 🧮 69/100 (move 53, flow 87, liq 100) 🧠 Why: Unusual flow surge, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med 👀 Fed rate cut by June 2026 meeting? 🎯 Bet: NO 📈 70.5% → 87.0% (+16.5%) ↔️ vs YES 13.0% 🧮 66/100 (move 100, flow 0, liq 76) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Will the Fed decrease interest rates by 25 bps after the June 2026 meeting? 🎯 Bet: NO 📈 76.5% → 91.5% (+15.0%) ↔️ vs YES 8.5% 🧮 63/100 (move 100, flow 0, liq 79) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Crude Oil (CL) Up or Down on March 18? 🎯 Bet: UP 📈 92.5% → 81.5% (-11.0%) ↔️ vs DOWN 18.5% 🧮 62/100 (move 100, flow 14, liq 100) 🧠 Why: Sharp repricing, Choppy regime (recent reversals) 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001041,
+      "created_at": 1773803237000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Counter-Strike: FURIA vs TYLOO (BO3) - BLAST Open Rotterdam Group A 🎯 Bet: FURIA 📈 87.0% → 96.7% (+9.7%) ↔️ vs TYLOO 3.4% 🧮 78/100 (move 100, flow 45, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001042,
+      "created_at": 1773803238000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001043,
+      "created_at": 1773803239000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Spread: Pelicans (-2.5) 🎯 Bet: CLIPPERS 📈 53.0% → 60.0% (+7.0%) ↔️ vs PELICANS 40.0% 🧮 68/100 (move 88, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Counter-Strike: FURIA vs TYLOO - Map 2 Winner 🎯 Bet: FURIA 📈 76.5% → 89.5% (+13.0%) ↔️ vs TYLOO 10.5% 🧮 67/100 (move 100, flow 0, liq 81) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med 👀 Spread: Pelicans (-1.5) 🎯 Bet: CLIPPERS 📈 50.5% → 56.5% (+6.0%) ↔️ vs PELICANS 43.5% 🧮 65/100 (move 75, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med 👀 Games Total: O/U 2.5 🎯 Bet: UNDER 📈 68.0% → 88.0% (+20.0%) ↔️ vs OVER 12.0% 🧮 63/100 (move 100, flow 0, liq 61) 🧠 Why: Sharp repricing 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001044,
+      "created_at": 1773803240000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 🔥 Devils vs. Rangers 🎯 Bet: DEVILS 📈 52.5% → 70.0% (+17.5%) ↔️ vs RANGERS 30.0% 🧮 96/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Lehigh Mountain Hawks vs. Prairie View A&M Panthers 🎯 Bet: LEHIGH MOUNTAIN HAWKS 📈 57.5% → 50.5% (-7.0%) ↔️ vs PRAIRIE VIEW A&M PANTHERS 49.5% 🧮 93/100 (move 87, flow 100, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Warriors vs. Celtics 🎯 Bet: CELTICS 📈 84.5% → 95.4% (+10.9%) ↔️ vs WARRIORS 4.6% 🧮 92/100 (move 100, flow 100, liq 100) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟢 Confidence: High 🔥 Trail Blazers vs. Pacers 🎯 Bet: TRAIL BLAZERS 📈 85.5% → 91.5% (+6.0%) ↔️ vs PACERS 8.5% 🧮 86/100 (move 75, flow 100, liq 100) 🧠 Why: Unusual flow surge 🔗 Go to market 🟢 Confidence: High"
+    },
+    {
+      "message_id": 900001045,
+      "created_at": 1773803241000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001046,
+      "created_at": 1773803242000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Will CR Vasco da Gama win on 2026-03-18? 🎯 Bet: NO 📈 69.5% → 74.5% (+5.0%) ↔️ vs YES 25.5% 🧮 62/100 (move 63, flow 0, liq 100) 🧠 Why: Momentum continuation 🔗 Go to market 🟡 Confidence: Med"
+    },
+    {
+      "message_id": 900001047,
+      "created_at": 1773803243000,
+      "kind": "digest",
+      "tier": "B",
+      "text": "Hourly watchlist digest"
+    },
+    {
+      "message_id": 900001048,
+      "created_at": 1773803244000,
+      "kind": "realtime",
+      "tier": "A",
+      "text": "Polymarket signals 👀 Jazz vs. Timberwolves 🎯 Bet: TIMBERWOLVES 📈 86.5% → 95.5% (+9.0%) ↔️ vs JAZZ 4.5% 🧮 74/100 (move 100, flow 51, liq 72) 🧠 Why: Sharp repricing, Unusual flow surge 🔗 Go to market 🟡 Confidence: Med"
+    }
+  ]
+}

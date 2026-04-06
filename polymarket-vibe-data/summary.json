@@ -1,0 +1,379 @@
+{
+  "generated_at_utc": "2026-04-06T13:21:11.838940+00:00",
+  "source_db_export": "/root/.openclaw/workspace/data/radar-full-export.json",
+  "counts": {
+    "market_state": 435,
+    "sent_messages": 55
+  },
+  "stats": {
+    "volume24h_total": 42838148.111,
+    "volume24h_median": 52232.253,
+    "top_prob_avg": 94.231
+  },
+  "top_markets_by_volume24h": [
+    {
+      "market_id": "566189",
+      "volume24h": 3350335.322,
+      "top_prob": 99.9,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "558967",
+      "volume24h": 1368651.075999,
+      "top_prob": 99.75,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "566149",
+      "volume24h": 750524.5122849998,
+      "top_prob": 99.65,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561254",
+      "volume24h": 623443.772135,
+      "top_prob": 99.25,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "564180",
+      "volume24h": 604717.6300000001,
+      "top_prob": 99.95,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561237",
+      "volume24h": 590542.2237689999,
+      "top_prob": 98.4,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "559657",
+      "volume24h": 575185.7635529999,
+      "top_prob": 98.9,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "564216",
+      "volume24h": 558074.3947609998,
+      "top_prob": 97.3,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "559692",
+      "volume24h": 556416.0712719999,
+      "top_prob": 99.15,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "553828",
+      "volume24h": 538402.545954,
+      "top_prob": 75.7,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "559652",
+      "volume24h": 478805.8201790005,
+      "top_prob": 74.85000000000001,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "558958",
+      "volume24h": 428245.63616500003,
+      "top_prob": 99.65,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561979",
+      "volume24h": 388801.916569,
+      "top_prob": 97.55,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561238",
+      "volume24h": 386668.423989,
+      "top_prob": 99.05000000000001,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561249",
+      "volume24h": 370513.0970970002,
+      "top_prob": 99.05000000000001,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "566172",
+      "volume24h": 366207.54325799993,
+      "top_prob": 98.15,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "561250",
+      "volume24h": 355394.8393329998,
+      "top_prob": 98.75,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "568669",
+      "volume24h": 342746.8172449999,
+      "top_prob": 99.15,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "558957",
+      "volume24h": 339146.6990000001,
+      "top_prob": 99.85000000000001,
+      "top_outcome": "No"
+    },
+    {
+      "market_id": "568647",
+      "volume24h": 301438.459363,
+      "top_prob": 98.3,
+      "top_outcome": "No"
+    }
+  ],
+  "top_markets_by_abs_last_delta": [
+    {
+      "market_id": "824952",
+      "last_delta": 0.0,
+      "volume24h": 5909.960296,
+      "top_prob": 84.5
+    },
+    {
+      "market_id": "692250",
+      "last_delta": 0.0,
+      "volume24h": 11139.496915,
+      "top_prob": 98.95
+    },
+    {
+      "market_id": "692258",
+      "last_delta": 0.0,
+      "volume24h": 5539.742502,
+      "top_prob": 95.0
+    },
+    {
+      "market_id": "678876",
+      "last_delta": 0.0,
+      "volume24h": 5175.537523999999,
+      "top_prob": 97.39999999999999
+    },
+    {
+      "market_id": "610236",
+      "last_delta": 0.0,
+      "volume24h": 8363.611490000001,
+      "top_prob": 97.75
+    },
+    {
+      "market_id": "597967",
+      "last_delta": 0.0,
+      "volume24h": 6301.558361000001,
+      "top_prob": 58.5
+    },
+    {
+      "market_id": "666655",
+      "last_delta": 0.0,
+      "volume24h": 5716.571499,
+      "top_prob": 64.0
+    },
+    {
+      "market_id": "1359701",
+      "last_delta": 0.0,
+      "volume24h": 7314.948249000001,
+      "top_prob": 96.05
+    },
+    {
+      "market_id": "540819",
+      "last_delta": 0.0,
+      "volume24h": 20610.205812999997,
+      "top_prob": 51.5
+    },
+    {
+      "market_id": "540881",
+      "last_delta": 0.0,
+      "volume24h": 129942.10803700003,
+      "top_prob": 98.15
+    },
+    {
+      "market_id": "677361",
+      "last_delta": 0.0,
+      "volume24h": 10588.477273,
+      "top_prob": 93.5
+    },
+    {
+      "market_id": "610256",
+      "last_delta": 0.0,
+      "volume24h": 20474.623736,
+      "top_prob": 95.15
+    },
+    {
+      "market_id": "553827",
+      "last_delta": 0.0,
+      "volume24h": 16891.595730999998,
+      "top_prob": 94.15
+    },
+    {
+      "market_id": "553844",
+      "last_delta": 0.0,
+      "volume24h": 7695.808464999999,
+      "top_prob": 98.8
+    },
+    {
+      "market_id": "553846",
+      "last_delta": 0.0,
+      "volume24h": 25993.936892,
+      "top_prob": 99.7
+    },
+    {
+      "market_id": "553825",
+      "last_delta": 0.0,
+      "volume24h": 5984.065108000001,
+      "top_prob": 99.7
+    },
+    {
+      "market_id": "553826",
+      "last_delta": 0.0,
+      "volume24h": 5570.89568,
+      "top_prob": 90.5
+    },
+    {
+      "market_id": "553845",
+      "last_delta": 0.0,
+      "volume24h": 26891.189000000006,
+      "top_prob": 99.85000000000001
+    },
+    {
+      "market_id": "553828",
+      "last_delta": 0.0,
+      "volume24h": 538402.545954,
+      "top_prob": 75.7
+    },
+    {
+      "market_id": "553829",
+      "last_delta": 0.0,
+      "volume24h": 19060.57069300001,
+      "top_prob": 94.75
+    }
+  ],
+  "top_markets_by_flip_count_6h": [
+    {
+      "market_id": "824952",
+      "flip_count_6h": 0,
+      "volume24h": 5909.960296,
+      "top_prob": 84.5
+    },
+    {
+      "market_id": "692250",
+      "flip_count_6h": 0,
+      "volume24h": 11139.496915,
+      "top_prob": 98.95
+    },
+    {
+      "market_id": "692258",
+      "flip_count_6h": 0,
+      "volume24h": 5539.742502,
+      "top_prob": 95.0
+    },
+    {
+      "market_id": "678876",
+      "flip_count_6h": 0,
+      "volume24h": 5175.537523999999,
+      "top_prob": 97.39999999999999
+    },
+    {
+      "market_id": "610236",
+      "flip_count_6h": 0,
+      "volume24h": 8363.611490000001,
+      "top_prob": 97.75
+    },
+    {
+      "market_id": "597967",
+      "flip_count_6h": 0,
+      "volume24h": 6301.558361000001,
+      "top_prob": 58.5
+    },
+    {
+      "market_id": "666655",
+      "flip_count_6h": 0,
+      "volume24h": 5716.571499,
+      "top_prob": 64.0
+    },
+    {
+      "market_id": "1359701",
+      "flip_count_6h": 0,
+      "volume24h": 7314.948249000001,
+      "top_prob": 96.05
+    },
+    {
+      "market_id": "540819",
+      "flip_count_6h": 0,
+      "volume24h": 20610.205812999997,
+      "top_prob": 51.5
+    },
+    {
+      "market_id": "540881",
+      "flip_count_6h": 0,
+      "volume24h": 129942.10803700003,
+      "top_prob": 98.15
+    },
+    {
+      "market_id": "677361",
+      "flip_count_6h": 0,
+      "volume24h": 10588.477273,
+      "top_prob": 93.5
+    },
+    {
+      "market_id": "610256",
+      "flip_count_6h": 0,
+      "volume24h": 20474.623736,
+      "top_prob": 95.15
+    },
+    {
+      "market_id": "553827",
+      "flip_count_6h": 0,
+      "volume24h": 16891.595730999998,
+      "top_prob": 94.15
+    },
+    {
+      "market_id": "553844",
+      "flip_count_6h": 0,
+      "volume24h": 7695.808464999999,
+      "top_prob": 98.8
+    },
+    {
+      "market_id": "553846",
+      "flip_count_6h": 0,
+      "volume24h": 25993.936892,
+      "top_prob": 99.7
+    },
+    {
+      "market_id": "553825",
+      "flip_count_6h": 0,
+      "volume24h": 5984.065108000001,
+      "top_prob": 99.7
+    },
+    {
+      "market_id": "553826",
+      "flip_count_6h": 0,
+      "volume24h": 5570.89568,
+      "top_prob": 90.5
+    },
+    {
+      "market_id": "553845",
+      "flip_count_6h": 0,
+      "volume24h": 26891.189000000006,
+      "top_prob": 99.85000000000001
+    },
+    {
+      "market_id": "553828",
+      "flip_count_6h": 0,
+      "volume24h": 538402.545954,
+      "top_prob": 75.7
+    },
+    {
+      "market_id": "553829",
+      "flip_count_6h": 0,
+      "volume24h": 19060.57069300001,
+      "top_prob": 94.75
+    }
+  ]
+}
