@@ -25,7 +25,7 @@ export const env = {
   minVolume24h: num("MIN_VOLUME_24H", 5_000),
   minOddsSwing: num("MIN_ODDS_SWING", 10),
   minOddsSwingNoisy: num("MIN_ODDS_SWING_NOISY", 11),
-  minOddsSwingPolitics: num("MIN_ODDS_SWING_POLITICS", 5),
+  minOddsSwingPolitics: num("MIN_ODDS_SWING_POLITICS", 10),
   topSignals: num("TOP_SIGNALS", 15),
   clearOnStart: bool("CLEAR_ON_START", false),
   clearOnStartLimit: num("CLEAR_ON_START_LIMIT", 200),
@@ -59,6 +59,8 @@ export const env = {
   broadcastCooldownMinutes: num("BROADCAST_COOLDOWN_MINUTES", 90),
   broadcastDailyCapPerMarket: num("BROADCAST_DAILY_CAP_PER_MARKET", 3),
   invalidationWindowHours: num("INVALIDATION_WINDOW_HOURS", 6),
+  swingWindowHours: num("SWING_WINDOW_HOURS", 3),
+  minVolume24hOverride: num("MIN_VOLUME24H_OVERRIDE", 500_000),
   dailyRecapHourUtc: num("DAILY_RECAP_HOUR_UTC", 22),
 
 

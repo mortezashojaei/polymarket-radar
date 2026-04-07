@@ -1,6 +1,7 @@
 import { env } from "../config/env.js";
 import {
   getMarketState,
+  getMarketSnapshotBaseline,
   getSignalState,
   listMarketPostCounts,
   upsertMarketState,
@@ -101,12 +102,16 @@ export const detectSignals = (
   tradeFlowByCondition: Map<string, TradeFlowSummary> = new Map()
 ): MarketSignal[] => {
   const now = Date.now();
-  const filtered = markets.filter(
-    (m) =>
-      (m.liquidity ?? 0) >= env.minLiquidity &&
-      (m.volume24hr ?? 0) >= env.minVolume24h &&
-      (m.liquidity ?? 0) >= env.minReportLiquidity
-  );
+  const filtered = markets.filter((m) => {
+    const liquidity = m.liquidity ?? 0;
+    const volume24h = m.volume24hr ?? 0;
+    const baseGate =
+      liquidity >= env.minLiquidity &&
+      volume24h >= env.minVolume24h &&
+      liquidity >= env.minReportLiquidity;
+    const activityOverride = liquidity >= env.minLiquidity && volume24h >= env.minVolume24hOverride;
+    return baseGate || activityOverride;
+  });
 
   const recentCounts = listMarketPostCounts(now - 24 * 3_600_000);
   const out: MarketSignal[] = [];
@@ -126,8 +131,15 @@ export const detectSignals = (
     const nearResolved = top >= 98;
 
     const prev = getMarketState(m.id);
-    const fromProb = prev?.topProb ?? top;
-    const delta = top - fromProb;
+    const fromProb1Step = prev?.topProb ?? top;
+    const oneStepDelta = top - fromProb1Step;
+    const windowStartTs = now - env.swingWindowHours * 3_600_000;
+    const baseline = getMarketSnapshotBaseline(m.id, windowStartTs, now);
+    const fromProbWindow = baseline?.topProb ?? fromProb1Step;
+    const windowDelta = top - fromProbWindow;
+    const useWindowDelta = Math.abs(windowDelta) > Math.abs(oneStepDelta);
+    const fromProb = useWindowDelta ? fromProbWindow : fromProb1Step;
+    const delta = useWindowDelta ? windowDelta : oneStepDelta;
     const absDelta = Math.abs(delta);
     const direction = delta === 0 ? 0 : delta > 0 ? 1 : -1;
 
@@ -146,7 +158,8 @@ export const detectSignals = (
     const walletDiversity = flow?.walletDiversity ?? 0;
     const whaleCount = flow?.whaleCount ?? 0;
 
-    const noveltyMinutes = prev ? (now - prev.updatedAt) / 60_000 : 999;
+    const baselineTs = useWindowDelta ? (baseline?.capturedAt ?? prev?.updatedAt ?? now) : prev?.updatedAt ?? now;
+    const noveltyMinutes = Math.max(1, (now - baselineTs) / 60_000);
     const velocity = prev ? absDelta / Math.max(noveltyMinutes / 60, 0.1) : absDelta;
     const persistenceScore = clamp(noveltyMinutes / 90, 0, 1);
     const spreadBps = clamp(1200 / Math.max((m.liquidity ?? 1) / 10_000, 1), 8, 250);
@@ -211,6 +224,7 @@ export const detectSignals = (
       const link = marketUrl(m);
       const category = bucketLabel(bucket);
       const moveSummary = `${topOutcome.toUpperCase()} ${fromProb.toFixed(1)}% → ${top.toFixed(1)}% (${delta >= 0 ? "+" : ""}${delta.toFixed(1)}%)`;
+      const windowSummary = `Δ${env.swingWindowHours}h ${windowDelta >= 0 ? "+" : ""}${windowDelta.toFixed(1)} pts`;
       const typeLabel = type.replaceAll("_", " ");
 
       out.push({
@@ -220,7 +234,7 @@ export const detectSignals = (
         type,
         title: `${m.categoryEmoji ?? "🧩"} [${typeLabel}] ${m.question}`,
         body: [
-          `Move: ${moveSummary}`,
+          `Move: ${moveSummary} | ${windowSummary}`,
           `Money evidence: Net flow $${Math.round(netFlow).toLocaleString()} | Trades ${tradeCount} | Whale count ${whaleCount}`,
           `Microstructure: Liquidity $${Math.round(m.liquidity ?? 0).toLocaleString()} | Spread ${Math.round(spreadBps)} bps`,
           `Predictive confidence: ${confidence}`,
