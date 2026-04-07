@@ -353,6 +353,25 @@ export const upsertMarketSnapshot = (
   ).run(marketId, question, category, topOutcome, topProb, capturedAt);
 };
 
+export const getMarketSnapshotBaseline = (
+  marketId: string,
+  windowStartTs: number,
+  nowTs: number
+): { topProb: number; capturedAt: number } | null => {
+  const row = db
+    .prepare(
+      `SELECT top_prob, captured_at
+       FROM market_snapshots
+       WHERE market_id = ? AND captured_at >= ? AND captured_at <= ?
+       ORDER BY captured_at ASC
+       LIMIT 1`
+    )
+    .get(marketId, windowStartTs, nowTs) as { top_prob: number; captured_at: number } | undefined;
+
+  if (!row) return null;
+  return { topProb: row.top_prob, capturedAt: row.captured_at };
+};
+
 export const listMarketShiftsBetween = (startTs: number, endTs: number) => {
   const firstRows = db
     .prepare(
