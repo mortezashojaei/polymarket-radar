@@ -65,6 +65,7 @@ npm run check                # TypeScript type-check
 npm run build                # compile to dist/
 npm run analyze:last4d       # summary of sent messages (last 4 days)
 npm run analyze:days -- 7    # custom analysis window
+npm run analyze:daily-shift -- --date=2026-04-09 --top=5 --min-delta=3
 ```
 
 ## Tech stack

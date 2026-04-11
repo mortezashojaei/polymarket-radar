@@ -9,7 +9,8 @@
     "dev": "tsx src/main.ts",
     "check": "tsc --noEmit",
     "analyze:last4d": "tsx src/scripts/analyze-last4d.ts",
-    "analyze:days": "tsx src/scripts/analyze-last4d.ts"
+    "analyze:days": "tsx src/scripts/analyze-last4d.ts",
+    "analyze:daily-shift": "tsx src/scripts/daily-shift-report.ts"
   },
   "dependencies": {
     "better-sqlite3": "^11.8.1",
